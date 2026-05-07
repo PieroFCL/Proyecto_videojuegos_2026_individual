@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://bl23uveojqu6g"]
+
+[ext_resource type="Script" uid="uid://dswtut2wsox2p" path="res://Shared_Assets/Transitions/Scripts/transition_point.gd" id="1_q865f"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ve6sg"]
+size = Vector2(20, 8)
+
+[node name="TransitionPoint" type="Area2D" unique_id=358078344]
+collision_mask = 4
+script = ExtResource("1_q865f")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=50624767]
+shape = SubResource("RectangleShape2D_ve6sg")

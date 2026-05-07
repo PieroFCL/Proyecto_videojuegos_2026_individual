@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://bfh6pr5xjfdgx"]
+
+[ext_resource type="Script" uid="uid://bld210jicvvur" path="res://WorldObjects/CollectableItem/collectable_item.gd" id="1_etoiw"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_53mvh"]
+radius = 8.0
+
+[node name="CollectableItem" type="Area2D" unique_id=240863860]
+collision_layer = 16
+collision_mask = 0
+script = ExtResource("1_etoiw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=216152039]
+shape = SubResource("CircleShape2D_53mvh")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=694619028]
+scale = Vector2(0.1, 0.1)

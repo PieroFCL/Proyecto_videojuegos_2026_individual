@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://b1lkfruy874bl"]
+
+[ext_resource type="Script" uid="uid://b5esv65nns65a" path="res://Shared_Assets/Transitions/Scripts/entrance_point.gd" id="1_scjwf"]
+
+[node name="entrance_point" type="Marker2D" unique_id=2889834]
+script = ExtResource("1_scjwf")

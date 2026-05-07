@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://dr1urouya5pe8"]
+
+[ext_resource type="PackedScene" uid="uid://ckpsj0kqddqcm" path="res://Player/player.tscn" id="1_rupst"]
+[ext_resource type="PackedScene" uid="uid://drpsf6feul0yb" path="res://Zones/Catacombs/catacombs_01.tscn" id="2_wt17y"]
+[ext_resource type="PackedScene" uid="uid://bdfcbgen3e7vj" path="res://UI/PlayerMenu/player_menu.tscn" id="3_m8u5f"]
+
+[node name="Playground" type="Node2D" unique_id=850884725]
+
+[node name="player" parent="." unique_id=1535638044 groups=["player"] instance=ExtResource("1_rupst")]
+
+[node name="CurrentLevelContainer" type="Node2D" parent="." unique_id=1156069102]
+
+[node name="Catacombs_01" parent="CurrentLevelContainer" unique_id=921565638 instance=ExtResource("2_wt17y")]
+
+[node name="PlayerMenu" parent="." unique_id=1161744381 instance=ExtResource("3_m8u5f")]
+visible = false

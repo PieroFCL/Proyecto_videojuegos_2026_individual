@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="WeaponItem" format=3 uid="uid://wnje22hmu2n2"]
+
+[ext_resource type="Texture2D" uid="uid://br0uqd8m6ro2b" path="res://Inventory/Items/Sprites/135234235.png" id="1_3i3if"]
+[ext_resource type="Script" uid="uid://bbrdrk0n3ax6t" path="res://Inventory/Scripts/weapon_item.gd" id="2_6kf13"]
+
+[resource]
+script = ExtResource("2_6kf13")
+attack_bonus = 10
+skill_unlock_id = "espada_hierro"
+id = "espada_hierro"
+display_name = "Espada de Hierro"
+icon = ExtResource("1_3i3if")
+category = "weapon"
+metadata/_custom_type_script = "uid://bbrdrk0n3ax6t"
