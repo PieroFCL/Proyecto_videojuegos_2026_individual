@@ -8,9 +8,9 @@ El jugador despierta sin memoria en las profundidades del Alto Bastión, una for
 
 ## Capturas de pantalla
 
-![Vista de exploración](docs/screenshots/img1.png)
+![Vista de exploración](doc/screenshots/img1.png)
 
-![Vista de combate](docs/screenshots/img2.png)
+![Vista de combate](doc/screenshots/img2.png)
 
 ## Características principales
 
