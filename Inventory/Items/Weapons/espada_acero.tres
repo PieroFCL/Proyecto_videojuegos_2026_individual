@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="WeaponItem" format=3 uid="uid://wnje22hmu2n2"]
+
+[ext_resource type="Texture2D" uid="uid://1nl5oradphg4" path="res://Inventory/Items/Sprites/Weapons/espada_acero.png" id="1_g4r02"]
+[ext_resource type="Texture2D" uid="uid://d0fn1footvghx" path="res://Player/Sprites/Weapons/idle_espada_acero.png" id="2_2ds3r"]
+[ext_resource type="Script" uid="uid://bbrdrk0n3ax6t" path="res://Inventory/Scripts/weapon_item.gd" id="2_3nnbr"]
+[ext_resource type="Texture2D" uid="uid://c5bun5u6eob5e" path="res://Player/Sprites/Weapons/pickup_espada_acero.png" id="3_j5d6j"]
+[ext_resource type="Texture2D" uid="uid://b8g5pw0paw1jb" path="res://Player/Sprites/Weapons/walk_espada_acero.png" id="5_6mth1"]
+[ext_resource type="Script" uid="uid://djuqb6o63kdvl" path="res://Inventory/Scripts/skill_resource.gd" id="5_uw0qy"]
+
+[resource]
+script = ExtResource("2_3nnbr")
+attack_bonus = 10
+idle_texture = ExtResource("2_2ds3r")
+walk_texture = ExtResource("5_6mth1")
+pickup_texture = ExtResource("3_j5d6j")
+id = "weapons/espada_acero"
+flavor_text = "Hoja manchada de óxido y grietas finas, pero aún afilada. Perteneció a un caballero que cayó en las catacumbas"
+display_name = "Espada de Acero"
+icon = ExtResource("1_g4r02")
+category = "weapon"
+metadata/_custom_type_script = "uid://bbrdrk0n3ax6t"

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c5nhykuoupqun"
-path="res://.godot/imported/1231231.png-6a71c8bd455cc7fa7d18293a202142ff.ctex"
+uid="uid://dy717foncirsq"
+path="res://.godot/imported/ico ataque.png-10667f58eca6dd60176787ca4f5dc869.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Inventory/Items/Sprites/1231231.png"
-dest_files=["res://.godot/imported/1231231.png-6a71c8bd455cc7fa7d18293a202142ff.ctex"]
+source_file="res://UI/PlayerMenu/Styles/ico ataque.png"
+dest_files=["res://.godot/imported/ico ataque.png-10667f58eca6dd60176787ca4f5dc869.ctex"]
 
 [params]
 

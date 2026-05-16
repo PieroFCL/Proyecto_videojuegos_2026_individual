@@ -1,0 +1,67 @@
+[gd_scene format=3 uid="uid://twktmtpmhctw"]
+
+[ext_resource type="Script" uid="uid://cy37e7lmqxwph" path="res://Combat/Scripts/skills_submenu.gd" id="1_8cj4d"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8cj4d"]
+bg_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 1
+corner_radius_top_right = 1
+corner_radius_bottom_right = 1
+corner_radius_bottom_left = 1
+expand_margin_left = 1.0
+expand_margin_top = 1.0
+expand_margin_right = 1.0
+expand_margin_bottom = 1.0
+
+[node name="SkillsSubmenu" type="Control" unique_id=329066861]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_8cj4d")
+
+[node name="Panel" type="Panel" parent="." unique_id=414505656]
+custom_minimum_size = Vector2(170, 40)
+layout_mode = 1
+anchors_preset = -1
+offset_right = 170.0
+offset_bottom = 50.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_8cj4d")
+
+[node name="GridContainer" type="GridContainer" parent="Panel" unique_id=709951947]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 1.0
+offset_right = 169.0
+offset_bottom = 39.0
+theme_override_constants/h_separation = 2
+theme_override_constants/v_separation = 2
+columns = 2
+
+[node name="SkillSlot1" type="Button" parent="Panel/GridContainer" unique_id=84507936]
+custom_minimum_size = Vector2(85, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 6
+disabled = true
+text = "\"---\\n---\""
+autowrap_mode = 2
+
+[node name="SkillSlot2" type="Button" parent="Panel/GridContainer" unique_id=1194061718]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 6
+disabled = true
+text = "\"---\\n---\""
+autowrap_mode = 2
+
+[node name="SkillSlot3" type="Button" parent="Panel/GridContainer" unique_id=2081176619]
+layout_mode = 2
+theme_override_font_sizes/font_size = 6
+disabled = true
+text = "\"---\\n---\""
+autowrap_mode = 2
+
+[node name="SkillSlot4" type="Button" parent="Panel/GridContainer" unique_id=1460873156]
+layout_mode = 2
+theme_override_font_sizes/font_size = 6
+disabled = true
+text = "\"---\\n---\""
+autowrap_mode = 2

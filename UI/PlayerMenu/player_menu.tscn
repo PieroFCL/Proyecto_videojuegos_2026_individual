@@ -7,6 +7,14 @@
 [ext_resource type="Texture2D" uid="uid://cgq0muunj55yf" path="res://UI/PlayerMenu/Styles/UI_TravelBook_Spritesheet01_BotonQ.png" id="3_kp1f0"]
 [ext_resource type="Texture2D" uid="uid://dk5pj8arbpuy8" path="res://UI/PlayerMenu/Styles/UI_TravelBook_Spritesheet01_BotonE.png" id="4_c0oe0"]
 [ext_resource type="Texture2D" uid="uid://dght4wki4yhht" path="res://UI/PlayerMenu/Styles/UI_TravelBook_Slot01x.png" id="5_qh72u"]
+[ext_resource type="Texture2D" uid="uid://vqg42fs5atxg" path="res://UI/PlayerMenu/Styles/ico velocidad.png" id="7_7natl"]
+[ext_resource type="Texture2D" uid="uid://dil66jlo51djd" path="res://UI/PlayerMenu/Styles/Style_Sheet_description.png" id="8_c0oe0"]
+[ext_resource type="Texture2D" uid="uid://bqr3pwjj06qut" path="res://UI/PlayerMenu/Styles/ico defensa.png" id="8_v3mdn"]
+[ext_resource type="Texture2D" uid="uid://0p1ghfnmeaqo" path="res://UI/PlayerMenu/Styles/Separator.png" id="9_8omhr"]
+[ext_resource type="Texture2D" uid="uid://dy717foncirsq" path="res://UI/PlayerMenu/Styles/ico ataque.png" id="9_hmjak"]
+[ext_resource type="FontFile" uid="uid://v7bjrdltf7gm" path="res://UI/PlayerMenu/Fonts/W95F.otf" id="10_mwnew"]
+[ext_resource type="Texture2D" uid="uid://d1j8cpgvlq8" path="res://UI/PlayerMenu/Styles/ico vitalidad.png" id="10_qnw0r"]
+[ext_resource type="Texture2D" uid="uid://hraopkgypa40" path="res://UI/PlayerMenu/Styles/Fondo_title_Description.png" id="12_v3mdn"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ojmdt"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
@@ -18,6 +26,9 @@ bg_color = Color(0.6, 0.6, 0.6, 0)
 bg_color = Color(0.6, 0.6, 0.6, 0)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qh72u"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8omhr"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
 
 [node name="PlayerMenu" type="CanvasLayer" unique_id=1161744381]
@@ -102,6 +113,7 @@ layout_mode = 0
 offset_left = 170.0
 offset_right = 211.0
 offset_bottom = 10.0
+theme_override_constants/outline_size = 1
 theme_override_fonts/font = ExtResource("3_46cxl")
 theme_override_font_sizes/font_size = 9
 text = "Cancelar"
@@ -114,6 +126,7 @@ offset_left = 103.0
 offset_top = 1.0
 offset_right = 135.0
 offset_bottom = 9.0
+theme_override_constants/outline_size = 1
 theme_override_fonts/font = ExtResource("3_46cxl")
 theme_override_font_sizes/font_size = 9
 text = "Aceptar"
@@ -163,9 +176,10 @@ texture = ExtResource("3_ca6qd")
 [node name="WeaponIcon" type="TextureRect" parent="MenuContainer/EquipmentPanel/WeaponSlot" unique_id=61557559]
 layout_mode = 1
 anchors_preset = -1
-anchor_top = -0.022222223
-anchor_right = 0.15424839
-anchor_bottom = -0.022222223
+anchor_left = 0.06666667
+anchor_top = -0.08888889
+anchor_right = 0.08758172
+anchor_bottom = -0.08888889
 offset_right = 38.058823
 offset_bottom = 46.0
 expand_mode = 1
@@ -174,20 +188,21 @@ metadata/_edit_use_anchors_ = true
 [node name="WeaponLabel" type="Label" parent="MenuContainer/EquipmentPanel/WeaponSlot" unique_id=1341021143]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.044444446
-anchor_top = 0.0006488376
-anchor_right = 0.2
-anchor_bottom = 0.0006488376
-offset_left = -14.0
-offset_top = -12.0
-offset_right = 49.0
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+anchor_left = -0.26666668
+anchor_top = -0.26601782
+anchor_right = 1.2888889
+anchor_bottom = 0.089537725
+offset_bottom = -4.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.8235294)
 theme_override_constants/line_spacing = 0
+theme_override_constants/shadow_outline_size = 0
 theme_override_fonts/font = ExtResource("3_46cxl")
 theme_override_font_sizes/font_size = 8
 text = "Espada de Hierro Reforzada"
 horizontal_alignment = 1
 autowrap_mode = 2
+metadata/_edit_use_anchors_ = true
 
 [node name="ArmorSlot" type="Panel" parent="MenuContainer/EquipmentPanel" unique_id=1462857096]
 layout_mode = 1
@@ -212,6 +227,10 @@ layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 3.0
+offset_top = 3.0
+offset_right = -3.0
+offset_bottom = -3.0000153
 expand_mode = 1
 
 [node name="ArmorLabel" type="Label" parent="MenuContainer/EquipmentPanel/ArmorSlot" unique_id=512678721]
@@ -219,13 +238,56 @@ layout_mode = 0
 offset_left = -12.0
 offset_top = -12.0
 offset_right = 58.0
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.8235294)
 theme_override_constants/line_spacing = 0
+theme_override_constants/shadow_outline_size = 0
 theme_override_fonts/font = ExtResource("3_46cxl")
 theme_override_font_sizes/font_size = 8
 text = "Tunica de Cuero Reforzada"
 horizontal_alignment = 1
 autowrap_mode = 2
+
+[node name="MagicSlot" type="Panel" parent="MenuContainer/EquipmentPanel" unique_id=1210642195]
+layout_mode = 0
+offset_left = 17.0
+offset_top = 162.0
+offset_right = 62.0
+offset_bottom = 207.0
+
+[node name="TextureRect" type="TextureRect" parent="MenuContainer/EquipmentPanel/MagicSlot" unique_id=413208299]
+layout_mode = 0
+offset_right = 45.0
+offset_bottom = 45.0
+texture = ExtResource("3_ca6qd")
+
+[node name="MagicIcon" type="TextureRect" parent="MenuContainer/EquipmentPanel/MagicSlot" unique_id=1176188471]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.06666668
+anchor_top = -0.1
+anchor_right = 0.098529436
+anchor_bottom = -0.1
+offset_top = 8.0
+offset_right = 38.058823
+offset_bottom = 46.5
+expand_mode = 1
+
+[node name="MagicLabel" type="Label" parent="MenuContainer/EquipmentPanel/MagicSlot" unique_id=317214325]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.26666668
+anchor_top = -0.31046227
+anchor_right = 1.2888889
+anchor_bottom = 0.08896095
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.8235294)
+theme_override_constants/line_spacing = -3
+theme_override_constants/shadow_outline_size = 0
+theme_override_fonts/font = ExtResource("3_46cxl")
+theme_override_font_sizes/font_size = 8
+text = "Objeto Mágico"
+horizontal_alignment = 1
+autowrap_mode = 2
+metadata/_edit_use_anchors_ = true
 
 [node name="StatsPanel" type="Panel" parent="MenuContainer" unique_id=1258268522]
 layout_mode = 1
@@ -242,11 +304,12 @@ metadata/_edit_use_anchors_ = true
 [node name="TitleStats" type="Label" parent="MenuContainer/StatsPanel" unique_id=339345168]
 layout_mode = 0
 offset_left = 4.9999924
-offset_top = 6.0
+offset_top = 8.0
 offset_right = 114.99999
-offset_bottom = 22.0
-theme_override_colors/font_color = Color(0.34117648, 0.16470589, 0, 1)
+offset_bottom = 24.0
+theme_override_colors/font_color = Color(1.2856232, 1.2856232, 1.2856232, 1)
 theme_override_colors/font_shadow_color = Color(0.5019608, 0.5019608, 0.5019608, 0.4745098)
+theme_override_constants/outline_size = 1
 theme_override_fonts/font = ExtResource("3_46cxl")
 theme_override_font_sizes/font_size = 13
 text = "Estadisticas"
@@ -257,57 +320,93 @@ anchors_preset = 0
 
 [node name="Vitalidad" type="Label" parent="MenuContainer/StatsPanel/Labels" unique_id=277236550]
 layout_mode = 0
-offset_left = 9.999992
+offset_left = 20.999992
 offset_top = 42.0
-offset_right = 44.999992
+offset_right = 55.999992
 offset_bottom = 50.0
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("3_46cxl")
-theme_override_font_sizes/font_size = 9
+theme_override_font_sizes/font_size = 8
 text = "Vitalidad"
 
 [node name="Ataque" type="Label" parent="MenuContainer/StatsPanel/Labels" unique_id=381656062]
 layout_mode = 0
-offset_left = 9.999992
+offset_left = 20.999992
 offset_top = 55.0
-offset_right = 49.999992
+offset_right = 60.999992
 offset_bottom = 63.0
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("3_46cxl")
-theme_override_font_sizes/font_size = 9
+theme_override_font_sizes/font_size = 8
 text = "Ataque"
 
 [node name="Defensa" type="Label" parent="MenuContainer/StatsPanel/Labels" unique_id=995215112]
 layout_mode = 0
-offset_left = 9.999992
+offset_left = 20.999992
 offset_top = 69.0
-offset_right = 49.999992
+offset_right = 60.999992
 offset_bottom = 77.0
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("3_46cxl")
-theme_override_font_sizes/font_size = 9
+theme_override_font_sizes/font_size = 8
 text = "Defensa"
 
 [node name="Velocidad" type="Label" parent="MenuContainer/StatsPanel/Labels" unique_id=1345132100]
 layout_mode = 0
-offset_left = 10.0
+offset_left = 21.0
 offset_top = 83.0
-offset_right = 53.999992
+offset_right = 64.99999
 offset_bottom = 91.0
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("3_46cxl")
-theme_override_font_sizes/font_size = 9
+theme_override_font_sizes/font_size = 8
 text = "Velocidad"
+
+[node name="ico Velocidad" type="TextureRect" parent="MenuContainer/StatsPanel/Labels" unique_id=1878353633]
+layout_mode = 0
+offset_left = 8.999992
+offset_top = 83.0
+offset_right = 17.999992
+offset_bottom = 92.0
+texture = ExtResource("7_7natl")
+expand_mode = 1
+
+[node name="ico Defensa" type="TextureRect" parent="MenuContainer/StatsPanel/Labels" unique_id=1602932307]
+layout_mode = 0
+offset_left = 8.999992
+offset_top = 69.0
+offset_right = 17.999992
+offset_bottom = 78.0
+texture = ExtResource("8_v3mdn")
+expand_mode = 1
+
+[node name="ico Ataque" type="TextureRect" parent="MenuContainer/StatsPanel/Labels" unique_id=1411718772]
+layout_mode = 0
+offset_left = 8.999992
+offset_top = 55.0
+offset_right = 17.999992
+offset_bottom = 64.0
+texture = ExtResource("9_hmjak")
+expand_mode = 1
+
+[node name="ico Vitalidad" type="TextureRect" parent="MenuContainer/StatsPanel/Labels" unique_id=350107871]
+layout_mode = 0
+offset_left = 8.999992
+offset_top = 42.0
+offset_right = 17.999992
+offset_bottom = 51.0
+texture = ExtResource("10_qnw0r")
+expand_mode = 1
 
 [node name="HPValue" type="Label" parent="MenuContainer/StatsPanel" unique_id=1299287602]
 layout_mode = 0
-offset_left = 68.99999
+offset_left = 69.99999
 offset_top = 40.0
-offset_right = 101.99999
+offset_right = 102.99999
 offset_bottom = 52.0
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("3_46cxl")
-theme_override_font_sizes/font_size = 9
+theme_override_font_sizes/font_size = 8
 text = "100/100"
 horizontal_alignment = 3
 vertical_alignment = 1
@@ -320,7 +419,7 @@ offset_right = 107.99999
 offset_bottom = 66.0
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("3_46cxl")
-theme_override_font_sizes/font_size = 9
+theme_override_font_sizes/font_size = 8
 text = "00"
 horizontal_alignment = 3
 vertical_alignment = 1
@@ -333,7 +432,7 @@ offset_right = 107.99999
 offset_bottom = 80.0
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("3_46cxl")
-theme_override_font_sizes/font_size = 9
+theme_override_font_sizes/font_size = 8
 text = "00"
 horizontal_alignment = 3
 vertical_alignment = 1
@@ -346,7 +445,7 @@ offset_right = 107.99999
 offset_bottom = 94.0
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("3_46cxl")
-theme_override_font_sizes/font_size = 9
+theme_override_font_sizes/font_size = 8
 text = "00"
 horizontal_alignment = 3
 vertical_alignment = 1
@@ -378,23 +477,21 @@ text = "Inventario"
 horizontal_alignment = 1
 metadata/_edit_use_anchors_ = true
 
-[node name="TextureRect2" type="TextureRect" parent="MenuContainer/InventoryPanel" unique_id=710405684]
+[node name="TextureContainer" type="TextureRect" parent="MenuContainer/InventoryPanel" unique_id=710405684]
 layout_mode = 0
-offset_left = 4.0000763
+offset_left = 3.0000763
 offset_top = 17.0
-offset_right = 118.00008
+offset_right = 119.00008
 offset_bottom = 217.0
 texture = ExtResource("5_qh72u")
 
 [node name="InventoryGrid" type="GridContainer" parent="MenuContainer/InventoryPanel" unique_id=2076200387]
-custom_minimum_size = Vector2(105, 1)
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.060000222
-anchor_top = 0.09545454
-anchor_right = 0.9766662
-anchor_bottom = 0.9772726
-offset_right = -1.9999924
+anchor_left = 0.06833355
+anchor_top = 0.104545444
+anchor_right = 0.94333297
+anchor_bottom = 0.9636363
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/h_separation = 2
@@ -407,7 +504,7 @@ layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.041667275
 anchor_top = 0.08636363
-anchor_right = 0.9666667
+anchor_right = 0.975
 anchor_bottom = 0.9772726
 metadata/_edit_use_anchors_ = true
 
@@ -433,3 +530,133 @@ vertical_alignment = 1
 
 [node name="ActionPopup" type="PopupMenu" parent="." unique_id=311516353]
 oversampling_override = 1.0
+
+[node name="DescriptionPanel" type="Panel" parent="." unique_id=878397073]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -81.5
+offset_top = -80.0
+offset_right = 41.5
+offset_bottom = 78.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_8omhr")
+
+[node name="ContainerDescripcion" type="TextureRect" parent="DescriptionPanel" unique_id=1223283199]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 4.5
+offset_top = 4.0
+offset_right = -6.5
+offset_bottom = -5.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("8_c0oe0")
+expand_mode = 1
+
+[node name="Title_Description" type="TextureRect" parent="DescriptionPanel/ContainerDescripcion" unique_id=1832908864]
+z_index = 2
+layout_mode = 0
+anchor_left = 1.25
+anchor_top = -0.22147651
+anchor_right = 2.1339285
+anchor_bottom = -0.12080537
+texture = ExtResource("12_v3mdn")
+expand_mode = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Title_TextDescription" type="Label" parent="DescriptionPanel/ContainerDescripcion/Title_Description" unique_id=776903412]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.1469697
+anchor_right = 1.0
+anchor_bottom = 1.0803031
+theme_override_colors/font_color = Color(0.34117648, 0.16470589, 0, 1)
+theme_override_colors/font_shadow_color = Color(0.5019608, 0.5019608, 0.5019608, 1)
+theme_override_fonts/font = ExtResource("3_46cxl")
+theme_override_font_sizes/font_size = 13
+text = "Descripciones"
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Separator1" type="TextureRect" parent="DescriptionPanel/ContainerDescripcion" unique_id=661386518]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.026785715
+anchor_top = 0.24161074
+anchor_right = 0.97321427
+anchor_bottom = 0.24832214
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("9_8omhr")
+expand_mode = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Separator2" type="TextureRect" parent="DescriptionPanel/ContainerDescripcion" unique_id=1961669590]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.024872439
+anchor_top = 0.7600109
+anchor_right = 0.971301
+anchor_bottom = 0.7667223
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("9_8omhr")
+expand_mode = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="TitleItemLabel" type="RichTextLabel" parent="DescriptionPanel" unique_id=1621168119]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.048780486
+anchor_top = 0.08227848
+anchor_right = 0.95528454
+anchor_bottom = 0.23417722
+theme_override_colors/default_color = Color(0.3254902, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0.5019608, 0.5019608, 0.5019608, 0.654902)
+theme_override_fonts/normal_font = ExtResource("3_46cxl")
+theme_override_font_sizes/normal_font_size = 10
+theme_override_font_sizes/bold_font_size = 12
+theme_override_font_sizes/bold_italics_font_size = 12
+theme_override_font_sizes/italics_font_size = 12
+theme_override_font_sizes/mono_font_size = 12
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="DescriptionItemLabel" type="RichTextLabel" parent="DescriptionPanel" unique_id=382459985]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.11788618
+anchor_top = 0.29113925
+anchor_right = 0.86585367
+anchor_bottom = 0.70886075
+theme_override_colors/default_color = Color(0.31764707, 0.25490198, 0.1882353, 1)
+theme_override_colors/font_shadow_color = Color(0.5019608, 0.5019608, 0.5019608, 0.5882353)
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 0
+theme_override_fonts/normal_font = ExtResource("10_mwnew")
+theme_override_font_sizes/normal_font_size = 8
+text = "
+"
+scroll_active = false
+horizontal_alignment = 3
+metadata/_edit_use_anchors_ = true
+
+[node name="StatsItemLabel" type="RichTextLabel" parent="DescriptionPanel" unique_id=2083425561]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.06910569
+anchor_top = 0.778481
+anchor_right = 0.9308943
+anchor_bottom = 0.9113924
+theme_override_colors/default_color = Color(0.44705883, 0.17254902, 0.1254902, 1)
+theme_override_fonts/normal_font = ExtResource("3_46cxl")
+theme_override_font_sizes/normal_font_size = 7
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true

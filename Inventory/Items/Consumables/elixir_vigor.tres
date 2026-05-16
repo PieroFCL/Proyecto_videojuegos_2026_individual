@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="ConsumableItem" format=3 uid="uid://bkscoti000chu"]
+
+[ext_resource type="Texture2D" uid="uid://cd3r0injvvxvi" path="res://Inventory/Items/Sprites/Consumables/elixir_vigor.png" id="1_uj0y0"]
+[ext_resource type="Script" uid="uid://chjtq178eihql" path="res://Inventory/Scripts/consumable_item.gd" id="2_rvie0"]
+
+[resource]
+script = ExtResource("2_rvie0")
+hp_restore = 40
+id = "consumables/elixir_vigor"
+flavor_text = "Líquido turbio y amargo elaborado por los últimos herbolarios de Corona del Valle."
+display_name = "Elixir de Vigor"
+icon = ExtResource("1_uj0y0")
+category = "consumable"
+metadata/_custom_type_script = "uid://chjtq178eihql"

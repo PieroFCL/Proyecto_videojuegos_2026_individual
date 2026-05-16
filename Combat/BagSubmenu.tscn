@@ -1,0 +1,56 @@
+[gd_scene format=3 uid="uid://7cpyux0jeeoe"]
+
+[ext_resource type="Script" uid="uid://d33scyrcx553l" path="res://Combat/Scripts/bag_submenu.gd" id="1_dycrp"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dycrp"]
+bg_color = Color(0, 0, 0, 0.8156863)
+
+[node name="BagSubmenu" type="Control" unique_id=411683049]
+layout_mode = 3
+anchors_preset = 0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_dycrp")
+metadata/_edit_use_anchors_ = true
+
+[node name="Panel" type="Panel" parent="." unique_id=1393559356]
+custom_minimum_size = Vector2(170, 50)
+layout_mode = 1
+anchors_preset = -1
+theme_override_styles/panel = SubResource("StyleBoxFlat_dycrp")
+metadata/_edit_use_anchors_ = true
+
+[node name="GridContainer" type="GridContainer" parent="Panel" unique_id=1030519521]
+custom_minimum_size = Vector2(170, 40)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+columns = 2
+
+[node name="SlotVida" type="Button" parent="Panel/GridContainer" unique_id=1979957218]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 6
+disabled = true
+text = "\"---\""
+
+[node name="SlotAtaque" type="Button" parent="Panel/GridContainer" unique_id=862774519]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 6
+disabled = true
+text = "\"---\""
+
+[node name="SlotDefensa" type="Button" parent="Panel/GridContainer" unique_id=1011355116]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 6
+disabled = true
+text = "\"---\""
+
+[node name="SlotVelocidad" type="Button" parent="Panel/GridContainer" unique_id=792908574]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 6
+disabled = true
+text = "\"---\""

@@ -1,48 +1,52 @@
 extends State
 class_name StatePickup
 
+# Duración de la animación de recogida
 @export var pickup_duration: float = 0.5
 
+# Objeto que se está recolectando
 var collectable: CollectableItem = null
+
+# Tiempo restante para completar la animación
 var time_left: float = 0.0
 
+# Al entrar, actualiza sprites, bloquea movimiento y reproduce animación
 func enter() -> void:
-	print("StatePickup: ENTER")
+	player._update_weapon_visual("Pickup")
+	player._update_armor_visual("Pickup")
+	print("Pickup: enter")
 	if collectable == null:
-		print("StatePickup: collectable es null, volviendo a Idle")
+		print("Pickup: sin objeto, volviendo a Idle")
 		state_machine.change_state(state_machine.get_node("Idle"))
 		return
 	
-	print("StatePickup: collectable es válido")
-	# Asegurar que el jugador no se mueva
+	print("Pickup: objeto válido")
 	player.velocity = Vector2.ZERO
 	
-	# Reproducir animación (si existe)
 	var anim_name = "pickup_player_desarmado"
 	if player.animation_player.has_animation(anim_name):
 		player.animation_player.play(anim_name)
-		print("Reproduciendo animación: ", anim_name)
+		print("Pickup: animación")
 	else:
-		print("Animación no encontrada: ", anim_name, ", solo pausa")
+		print("Pickup: sin animación, solo pausa")
 	
 	time_left = pickup_duration
-	print("StatePickup: tiempo restante = ", time_left)
+	print("Pickup: tiempo ", time_left)
 
+# Durante el estado, mantiene inmovilidad, cuenta tiempo y recolecta al final
 func process(delta: float) -> State:
-	# Mantener velocidad en cero mientras dure el estado (por si el input intenta modificarla)
 	player.velocity = Vector2.ZERO
-	
 	time_left -= delta
-	print("StatePickup: process, time_left = ", time_left)
 	if time_left <= 0.0:
-		print("StatePickup: tiempo completado, recolectando")
+		print("Pickup: recolectando")
 		if collectable:
 			collectable.collect()
 			collectable = null
 		state_machine.change_state(state_machine.get_node("Idle"))
 	return null
 
+# Al salir, detiene la animación si estaba sonando
 func exit() -> void:
-	print("StatePickup: EXIT")
+	print("Pickup: exit")
 	if player.animation_player.current_animation == "pickup_player_desarmado":
 		player.animation_player.stop()

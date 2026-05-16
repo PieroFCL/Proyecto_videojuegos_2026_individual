@@ -1,0 +1,138 @@
+[gd_scene format=3 uid="uid://dr4m5boqnci3"]
+
+[ext_resource type="Script" uid="uid://b4bcnfts1a7tx" path="res://Combat/Scripts/status_submenu.gd" id="1_kw7km"]
+[ext_resource type="FontFile" uid="uid://v7bjrdltf7gm" path="res://UI/PlayerMenu/Fonts/W95F.otf" id="2_5lv5x"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kw7km"]
+bg_color = Color(0, 0, 0, 0.81960785)
+corner_radius_top_left = 1
+corner_radius_top_right = 1
+corner_radius_bottom_right = 1
+corner_radius_bottom_left = 1
+expand_margin_left = 1.0
+expand_margin_top = 1.0
+expand_margin_right = 1.0
+expand_margin_bottom = 1.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5lv5x"]
+bg_color = Color(0, 0, 0, 0.81960785)
+corner_radius_top_left = 1
+corner_radius_top_right = 1
+corner_radius_bottom_right = 1
+corner_radius_bottom_left = 1
+expand_margin_left = 1.0
+expand_margin_top = 1.0
+expand_margin_right = 1.0
+expand_margin_bottom = 1.0
+
+[node name="StatusSubmenu" type="Control" unique_id=432034289]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_kw7km")
+metadata/_edit_use_anchors_ = true
+
+[node name="EnemyPanel" type="Panel" parent="." unique_id=1658811803]
+layout_mode = 0
+offset_left = 285.0
+offset_top = 59.0
+offset_right = 345.0
+offset_bottom = 142.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_kw7km")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="EnemyPanel" unique_id=1884476903]
+layout_mode = 0
+offset_right = 60.0
+offset_bottom = 66.0
+
+[node name="Title" type="Label" parent="EnemyPanel/VBoxContainer" unique_id=74639559]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_5lv5x")
+theme_override_font_sizes/font_size = 10
+text = "ENEMIGO"
+horizontal_alignment = 1
+
+[node name="HP" type="Label" parent="EnemyPanel/VBoxContainer" unique_id=612144848]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_5lv5x")
+theme_override_font_sizes/font_size = 6
+text = "\"HP: --/--\""
+
+[node name="Debilidad" type="Label" parent="EnemyPanel/VBoxContainer" unique_id=397180674]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_5lv5x")
+theme_override_font_sizes/font_size = 6
+text = "\"Debilidad: ???\""
+
+[node name="EfectosTitle" type="Label" parent="EnemyPanel/VBoxContainer" unique_id=1913327842]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_5lv5x")
+theme_override_font_sizes/font_size = 6
+text = "
+Efectos Activos:"
+horizontal_alignment = 1
+
+[node name="Efectos" type="Label" parent="EnemyPanel/VBoxContainer" unique_id=1695103846]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_5lv5x")
+theme_override_font_sizes/font_size = 6
+text = "\"Ninguno\""
+autowrap_mode = 2
+
+[node name="PlayerPanel" type="Panel" parent="." unique_id=1378886992]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.030555556
+anchor_top = 0.3875
+anchor_right = 0.2
+anchor_bottom = 0.7291667
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_5lv5x")
+metadata/_edit_use_anchors_ = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PlayerPanel" unique_id=1076833628]
+layout_mode = 1
+anchors_preset = -1
+offset_right = 60.0
+offset_bottom = 82.0
+theme_override_constants/separation = 2
+
+[node name="Title" type="Label" parent="PlayerPanel/VBoxContainer" unique_id=1015883720]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_5lv5x")
+theme_override_font_sizes/font_size = 10
+text = "JUGADOR"
+horizontal_alignment = 1
+
+[node name="HP" type="Label" parent="PlayerPanel/VBoxContainer" unique_id=704342529]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_5lv5x")
+theme_override_font_sizes/font_size = 6
+text = "\"HP: --/--\""
+
+[node name="Stats" type="Label" parent="PlayerPanel/VBoxContainer" unique_id=762502528]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_5lv5x")
+theme_override_font_sizes/font_size = 6
+text = "\"Ataque: X\\nDefensa: X\\nVelocidad: X\""
+autowrap_mode = 3
+
+[node name="EfectosTitle" type="Label" parent="PlayerPanel/VBoxContainer" unique_id=1911408616]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_5lv5x")
+theme_override_font_sizes/font_size = 6
+text = "
+Efectos Activos:"
+horizontal_alignment = 1
+
+[node name="Efectos" type="Label" parent="PlayerPanel/VBoxContainer" unique_id=900451779]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_5lv5x")
+theme_override_font_sizes/font_size = 6
+text = "\"Ninguno\""
+autowrap_mode = 2

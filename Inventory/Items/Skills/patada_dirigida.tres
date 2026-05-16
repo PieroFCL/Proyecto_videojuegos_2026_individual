@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="SkillResource" format=3 uid="uid://wxp6latwj5rt"]
+
+[ext_resource type="Script" uid="uid://djuqb6o63kdvl" path="res://Inventory/Scripts/skill_resource.gd" id="1_8kqrl"]
+
+[resource]
+script = ExtResource("1_8kqrl")
+id = "skills/patada_dirigida"
+name = "Patada Dirigida"
+damage = 10
+metadata/_custom_type_script = "uid://djuqb6o63kdvl"

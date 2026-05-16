@@ -1,60 +1,73 @@
 class_name PlayerStateMachine extends Node
 
-var player: Player # Referencia al jugador
-var states: Array[State] = [] # Lista de estados detectados
-var current_state: State = null # Estado activo ejecutándose
-var previous_state: State = null # Estado anterior
+# Señal emitida al cambiar de estado
+signal state_changed(state_name: String)
 
-# Inicializa la máquina de estados y asigna el jugador a cada estado
+# Referencia al jugador al que pertenece esta máquina
+var player: Player
+
+# Lista de todos los estados hijos (nodos que heredan de State)
+var states: Array[State] = []
+
+# Estado actualmente activo
+var current_state: State = null
+
+# Estado anterior (útil para transiciones especiales)
+var previous_state: State = null
+
+# Inicializa la máquina, asigna el jugador a cada estado y comienza con el primer estado
 func initialize(_player: Player) -> void:
-	player = _player # Asigna referencia del jugador
-	states.clear() # Limpia estados previos
+	player = _player
+	states.clear()
 
-	for child in get_children(): # Recorre nodos hijos 
-		if child is State: # Filtra nodos tipo State
-			var state := child as State # Convierte nodo a State
+	for child in get_children():
+		if child is State:
+			var state := child as State
 			state.player = player
 			state.state_machine = self
-			states.append(state) # Agrega estado a lista 
+			states.append(state)
 
-	if states.size() > 0: # Verifica estados disponibles
-		change_state(states[0]) # Inicia con el primer estado
+	if states.size() > 0:
+		change_state(states[0])
 
-# Ejecuta lógica de estado en cada frame
+# Procesa la lógica del estado actual en cada frame
 func _process(delta: float) -> void:
-	if current_state == null: # Evita ejecución sin estado activo
+	if current_state == null:
 		return
 
-	var next_state := current_state.process(delta) # Ejecuta lógica del estado actual
-	if next_state != null: # Si el estado solicita transición
-		change_state(next_state) # Cambia al nuevo estado
-
-# Ejecuta lógica física del estado
-func _physics_process(delta: float) -> void:
-	if current_state == null: # Evita ejecución sin estado activo
-		return
-
-	var next_state := current_state.physics_process(delta) # Ejecuta lógica física del estado
-	if next_state != null: # Si el estado solicita cambio
-		change_state(next_state) # Aplica transición
-
-# Maneja input no consumido por otros nodos
-func _unhandled_input(event: InputEvent) -> void:
-	if current_state == null: # Evita procesamiento sin estado activo
-		return
-
-	var next_state := current_state.handle_input(event) # Input al estado actual
+	var next_state := current_state.process(delta)
 	if next_state != null:
-		change_state(next_state) # Ejecuta transición
+		change_state(next_state)
 
-# Realiza el cambio de estado de forma controlada
-func change_state(new_state: State) -> void:
-	if new_state == null or new_state == current_state: # Evita cambios inválidos
+# Procesa la física del estado actual
+func _physics_process(delta: float) -> void:
+	if current_state == null:
 		return
 
-	if current_state != null:
-		current_state.exit() # Ejecuta salida del estado actual
+	var next_state := current_state.physics_process(delta)
+	if next_state != null:
+		change_state(next_state)
 
-	previous_state = current_state # Guarda estado anterior
-	current_state = new_state # Asigna nuevo estado activo
-	current_state.enter() # Ejecuta entrada del nuevo estado
+# Maneja el input no consumido por otros nodos
+func _unhandled_input(event: InputEvent) -> void:
+	if current_state == null:
+		return
+
+	var next_state := current_state.handle_input(event)
+	if next_state != null:
+		change_state(next_state)
+
+# Realiza el cambio de estado, ejecutando salida del anterior y entrada del nuevo
+func change_state(new_state: State) -> void:
+	var from_state = "null"
+	if current_state:
+		from_state = current_state.name
+	print(" change_state: ", from_state, " -> ", new_state.name)
+	if new_state == null or new_state == current_state:
+		return
+	if current_state != null:
+		current_state.exit()
+	previous_state = current_state
+	current_state = new_state
+	current_state.enter()
+	state_changed.emit(current_state.name)

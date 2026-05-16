@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="EnemyResource" format=3 uid="uid://dlkb7ssw40u8t"]
+
+[ext_resource type="Texture2D" uid="uid://dedfqgma2uvsj" path="res://Enemys/Sprites/Diablillo_volador/combat_diablillo_volador.png" id="1_hbqi6"]
+[ext_resource type="Script" uid="uid://dspoy86m7cqr" path="res://Enemys/Scripts/enemy_resource.gd" id="1_hgvii"]
+[ext_resource type="Texture2D" uid="uid://bilqj3ly6iidw" path="res://Enemys/Sprites/Diablillo_volador/idle_walk_diablillo3.png" id="2_rf4ex"]
+
+[resource]
+script = ExtResource("1_hgvii")
+id = "diablillo_volador"
+display_name = "Diablillo Volador"
+max_hp = 100
+attack = 45
+defense = 20
+combat_texture = ExtResource("1_hbqi6")
+combat_scale = Vector2(0.5, 0.5)
+sprite_texture = ExtResource("2_rf4ex")
+metadata/_custom_type_script = "uid://dspoy86m7cqr"

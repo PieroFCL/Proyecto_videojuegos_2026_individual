@@ -1,3 +1,28 @@
 # Godot 4+ specific ignores
 .godot/
-/android/
+
+# Imported assets (Godot genera estos archivos)
+.import/
+
+# Export templates and builds
+export.cfg
+exports/
+android/
+ios/
+web/
+windows/
+macos/
+linux/
+
+# Editor-specific files
+*~
+*.tmp
+*.bak
+*.orig
+*.rej
+
+# Translation files (generados)
+*.translation
+
+# Project-specific
+export_presets.cfg   # (solo si quieres evitar subir tus configuraciones de exportación)

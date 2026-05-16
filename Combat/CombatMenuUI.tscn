@@ -1,0 +1,88 @@
+[gd_scene format=3 uid="uid://cl211nx018swq"]
+
+[ext_resource type="Script" uid="uid://bhn5oo6jme3un" path="res://Combat/Scripts/combat_menu_ui.gd" id="1_a6gmo"]
+[ext_resource type="FontFile" uid="uid://v7bjrdltf7gm" path="res://UI/PlayerMenu/Fonts/W95F.otf" id="2_iko6b"]
+[ext_resource type="Texture2D" uid="uid://dy717foncirsq" path="res://UI/PlayerMenu/Styles/ico ataque.png" id="2_vasja"]
+[ext_resource type="Texture2D" uid="uid://bqr3pwjj06qut" path="res://UI/PlayerMenu/Styles/ico defensa.png" id="3_xvd4t"]
+[ext_resource type="Texture2D" uid="uid://vqg42fs5atxg" path="res://UI/PlayerMenu/Styles/ico velocidad.png" id="4_xvd4t"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_iko6b"]
+bg_color = Color(0, 0, 0, 0.6862745)
+corner_radius_top_left = 1
+corner_radius_top_right = 1
+corner_radius_bottom_right = 1
+corner_radius_bottom_left = 1
+expand_margin_left = 1.0
+expand_margin_top = 1.0
+expand_margin_right = 1.0
+expand_margin_bottom = 1.0
+
+[node name="CombatMenuUI" type="Control" unique_id=1569199293]
+layout_mode = 3
+offset_left = 1.0
+offset_right = -1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_a6gmo")
+
+[node name="Panel" type="Control" parent="." unique_id=1033215712]
+layout_mode = 1
+anchor_left = 0.3611111
+anchor_top = 0.39583334
+anchor_right = 0.76944447
+anchor_bottom = 0.6125
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel" unique_id=568909573]
+custom_minimum_size = Vector2(170, 30)
+layout_mode = 1
+anchors_preset = -1
+offset_left = -60.0
+offset_top = -25.0
+offset_right = 60.0
+offset_bottom = 5.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/separation = 3
+metadata/_edit_use_anchors_ = true
+
+[node name="SkillsButton" type="Button" parent="Panel/VBoxContainer" unique_id=626438343]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/h_separation = 1
+theme_override_fonts/font = ExtResource("2_iko6b")
+theme_override_font_sizes/font_size = 8
+theme_override_styles/normal = SubResource("StyleBoxFlat_iko6b")
+text = "Habilidades"
+icon = ExtResource("2_vasja")
+alignment = 0
+expand_icon = true
+
+[node name="BagButton" type="Button" parent="Panel/VBoxContainer" unique_id=1443472171]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/h_separation = 1
+theme_override_fonts/font = ExtResource("2_iko6b")
+theme_override_font_sizes/font_size = 8
+theme_override_styles/normal = SubResource("StyleBoxFlat_iko6b")
+text = "Bolsa"
+icon = ExtResource("3_xvd4t")
+alignment = 0
+expand_icon = true
+
+[node name="StatusButton" type="Button" parent="Panel/VBoxContainer" unique_id=1159333900]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/h_separation = 1
+theme_override_fonts/font = ExtResource("2_iko6b")
+theme_override_font_sizes/font_size = 8
+theme_override_styles/normal = SubResource("StyleBoxFlat_iko6b")
+text = "Estado"
+icon = ExtResource("4_xvd4t")
+alignment = 0
+expand_icon = true

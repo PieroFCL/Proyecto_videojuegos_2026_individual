@@ -23,6 +23,7 @@ InventoryManager="*uid://b1y70h1yr2xs5"
 Events="*uid://b74tunoi5fcs1"
 PlayerStats="*uid://dw0nvdm0n5ymg"
 EquipmentManager="*uid://brdjg5kj4fbr3"
+CombatManager="*uid://bfxx1x36pec14"
 
 [display]
 
@@ -31,6 +32,10 @@ window/size/viewport_height=240
 window/size/window_width_override=920
 window/size/window_height_override=613
 window/stretch/mode="canvas_items"
+
+[filesystem]
+
+import/blender/enabled=false
 
 [input]
 
@@ -154,6 +159,10 @@ sprint={
 "deadzone": 0.2,
 "events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":4194325,"key_label":0,"unicode":0,"location":0,"echo":false,"script":null)
 ]
+}
+attack={
+"deadzone": 0.2,
+"events": []
 }
 
 [layer_names]

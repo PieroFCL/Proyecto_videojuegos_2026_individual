@@ -1,16 +1,17 @@
 class_name StateIdle extends State
 
-@onready var walk: State = $"../Walk" # Referencia a walk
+@onready var walk: State = $"../Walk"   # Referencia al estado Walk
 
-# Se ejecuta al entrar en el estado idle
+# Al entrar, actualiza animación y notifica
 func enter() -> void:
-	player.update_animation("idle") # Reproduce animacion idle
+	print("Idle enter")
+	player.update_animation("idle")
 
-# Se ejecuta al salir del estado idle
+# Al salir, no requiere acciones adicionales
 func exit() -> void:
 	pass
 
-# Evalua transiciones en cada frame
+# Evalúa transición a Walk o WalkFast según input
 func process(_delta: float) -> State:
 	if player.direction != Vector2.ZERO:
 		if Input.is_action_pressed("sprint"):
@@ -19,11 +20,11 @@ func process(_delta: float) -> State:
 			return walk
 	return null
 
-# Mantiene al jugador sin movimiento
+# Detiene el movimiento físico del jugador
 func physics_process(_delta: float) -> State:
 	player.velocity = Vector2.ZERO
 	return null
 
-# Maneja input si se requiere cambiar de estado
+# No maneja input específico en este estado
 func handle_input(_event: InputEvent) -> State:
 	return null

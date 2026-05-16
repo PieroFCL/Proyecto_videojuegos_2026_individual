@@ -1,13 +1,17 @@
 class_name StateWalk extends State
 
-@export var move_speed: float = 70.0 # Velocidad de player
-@onready var idle: State = $"../Idle" # Referencia a idle 
+# Velocidad de movimiento del jugador en este estado
+@export var move_speed: float = 70.0
 
-# Se ejecuta al entrar en el estado walk
-func enter() -> void: 
-	player.update_animation("walk") 
+# Referencia al estado Idle para transición cuando no hay dirección
+@onready var idle: State = $"../Idle"
 
-# Se ejecuta al salir del estado walk
+# Al entrar, actualiza la animación de caminar
+func enter() -> void:
+	print("Walk: enter")
+	player.update_animation("walk")
+
+# Sin acciones específicas al salir
 func exit() -> void: 
 	pass
 
@@ -20,11 +24,11 @@ func process(_delta: float) -> State:
 	player.update_animation("walk")
 	return null
 
-# Aplica movimiento físico del estado
+# Aplica velocidad según la dirección y la velocidad de movimiento
 func physics_process(_delta: float) -> State: 
 	player.velocity = player.direction * move_speed 
 	return null
 
-# Maneja input si se requiere cambiar de estado
+# No maneja entrada específica en este estado
 func handle_input(_event: InputEvent) -> State:
 	return null

@@ -18,3 +18,12 @@ func unequip_weapon() -> void:
 func unequip_armor() -> void:
 	PlayerStats.unequip_armor()
 	equipment_changed.emit("armor", "")
+
+# Nuevos métodos para sello
+func equip_seal(item_id: String) -> void:
+	PlayerStats.equip_seal(item_id)
+	equipment_changed.emit("seal", item_id)
+
+func unequip_seal() -> void:
+	PlayerStats.unequip_seal()
+	equipment_changed.emit("seal", "")
