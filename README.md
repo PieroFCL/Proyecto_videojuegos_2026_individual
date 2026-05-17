@@ -2,9 +2,9 @@
 
 ## Descripción general
 
-La Última Fosa es un videojuego de rol (RPG) en dos dimensiones, con perspectiva cenital y combate por turnos. Fue desarrollado con el motor Godot Engine 4.6 y el lenguaje GDScript. El proyecto se encuentra en estado de prototipo funcional y se organiza bajo una arquitectura modular y extensible, orientada a facilitar la incorporación de nuevas mecánicas, niveles y elementos narrativos.
+La Última Fosa es un videojuego de rol (RPG) en dos dimensiones, con perspectiva cenital y combate por turnos. Fue desarrollado con el motor Godot Engine 4.6 y el lenguaje GDScript. El proyecto se encuentra en estado de prototipo y se organiza bajo una arquitectura modular y extensible, orientada a facilitar la incorporación de nuevas mecánicas, niveles y elementos narrativos.
 
-El jugador despierta sin memoria en las profundidades del Alto Bastión, una fortaleza derruida. A medida que asciende a través de catacumbas, túneles mineros y estancias abandonadas, deberá enfrentarse a enemigos corrompidos por la Estrigia, una plaga parasitaria que altera la mente y el cuerpo. La historia se revela de forma progresiva mediante inscripciones, documentos y diálogos dispersos por el mapa. El objetivo último es comprender qué ocurrió durante el ritual que desencadenó la catástrofe y decidir el destino del protagonista frente a la Última Fosa, una fractura entre planos.
+El jugador despierta sin memoria en las profundidades del Alto Bastión, una fortaleza derruida. A medida que asciende a través de catacumbas, túneles mineros y estancias abandonadas, deberá enfrentarse a enemigos corrompidos por la Estrigia, una plaga parasitaria que altera la mente y el cuerpo. La historia se revela de forma progresiva mediante inscripciones, documentos y diálogos dispersos por el mapa. El objetivo último es comprender qué desencadenó esta catástrofe y decidir el destino del protagonista frente a la Última Fosa, una fractura entre planos.
 
 ## Capturas de pantalla
 
@@ -36,7 +36,7 @@ El jugador despierta sin memoria en las profundidades del Alto Bastión, una for
 
 ## Instalación y ejecución
 
-El proyecto se distribuye como código fuente abierto. Para compilarlo y ejecutarlo se necesita Godot Engine en su versión 4.6 o superior. Los pasos recomendados son:
+Para compilarlo y ejecutarlo se necesita Godot Engine en su versión 4.6 o superior. Los pasos recomendados son:
 
 1. Clonar el repositorio en una carpeta local.
 2. Abrir Godot Engine y, desde el administrador de proyectos, seleccionar la opción de importar una escena o proyecto, apuntando a la carpeta que contiene el archivo project.godot.
@@ -60,32 +60,29 @@ La organización de directorios respeta una separación clara de responsabilidad
 
 ## Estado actual del desarrollo
 
-Hasta la fecha se han implementado por completo los siguientes sistemas:
+Hasta la fecha se han implementado los siguientes sistemas:
 
 - Movimiento fluido del jugador con máquina de estados (Idle, Walk, WalkFast, Pickup).
-- Gestión de niveles, transiciones entre ellos y límites de cámara.
+- Gestión de mapas interconectados, transiciones entre ellos y límites de cámara.
 - Recolección de objetos y almacenamiento en inventario.
 - Sistema de estadísticas del jugador, equipamiento (arma, armadura, sello) y cálculo dinámico de atributos.
 - Menú del personaje navegable por teclado, con opciones de usar, equipar, soltar y describir objetos.
-- Cambio visual del personaje según la ropa y el arma equipadas (capas superpuestas de sprites).
+- Cambio visual del personaje según la ropa y el arma equipadas en el mundo (capas superpuestas de sprites).
 - Enemigos estáticos con detección de colisión y capacidad de iniciar combate.
-- Combate por turnos completo, con menú principal (Habilidades, Bolsa, Estado), submenús de habilidades (cuadrícula de hasta cuatro habilidades), bolsa de consumibles (cuatro ranuras fijas) y estado (dos paneles informativos).
-- Habilidades derivadas del equipamiento (armas y sellos), incluyendo buffos y debuffos permanentes acumulables hasta dos veces, y el ataque de respaldo «Patada dirigida».
-- Consumibles de curación y mejora temporal de estadísticas (duración de un turno).
-- Reinicio de los efectos permanentes al final de cada combate y bloqueo del movimiento del jugador durante las batallas.
+- Combate por turnos aún en desarrollo, con menú principal (Habilidades, Bolsa, Estado), submenús de habilidades (cuadrícula de hasta cuatro habilidades), bolsa de consumibles (cuatro ranuras fijas) y estado (dos paneles informativos).
+- Habilidades derivadas del equipamiento (armas y sellos), incluyendo buffos y debuffos acumulables.
+- Consumibles de curación o mejora temporal de estadísticas (duración de un turno).
 
 ## Próximas funcionalidades
 
 Se prevé la incorporación de los siguientes sistemas en versiones futuras:
 
 - **Habilidades propias de enemigos**: cada criatura contará entre dos y cuatro habilidades (daño, mejora o debilitamiento) que ejecutará de forma autónoma durante su turno.
-- **Generación de objetos en el mundo al derrotar enemigos**: los objetos soltados por los enemigos aparecerán como elementos recolectables en el mapa, requiriendo que el jugador los recoja manualmente.
 - **Sistema de documentos narrativos**: se añadirá una sección de lectura en el menú del personaje, donde se almacenarán y podrán consultarse todos los documentos, diarios y bitácoras encontrados.
 - **Guardado y carga de partida**: se implementará persistencia completa del estado del mundo, inventario, equipamiento, progreso de NPCs y posición del jugador.
 - **Menú principal**: pantalla inicial con opciones de nueva partida, cargar partida y salir del juego.
-- **Eventos y cinemáticas en el mapa**: disparadores que al activarse pausan el control del jugador, mueven la cámara, muestran diálogos o inician combates automáticos.
 - **Puzzles ambientales**: mecanismos interactivos (palancas, plataformas móviles, acertijos de presión) que permiten desbloquear puertas, activar ascensores o revelar rutas secretas.
-- **Mejoras visuales y sonoras**: efectos de partículas, animaciones de daño, transiciones más fluidas y una banda sonora original.
+- **Eventos y cinemáticas en el mapa** (Opcional): disparadores que al activarse pausan el control del jugador, mueven la cámara, muestran diálogos o inician combates automáticos.
 
 ## Créditos
 
