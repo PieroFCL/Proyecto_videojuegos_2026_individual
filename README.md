@@ -6,13 +6,6 @@ La Última Fosa es un videojuego de rol (RPG) en dos dimensiones, con perspectiv
 
 El jugador despierta sin memoria en las profundidades del Alto Bastión, una fortaleza derruida. A medida que asciende a través de catacumbas, túneles mineros y estancias abandonadas, deberá enfrentarse a enemigos corrompidos por la Estrigia, una plaga parasitaria que altera la mente y el cuerpo. La historia se revela de forma progresiva mediante inscripciones, documentos y diálogos dispersos por el mapa. El objetivo último es comprender qué desencadenó esta catástrofe y decidir el destino del protagonista frente a la Última Fosa, una fractura entre planos.
 
-## Capturas de pantalla
-
-<p align="center">
-  <img src="Doc/Screenshots/img1.png" width="45%" />
-  <img src="Doc/Screenshots/img2.png" width="45%" />
-</p>
-
 ## Características principales
 
 - **Combate por turnos basado en velocidad**: el orden de las acciones se determina comparando la velocidad del jugador y la del enemigo. El valor exacto de la velocidad enemiga nunca se muestra, lo que obliga al jugador a deducirlo observando la secuencia de turnos.
