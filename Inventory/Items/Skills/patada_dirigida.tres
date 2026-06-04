@@ -6,5 +6,5 @@
 script = ExtResource("1_8kqrl")
 id = "skills/patada_dirigida"
 name = "Patada Dirigida"
-damage = 10
+damage = 6
 metadata/_custom_type_script = "uid://djuqb6o63kdvl"

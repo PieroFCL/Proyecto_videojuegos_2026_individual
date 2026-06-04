@@ -1,0 +1,64 @@
+[gd_scene format=3 uid="uid://ceke6b8vijbd8"]
+
+[ext_resource type="Texture2D" uid="uid://bbisgkugjwtwc" path="res://WorldObjects/Doors/Styles/door_close.png" id="1_rlcug"]
+[ext_resource type="Script" uid="uid://b7wcw5802qre8" path="res://WorldObjects/Doors/door.gd" id="1_u51vq"]
+[ext_resource type="FontFile" uid="uid://v7bjrdltf7gm" path="res://UI/PlayerMenu/Fonts/W95F.otf" id="2_u51vq"]
+[ext_resource type="Texture2D" uid="uid://dk5pj8arbpuy8" path="res://UI/PlayerMenu/Styles/UI_TravelBook_Spritesheet01_BotonE.png" id="4_o3nor"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_u51vq"]
+load_path = "res://.godot/imported/door_close.png-698236979e068d8381b6af217739ddda.ctex"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o3nor"]
+size = Vector2(36, 8)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_pdah1"]
+radius = 14.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o3nor"]
+bg_color = Color(0, 0, 0, 0.38039216)
+
+[node name="Door" type="StaticBody2D" unique_id=1062876166]
+script = ExtResource("1_u51vq")
+required_item_id = "keys/llave_catacumbas_inferior"
+close_texture = SubResource("CompressedTexture2D_u51vq")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=617660432]
+position = Vector2(0, -24)
+texture = ExtResource("1_rlcug")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1680674542]
+shape = SubResource("RectangleShape2D_o3nor")
+
+[node name="InteractionArea" type="Area2D" parent="." unique_id=1490987335]
+position = Vector2(0, -23)
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea" unique_id=1154779045]
+position = Vector2(0, 23)
+shape = SubResource("CircleShape2D_pdah1")
+debug_color = Color(0.7856901, 0.4064515, 0.40825942, 0.41960785)
+
+[node name="InteractionIndicator" type="Label" parent="." unique_id=142323780]
+z_index = 4003
+offset_left = 1.0
+offset_top = -44.0
+offset_right = 29.0
+offset_bottom = -36.0
+theme_override_fonts/font = ExtResource("2_u51vq")
+theme_override_font_sizes/font_size = 7
+theme_override_styles/normal = SubResource("StyleBoxFlat_o3nor")
+text = "Usar llave"
+
+[node name="IndicatorTexture" type="TextureRect" parent="InteractionIndicator" unique_id=703496516]
+visible = false
+layout_mode = 0
+offset_left = -12.0
+offset_top = -1.0
+offset_right = -2.0
+offset_bottom = 9.0
+texture = ExtResource("4_o3nor")
+metadata/_edit_use_anchors_ = true
+
+[node name="OpenSprite" type="Sprite2D" parent="." unique_id=325845956]
+position = Vector2(0, -23)

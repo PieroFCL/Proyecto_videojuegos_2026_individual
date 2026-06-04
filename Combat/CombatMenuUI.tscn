@@ -2,16 +2,59 @@
 
 [ext_resource type="Script" uid="uid://bhn5oo6jme3un" path="res://Combat/Scripts/combat_menu_ui.gd" id="1_a6gmo"]
 [ext_resource type="FontFile" uid="uid://v7bjrdltf7gm" path="res://UI/PlayerMenu/Fonts/W95F.otf" id="2_iko6b"]
-[ext_resource type="Texture2D" uid="uid://dy717foncirsq" path="res://UI/PlayerMenu/Styles/ico ataque.png" id="2_vasja"]
-[ext_resource type="Texture2D" uid="uid://bqr3pwjj06qut" path="res://UI/PlayerMenu/Styles/ico defensa.png" id="3_xvd4t"]
-[ext_resource type="Texture2D" uid="uid://vqg42fs5atxg" path="res://UI/PlayerMenu/Styles/ico velocidad.png" id="4_xvd4t"]
+[ext_resource type="Texture2D" uid="uid://cs3iqitlh23xb" path="res://Combat/Styles/Assets_ui/combat_cuadro_menu.png" id="2_jb2o4"]
+[ext_resource type="Texture2D" uid="uid://bg5tro0fsv2nm" path="res://Combat/Styles/Assets_ui/ico habilidades.png" id="4_bfs1n"]
+[ext_resource type="Texture2D" uid="uid://0innxmwe35tm" path="res://Combat/Styles/Assets_ui/ico bolsa.png" id="5_ckoe6"]
+[ext_resource type="Texture2D" uid="uid://funqc3i5tnt0" path="res://Combat/Styles/Assets_ui/ico estado.png" id="6_vljtp"]
+[ext_resource type="Texture2D" uid="uid://5syklny5n0ga" path="res://Combat/Styles/Assets_ui/Cursor_Combat_Menu.png" id="7_bfs1n"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_iko6b"]
-bg_color = Color(0, 0, 0, 0.6862745)
-corner_radius_top_left = 1
-corner_radius_top_right = 1
-corner_radius_bottom_right = 1
-corner_radius_bottom_left = 1
+bg_color = Color(0, 0, 0, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bfs1n"]
+bg_color = Color(0.6313726, 0.56078434, 0.5019608, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_bottom = 1
+border_color = Color(0.6313726, 0.56078434, 0.5019608, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jb2o4"]
+bg_color = Color(0.6313726, 0.56078434, 0.5019608, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.6313726, 0.56078434, 0.5019608, 1)
+expand_margin_left = 1.0
+expand_margin_top = 1.0
+expand_margin_right = 1.0
+expand_margin_bottom = 1.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_58qd6"]
+bg_color = Color(0.6313726, 0.56078434, 0.5019608, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_bottom = 1
+border_color = Color(0.6313726, 0.56078434, 0.5019608, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ckoe6"]
+bg_color = Color(0.6313726, 0.56078434, 0.5019608, 1)
+border_color = Color(0.6313726, 0.56078434, 0.5019608, 1)
+expand_margin_left = 1.0
+expand_margin_top = 1.0
+expand_margin_right = 1.0
+expand_margin_bottom = 1.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k3j3u"]
+bg_color = Color(0.6313726, 0.56078434, 0.5019608, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_bottom = 1
+border_color = Color(0.6313726, 0.56078434, 0.5019608, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vljtp"]
+bg_color = Color(0.6313726, 0.56078434, 0.5019608, 1)
+border_color = Color(0.6313726, 0.56078434, 0.5019608, 1)
 expand_margin_left = 1.0
 expand_margin_top = 1.0
 expand_margin_right = 1.0
@@ -19,36 +62,43 @@ expand_margin_bottom = 1.0
 
 [node name="CombatMenuUI" type="Control" unique_id=1569199293]
 layout_mode = 3
+anchors_preset = 0
 offset_left = 1.0
 offset_right = -1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_a6gmo")
+metadata/_edit_use_anchors_ = true
 
 [node name="Panel" type="Control" parent="." unique_id=1033215712]
 layout_mode = 1
-anchor_left = 0.3611111
-anchor_top = 0.39583334
-anchor_right = 0.76944447
-anchor_bottom = 0.6125
-grow_horizontal = 2
-grow_vertical = 2
+anchors_preset = 0
 mouse_filter = 2
 metadata/_edit_use_anchors_ = true
 
+[node name="TextureRect" type="TextureRect" parent="Panel" unique_id=259357172]
+layout_mode = 0
+offset_left = -87.0
+offset_top = -35.0
+offset_right = 79.0
+offset_bottom = 16.0
+texture = ExtResource("2_jb2o4")
+expand_mode = 1
+
 [node name="VBoxContainer" type="VBoxContainer" parent="Panel" unique_id=568909573]
-custom_minimum_size = Vector2(170, 30)
+custom_minimum_size = Vector2(135, 30)
 layout_mode = 1
 anchors_preset = -1
-offset_left = -60.0
-offset_top = -25.0
-offset_right = 60.0
-offset_bottom = 5.0
+anchor_right = 0.331
+offset_left = -72.5
+offset_top = -28.5
+offset_right = 62.5
+offset_bottom = 8.5
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-theme_override_constants/separation = 3
+theme_override_constants/separation = 5
 metadata/_edit_use_anchors_ = true
 
 [node name="SkillsButton" type="Button" parent="Panel/VBoxContainer" unique_id=626438343]
@@ -56,22 +106,26 @@ layout_mode = 2
 mouse_filter = 2
 theme_override_constants/h_separation = 1
 theme_override_fonts/font = ExtResource("2_iko6b")
-theme_override_font_sizes/font_size = 8
+theme_override_font_sizes/font_size = 9
 theme_override_styles/normal = SubResource("StyleBoxFlat_iko6b")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_bfs1n")
+theme_override_styles/focus = SubResource("StyleBoxFlat_jb2o4")
 text = "Habilidades"
-icon = ExtResource("2_vasja")
+icon = ExtResource("4_bfs1n")
 alignment = 0
 expand_icon = true
 
 [node name="BagButton" type="Button" parent="Panel/VBoxContainer" unique_id=1443472171]
 layout_mode = 2
 mouse_filter = 2
-theme_override_constants/h_separation = 1
+theme_override_constants/h_separation = 3
 theme_override_fonts/font = ExtResource("2_iko6b")
-theme_override_font_sizes/font_size = 8
+theme_override_font_sizes/font_size = 9
 theme_override_styles/normal = SubResource("StyleBoxFlat_iko6b")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_58qd6")
+theme_override_styles/focus = SubResource("StyleBoxFlat_ckoe6")
 text = "Bolsa"
-icon = ExtResource("3_xvd4t")
+icon = ExtResource("5_ckoe6")
 alignment = 0
 expand_icon = true
 
@@ -80,9 +134,21 @@ layout_mode = 2
 mouse_filter = 2
 theme_override_constants/h_separation = 1
 theme_override_fonts/font = ExtResource("2_iko6b")
-theme_override_font_sizes/font_size = 8
+theme_override_font_sizes/font_size = 9
 theme_override_styles/normal = SubResource("StyleBoxFlat_iko6b")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_k3j3u")
+theme_override_styles/focus = SubResource("StyleBoxFlat_vljtp")
 text = "Estado"
-icon = ExtResource("4_xvd4t")
+icon = ExtResource("6_vljtp")
 alignment = 0
 expand_icon = true
+
+[node name="TextureCursor" type="TextureRect" parent="." unique_id=105972678]
+layout_mode = 0
+offset_left = -80.0
+offset_top = -26.0
+offset_right = -75.0
+offset_bottom = -20.0
+mouse_filter = 2
+texture = ExtResource("7_bfs1n")
+expand_mode = 1

@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="DocumentItem" format=3 uid="uid://ba4rxp6f3q4j7"]
+
+[ext_resource type="Script" uid="uid://nvxoy7pbn016" path="res://Inventory/Scripts/document_item.gd" id="1_6u1pw"]
+[ext_resource type="Texture2D" uid="uid://ubwfh8fy24u3" path="res://Inventory/Items/Sprites/Documents/nota.png" id="1_7fe4o"]
+
+[resource]
+script = ExtResource("1_6u1pw")
+collection_id = "ricardo"
+page_number = 232
+title = "Orden de movilización"
+text_content = "Hemos recibido orden directa del Comandante Quira: las Espadas del Rey movilizaremos tres compañías hacia la muralla oeste. Objetivo: contener el flujo de refugiados procedentes de los valles occidentales. No se permite el acceso a la capital. La justificación oficial es “prevenir el avance de la plaga”.
+
+Observo los rostros de los soldados. Algunos aún recuerdan cuando la reina Catalina abrió las fronteras para salvar a esas mismas personas. Ahora los llaman portadores de la Estrigia. La disciplina se mantiene, pero en los cuarteles crece el malestar. Nadie cuestiona la orden en voz alta.
+
+No puedo evitar preguntarme si esta medida es sanitaria o política. Los Devotos han presionado durante semanas para que se culpe a los extranjeros del desastre. Mientras tanto, la muralla oeste se llena de tiendas harapientas y miradas vacías. Guardamos la entrada, pero no sé si estamos protegiendo al reino o alimentando su miedo."
+id = "documents/ricardo_bitacora_232"
+icon = ExtResource("1_7fe4o")
+category = "document"
+metadata/_custom_type_script = "uid://nvxoy7pbn016"

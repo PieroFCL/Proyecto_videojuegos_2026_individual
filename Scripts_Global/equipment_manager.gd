@@ -27,3 +27,9 @@ func equip_seal(item_id: String) -> void:
 func unequip_seal() -> void:
 	PlayerStats.unequip_seal()
 	equipment_changed.emit("seal", "")
+
+func force_equipment_refresh() -> void:
+	# Emitir señales para que player.gd actualice sprites
+	equipment_changed.emit("weapon", PlayerStats.equipped_weapon_id)
+	equipment_changed.emit("armor", PlayerStats.equipped_armor_id)
+	equipment_changed.emit("seal", PlayerStats.equipped_seal_id)

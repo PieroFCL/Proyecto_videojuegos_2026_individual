@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="SkillResource" format=3 uid="uid://buvuuchiwl5it"]
+
+[ext_resource type="Script" uid="uid://djuqb6o63kdvl" path="res://Inventory/Scripts/skill_resource.gd" id="1_k6be2"]
+
+[resource]
+script = ExtResource("1_k6be2")
+id = "skills/corte_sombrio"
+name = "Corte Sombrio"
+type = "magical"
+damage = 1
+metadata/_custom_type_script = "uid://djuqb6o63kdvl"

@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="DocumentItem" format=3 uid="uid://rl5jw4a5ojek"]
+
+[ext_resource type="Script" uid="uid://nvxoy7pbn016" path="res://Inventory/Scripts/document_item.gd" id="1_b8qbu"]
+[ext_resource type="Texture2D" uid="uid://ubwfh8fy24u3" path="res://Inventory/Items/Sprites/Documents/nota.png" id="1_m1sa1"]
+
+[resource]
+script = ExtResource("1_b8qbu")
+collection_id = "otros"
+page_number = 4
+title = "Nota. Algo que no nos cuentan"
+text_content = "Hace semanas que no recibo noticias de arriba. Los Devotos controlan los pasillos, el rey está cada vez más débil y la reina… ella sigue confinada en la torre.
+
+El comandante Quira nunca había bajado tanto a las criptas, pero ahora aparece casi cada noche. A veces solo pasa de largo, pero se le ve inquieto, errático. Se queda quieto, mirando al suelo o fijando la vista en la nada.
+
+Nos ordenó custodiar estos niveles cuando la influencia de los Devotos se hizo más fuerte dentro del castillo. Dijo que había que evitar que los refugiados se ocultaran en los túneles, aunque a mí me parece extraño establecer un puesto de vigilancia aquí en lugar de ir a buscarlos.
+
+Yo me instalé con unos pocos libros que rescaté de la biblioteca, para no enloquecer con el silencio. El comandante nunca ha cogido ninguno. Tampoco parece interesarle el confort de esta habitación.
+
+Algo está pasando. Algo que no nos cuentan. Y tengo una sensación inquietante."
+id = "documents/nota_guardia_anonimo"
+icon = ExtResource("1_m1sa1")
+category = "document"
+metadata/_custom_type_script = "uid://nvxoy7pbn016"

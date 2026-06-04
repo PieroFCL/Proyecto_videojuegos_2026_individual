@@ -1,9 +1,11 @@
 [gd_scene format=3 uid="uid://twktmtpmhctw"]
 
 [ext_resource type="Script" uid="uid://cy37e7lmqxwph" path="res://Combat/Scripts/skills_submenu.gd" id="1_8cj4d"]
+[ext_resource type="Texture2D" uid="uid://cs3iqitlh23xb" path="res://Combat/Styles/Assets_ui/combat_cuadro_menu.png" id="2_ef6pm"]
+[ext_resource type="FontFile" uid="uid://v7bjrdltf7gm" path="res://UI/PlayerMenu/Fonts/W95F.otf" id="3_ef6pm"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8cj4d"]
-bg_color = Color(0, 0, 0, 1)
+bg_color = Color(0, 0, 0, 0)
 corner_radius_top_left = 1
 corner_radius_top_right = 1
 corner_radius_bottom_right = 1
@@ -13,9 +15,123 @@ expand_margin_top = 1.0
 expand_margin_right = 1.0
 expand_margin_bottom = 1.0
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ef6pm"]
+bg_color = Color(0, 0, 0, 0.24313726)
+border_width_top = 2
+border_width_bottom = 1
+border_color = Color(0, 0, 0, 0.24313726)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d5ixo"]
+bg_color = Color(0.6313726, 0.56078434, 0.5019608, 0.52156866)
+border_width_top = 2
+border_width_bottom = 1
+border_color = Color(0.6313726, 0.56078434, 0.5019608, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sbye8"]
+bg_color = Color(0, 0, 0, 0.44313726)
+border_width_left = 1
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 1
+border_color = Color(0, 0, 0, 0.44313726)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h6p1c"]
+bg_color = Color(0.6313726, 0.56078434, 0.5019608, 0.52156866)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.6313726, 0.56078434, 0.5019608, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_llmsb"]
+bg_color = Color(0, 0, 0, 0.24313726)
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 1
+border_color = Color(0, 0, 0, 0.24313726)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_236lh"]
+bg_color = Color(0.6313726, 0.56078434, 0.5019608, 0.52156866)
+border_width_top = 2
+border_width_bottom = 1
+border_color = Color(0.6313726, 0.56078434, 0.5019608, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a0tyu"]
+bg_color = Color(0, 0, 0, 0.44313726)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0, 0, 0, 0.44313726)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eoc68"]
+bg_color = Color(0.6313726, 0.56078434, 0.5019608, 0.52156866)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.6313726, 0.56078434, 0.5019608, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4tc5b"]
+bg_color = Color(0, 0, 0, 0.24313726)
+border_width_top = 2
+border_width_bottom = 1
+border_color = Color(0, 0, 0, 0.24313726)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_433u5"]
+bg_color = Color(0.6313726, 0.56078434, 0.5019608, 0.52156866)
+border_width_top = 2
+border_width_bottom = 1
+border_color = Color(0.6313726, 0.56078434, 0.5019608, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yy0f2"]
+bg_color = Color(0, 0, 0, 0.44313726)
+border_width_left = 1
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 1
+border_color = Color(0, 0, 0, 0.44313726)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2xra7"]
+bg_color = Color(0.6313726, 0.56078434, 0.5019608, 0.52156866)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.6313726, 0.56078434, 0.5019608, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jdmyo"]
+bg_color = Color(0, 0, 0, 0.24313726)
+border_width_top = 2
+border_width_bottom = 1
+border_color = Color(0, 0, 0, 0.24313726)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bo1wd"]
+bg_color = Color(0.6313726, 0.56078434, 0.5019608, 0.52156866)
+border_width_top = 2
+border_width_bottom = 1
+border_color = Color(0.6313726, 0.56078434, 0.5019608, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c2rab"]
+bg_color = Color(0, 0, 0, 0.44313726)
+border_width_left = 1
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 1
+border_color = Color(0, 0, 0, 0.44313726)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6q1f4"]
+bg_color = Color(0.6313726, 0.56078434, 0.5019608, 0.52156866)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.6313726, 0.56078434, 0.5019608, 1)
+
 [node name="SkillsSubmenu" type="Control" unique_id=329066861]
 layout_mode = 3
 anchors_preset = 0
+mouse_filter = 2
 script = ExtResource("1_8cj4d")
 
 [node name="Panel" type="Panel" parent="." unique_id=414505656]
@@ -23,8 +139,19 @@ custom_minimum_size = Vector2(170, 40)
 layout_mode = 1
 anchors_preset = -1
 offset_right = 170.0
-offset_bottom = 50.0
+offset_bottom = 40.0
+mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_8cj4d")
+
+[node name="TextureRect" type="TextureRect" parent="Panel" unique_id=1714916696]
+layout_mode = 0
+offset_left = -5.0
+offset_top = -5.0
+offset_right = 175.0
+offset_bottom = 46.0
+mouse_filter = 2
+texture = ExtResource("2_ef6pm")
+expand_mode = 1
 
 [node name="GridContainer" type="GridContainer" parent="Panel" unique_id=709951947]
 layout_mode = 0
@@ -32,6 +159,8 @@ offset_left = 2.0
 offset_top = 1.0
 offset_right = 169.0
 offset_bottom = 39.0
+focus_mode = 2
+mouse_filter = 2
 theme_override_constants/h_separation = 2
 theme_override_constants/v_separation = 2
 columns = 2
@@ -39,7 +168,14 @@ columns = 2
 [node name="SkillSlot1" type="Button" parent="Panel/GridContainer" unique_id=84507936]
 custom_minimum_size = Vector2(85, 0)
 layout_mode = 2
-theme_override_font_sizes/font_size = 6
+mouse_filter = 2
+theme_override_constants/outline_size = 0
+theme_override_fonts/font = ExtResource("3_ef6pm")
+theme_override_font_sizes/font_size = 7
+theme_override_styles/normal = SubResource("StyleBoxFlat_ef6pm")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_d5ixo")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_sbye8")
+theme_override_styles/focus = SubResource("StyleBoxFlat_h6p1c")
 disabled = true
 text = "\"---\\n---\""
 autowrap_mode = 2
@@ -47,21 +183,39 @@ autowrap_mode = 2
 [node name="SkillSlot2" type="Button" parent="Panel/GridContainer" unique_id=1194061718]
 custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
+mouse_filter = 2
+theme_override_fonts/font = ExtResource("3_ef6pm")
 theme_override_font_sizes/font_size = 6
+theme_override_styles/normal = SubResource("StyleBoxFlat_llmsb")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_236lh")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_a0tyu")
+theme_override_styles/focus = SubResource("StyleBoxFlat_eoc68")
 disabled = true
 text = "\"---\\n---\""
 autowrap_mode = 2
 
 [node name="SkillSlot3" type="Button" parent="Panel/GridContainer" unique_id=2081176619]
 layout_mode = 2
-theme_override_font_sizes/font_size = 6
+mouse_filter = 2
+theme_override_fonts/font = ExtResource("3_ef6pm")
+theme_override_font_sizes/font_size = 7
+theme_override_styles/normal = SubResource("StyleBoxFlat_4tc5b")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_433u5")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_yy0f2")
+theme_override_styles/focus = SubResource("StyleBoxFlat_2xra7")
 disabled = true
 text = "\"---\\n---\""
 autowrap_mode = 2
 
 [node name="SkillSlot4" type="Button" parent="Panel/GridContainer" unique_id=1460873156]
 layout_mode = 2
+mouse_filter = 2
+theme_override_fonts/font = ExtResource("3_ef6pm")
 theme_override_font_sizes/font_size = 6
+theme_override_styles/normal = SubResource("StyleBoxFlat_jdmyo")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_bo1wd")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_c2rab")
+theme_override_styles/focus = SubResource("StyleBoxFlat_6q1f4")
 disabled = true
 text = "\"---\\n---\""
 autowrap_mode = 2

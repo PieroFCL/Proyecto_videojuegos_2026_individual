@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="SkillResource" format=3 uid="uid://f0miaf7mm1ux"]
+
+[ext_resource type="Script" uid="uid://djuqb6o63kdvl" path="res://Inventory/Scripts/skill_resource.gd" id="1_osw23"]
+
+[resource]
+script = ExtResource("1_osw23")
+id = "skills/tajo_ascendente"
+name = "Tajo Ascendente"
+damage = 10
+metadata/_custom_type_script = "uid://djuqb6o63kdvl"

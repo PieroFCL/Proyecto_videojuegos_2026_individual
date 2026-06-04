@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="DocumentItem" format=3 uid="uid://dtafmwgoqbwg5"]
+
+[ext_resource type="Texture2D" uid="uid://bxaimohhqy4hu" path="res://Inventory/Items/Sprites/Documents/book_historia.png" id="1_7yynn"]
+[ext_resource type="Script" uid="uid://nvxoy7pbn016" path="res://Inventory/Scripts/document_item.gd" id="1_m3183"]
+
+[resource]
+script = ExtResource("1_m3183")
+collection_id = "otros"
+page_number = 2
+title = "Cronicas de Tierras Altas VII"
+text_content = "Registrado por el Maestro Aurelio, escriba de la Corte, bajo el mandato de Su Majestad Darío III, Rey de las Tierras Altas.
+
+Corona del Valle, capital de las Tierras Altas, cumple su decimosegundo año bajo el reinado de Darío, Tercero de su nombre. Las guerras sucesorias del este han cesado, pero sus efectos aún se dejan sentir en los erarios provinciales, y los caminos siguen siendo tierra de nadie para las caravanas. Los informes de los intendentes hablan de cosechas apenas suficientes. La hambruna comienza a asomar en los arrabales, donde los refugiados de las guerras occidentales se apiñan sin oficio ni tierras propias.
+
+En este contexto de penuria, los Devotos de la Fe Verdadera, fieles a la diosa Aysi y cuyas casas de acogida llevan décadas funcionando en todo el reino, ha visto acrecentado su prestigio. El Alto Devoto Boson es hoy consejero espiritual del monarca, y sus sermones sobre la purificación recogen el descontento popular con mayor eco que los edictos reales.
+
+El rey Darío, postrado por achaques desde hace años, apenas comparece en público. Por ello, Catalina, reina consorte, ha asumido la administración cotidiana del reino, abogando por mantener la paz entre los señores y atendiendo las súplicas de los más desfavorecidos. No obstante, toda decisión relevante se somete a la firma del rey, quien aún rubrica los decretos que salen de Alto Bastión.
+
+Las Espadas del Rey, fieles a su juramento de proteger la corona, continúan con su cometido de resguardar las fronteras, si bien las prolongadas campañas han mermado sus efectivos y los relevos no llegan con la premura deseada. Sus patrullas cubren aún las rutas principales, y la disciplina de sus oficiales sigue siendo ejemplo para el resto de las guarniciones.
+
+Reino de las Tierras Altas no es el mismo que soñaron los antiguos reyes, mas aún alberga esperanza. Los mercaderes siguen llegando, los campesinos siembran sus tierras y los niños crecen sin conocer el sonido de las trompetas de guerra. El escriba que suscribe estas líneas no augura ni calamidades ni grandezas, solo registra la realidad: un reino fatigado pero aún vivo, donde siempre existe la esperanza de que los días venideros traigan la paz anhelada."
+id = "documents/cronicas_tierras_altas"
+icon = ExtResource("1_7yynn")
+category = "document"
+metadata/_custom_type_script = "uid://nvxoy7pbn016"

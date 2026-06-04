@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="EnemyResource" format=3 uid="uid://b86ttwfhs2rpj"]
+
+[ext_resource type="Texture2D" uid="uid://c712n1a1ki7m1" path="res://Enemys/Sprites/Marchito_Refugiado/combat_marchito_refugiado.png" id="1_flk0i"]
+[ext_resource type="Script" uid="uid://dspoy86m7cqr" path="res://Enemys/Scripts/enemy_resource.gd" id="2_xq4iu"]
+[ext_resource type="Script" uid="uid://djuqb6o63kdvl" path="res://Inventory/Scripts/skill_resource.gd" id="3_adopj"]
+[ext_resource type="Resource" uid="uid://dxsjb01l8f5wv" path="res://Inventory/Items/Skills/toque_marchito.tres" id="4_i7ghc"]
+[ext_resource type="Resource" uid="uid://wxp6latwj5rt" path="res://Inventory/Items/Skills/patada_dirigida.tres" id="6_0l10t"]
+[ext_resource type="Texture2D" uid="uid://bireg60r4vvw" path="res://Enemys/Sprites/Marchito_Refugiado/idle_marchito_refugiado.png" id="7_oiicx"]
+
+[resource]
+script = ExtResource("2_xq4iu")
+animation_prefix = "marchito_refugiado"
+id = "marchito_refugiado_01"
+display_name = "Marchito Refugiado"
+max_hp = 60
+attack = 20
+defense = 4
+sprite_texture = ExtResource("7_oiicx")
+combat_texture = ExtResource("1_flk0i")
+combat_hframes = 3
+combat_scale = Vector2(0.55, 0.55)
+skills = Array[ExtResource("3_adopj")]([ExtResource("4_i7ghc"), ExtResource("6_0l10t")])
+metadata/_custom_type_script = "uid://dspoy86m7cqr"

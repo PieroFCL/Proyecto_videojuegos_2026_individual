@@ -2,26 +2,41 @@
 
 [ext_resource type="Script" uid="uid://8d56bt2abo6f" path="res://Combat/Scripts/combat_scene.gd" id="1_sscst"]
 [ext_resource type="Texture2D" uid="uid://u7oxr5gvdjhq" path="res://Combat/Styles/Background/background_Catacumbas2.png" id="2_4fr1u"]
+[ext_resource type="Texture2D" uid="uid://bin5udjiycfg3" path="res://Combat/Styles/Assets_ui/combat_cuadros.png" id="3_idm6n"]
 [ext_resource type="Texture2D" uid="uid://dw4350fdyt2bp" path="res://Player/Sprites/Player_Skin_Desarmado_mitad2_240px_sheets.png" id="3_nygul"]
 [ext_resource type="Texture2D" uid="uid://dedfqgma2uvsj" path="res://Enemys/Sprites/Diablillo_volador/combat_diablillo_volador.png" id="4_4fr1u"]
+[ext_resource type="FontFile" uid="uid://v7bjrdltf7gm" path="res://UI/PlayerMenu/Fonts/W95F.otf" id="4_idm6n"]
+[ext_resource type="Texture2D" uid="uid://bxcvfvakk6v7d" path="res://Player/Sprites/Weapons/combat_espada_acero.png" id="4_ismy3"]
 [ext_resource type="PackedScene" uid="uid://cl211nx018swq" path="res://Combat/CombatMenuUI.tscn" id="5_4fr1u"]
 [ext_resource type="PackedScene" uid="uid://twktmtpmhctw" path="res://Combat/SkillsSubmenu.tscn" id="6_rqt6v"]
 [ext_resource type="PackedScene" uid="uid://7cpyux0jeeoe" path="res://Combat/BagSubmenu.tscn" id="7_pmr50"]
 [ext_resource type="PackedScene" uid="uid://dr4m5boqnci3" path="res://Combat/StatusSubmenu.tscn" id="8_pmr50"]
 
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_idm6n"]
+load_path = "res://.godot/imported/Player_combat_Armadura_ cuero_reforzado.png-a037eacd3a7d351b0abbb6b12a01a82a.ctex"
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4fr1u"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nygul"]
-bg_color = Color(0, 0.49019608, 0, 1)
+bg_color = Color(0.27450982, 0.62352943, 0.22745098, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rqt6v"]
 bg_color = Color(0.69826937, 0.6982693, 0.6982693, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pmr50"]
-bg_color = Color(0, 0.6627451, 0, 1)
+bg_color = Color(0.76862746, 0, 0.16078432, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lokyo"]
-bg_color = Color(0, 0, 0, 0.9019608)
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_idm6n"]
+bg_color = Color(0, 0, 0, 1)
+border_color = Color(0.8, 0.8, 0.8, 0.98039216)
+corner_detail = 3
 
 [node name="CombatScene" type="CanvasLayer" unique_id=1859687287]
 process_mode = 3
@@ -43,6 +58,7 @@ grow_vertical = 2
 mouse_filter = 2
 
 [node name="CloseButton" type="Button" parent="CombatUI" unique_id=1175636604]
+visible = false
 layout_mode = 0
 offset_left = 13.0
 offset_top = 212.0
@@ -58,23 +74,89 @@ offset_top = 73.0
 offset_right = 153.0
 offset_bottom = 223.0
 
-[node name="PlayerSprite" type="Sprite2D" parent="CombatUI/PlayerPortrait" unique_id=673455098]
+[node name="BodySprite" type="Sprite2D" parent="CombatUI/PlayerPortrait" unique_id=673455098]
 position = Vector2(75, 64)
 scale = Vector2(0.45, 0.45)
 texture = ExtResource("3_nygul")
 hframes = 3
 
+[node name="ArmorSprite" type="Sprite2D" parent="CombatUI/PlayerPortrait" unique_id=533122948]
+position = Vector2(75, 64)
+scale = Vector2(0.47, 0.47)
+texture = SubResource("CompressedTexture2D_idm6n")
+hframes = 3
+
+[node name="WeaponSprite" type="Sprite2D" parent="CombatUI/PlayerPortrait" unique_id=1258141741]
+position = Vector2(75, 64)
+scale = Vector2(0.45, 0.45)
+texture = ExtResource("4_ismy3")
+hframes = 3
+
+[node name="PlayerContainerBar" type="TextureRect" parent="CombatUI/PlayerPortrait" unique_id=84827823]
+layout_mode = 0
+anchor_left = 0.023076924
+anchor_top = 0.72
+anchor_right = 0.97692305
+anchor_bottom = 0.9066667
+texture = ExtResource("3_idm6n")
+expand_mode = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="PlayerName" type="Label" parent="CombatUI/PlayerPortrait" unique_id=1642116142]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.10769231
+anchor_top = 0.74666667
+anchor_right = 0.7153846
+anchor_bottom = 0.81333333
+theme_override_colors/font_color = Color(0.84313726, 0.84313726, 0.84313726, 0.9764706)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.9764706)
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/shadow_outline_size = 0
+theme_override_fonts/font = ExtResource("4_idm6n")
+theme_override_font_sizes/font_size = 10
+text = "Jugador"
+metadata/_edit_use_anchors_ = true
+
+[node name="TextHP" type="Label" parent="CombatUI/PlayerPortrait" unique_id=514365083]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.10769231
+anchor_top = 0.8266667
+anchor_right = 0.17692308
+anchor_bottom = 0.87333333
+theme_override_colors/font_color = Color(0.69803923, 0.69803923, 0.69803923, 0.9764706)
+theme_override_fonts/font = ExtResource("4_idm6n")
+theme_override_font_sizes/font_size = 6
+text = "HP"
+metadata/_edit_use_anchors_ = true
+
+[node name="PlayerHPText" type="Label" parent="CombatUI/PlayerPortrait" unique_id=927440058]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.7153846
+anchor_top = 0.82
+anchor_right = 0.9307692
+anchor_bottom = 0.87333333
+theme_override_colors/font_color = Color(0.69803923, 0.69803923, 0.69803923, 0.9764706)
+theme_override_fonts/font = ExtResource("4_idm6n")
+theme_override_font_sizes/font_size = 7
+text = "100/100"
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
 [node name="PlayerHPBar" type="ProgressBar" parent="CombatUI/PlayerPortrait" unique_id=1363622139]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.16923077
-anchor_top = 0.82
-anchor_right = 0.93846154
-anchor_bottom = 0.87333333
-theme_override_font_sizes/font_size = 5
+anchor_left = 0.17692308
+anchor_top = 0.8333333
+anchor_right = 0.7153846
+anchor_bottom = 0.86
+theme_override_font_sizes/font_size = 1
 theme_override_styles/background = SubResource("StyleBoxFlat_4fr1u")
 theme_override_styles/fill = SubResource("StyleBoxFlat_nygul")
 value = 100.0
+show_percentage = false
 metadata/_edit_use_anchors_ = true
 
 [node name="EnemyPortrait" type="Control" parent="CombatUI" unique_id=1091934582]
@@ -85,79 +167,127 @@ anchor_bottom = 0.67083335
 metadata/_edit_use_anchors_ = true
 
 [node name="EnemySprite" type="Sprite2D" parent="CombatUI/EnemyPortrait" unique_id=1830184097]
-position = Vector2(74, 123)
+position = Vector2(73, 115)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("4_4fr1u")
+
+[node name="EnemyContainerBar" type="TextureRect" parent="CombatUI/EnemyPortrait" unique_id=602333335]
+layout_mode = 0
+anchor_left = 0.19672132
+anchor_top = 0.03726708
+anchor_right = 0.8852459
+anchor_bottom = 0.20496894
+texture = ExtResource("3_idm6n")
+expand_mode = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="EnemyName" type="Label" parent="CombatUI/EnemyPortrait" unique_id=1590044525]
+layout_mode = 0
+offset_left = 48.0
+offset_top = 10.0
+offset_right = 128.0
+offset_bottom = 20.0
+theme_override_colors/font_color = Color(0.84313726, 0.84313726, 0.84313726, 0.9764706)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_outline_size = 0
+theme_override_fonts/font = ExtResource("4_idm6n")
+theme_override_font_sizes/font_size = 10
+text = "Enemigo"
+
+[node name="TextHP" type="Label" parent="CombatUI/EnemyPortrait" unique_id=717907704]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.26069787
+anchor_top = 0.13768122
+anchor_right = 0.31693992
+anchor_bottom = 0.18115948
+theme_override_colors/font_color = Color(0.41598046, 0.41598046, 0.41598028, 0.9764706)
+theme_override_fonts/font = ExtResource("4_idm6n")
+theme_override_font_sizes/font_size = 6
+text = "HP"
+metadata/_edit_use_anchors_ = true
+
+[node name="EnemyHPText" type="Label" parent="CombatUI/EnemyPortrait" unique_id=1038491742]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.69945353
+anchor_top = 0.13043478
+anchor_right = 0.852459
+anchor_bottom = 0.18012424
+theme_override_colors/font_color = Color(0.69803923, 0.69803923, 0.69803923, 0.9764706)
+theme_override_constants/shadow_outline_size = 0
+theme_override_fonts/font = ExtResource("4_idm6n")
+theme_override_font_sizes/font_size = 7
+text = "100/100"
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="EnemyHPBar" type="ProgressBar" parent="CombatUI/EnemyPortrait" unique_id=1257633333]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.23039612
-anchor_top = 0.12875815
-anchor_right = 0.85539615
-anchor_bottom = 0.17844759
-theme_override_font_sizes/font_size = 5
+anchor_left = 0.3169399
+anchor_top = 0.14285715
+anchor_right = 0.66666657
+anchor_bottom = 0.16770187
+offset_right = 6.0000153
+theme_override_font_sizes/font_size = 1
 theme_override_styles/background = SubResource("StyleBoxFlat_rqt6v")
 theme_override_styles/fill = SubResource("StyleBoxFlat_pmr50")
 value = 100.0
+show_percentage = false
 metadata/_edit_use_anchors_ = true
 
 [node name="MessagePanel" type="Panel" parent="CombatUI" unique_id=792932872]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.016666671
-anchor_top = 0.0125
+anchor_left = 0.016666668
+anchor_top = 0.029166667
 anchor_right = 0.43888888
-anchor_bottom = 0.15833333
+anchor_bottom = 0.175
 theme_override_styles/panel = SubResource("StyleBoxFlat_lokyo")
 metadata/_edit_use_anchors_ = true
 
 [node name="MessageLabel" type="Label" parent="CombatUI/MessagePanel" unique_id=1232813318]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.016752116
+anchor_left = 0.019736841
 anchor_top = 0.057142865
-anchor_right = 0.9851852
-anchor_bottom = 0.9354839
+anchor_right = 0.9802632
+anchor_bottom = 0.94285715
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/line_spacing = 1
+theme_override_fonts/font = ExtResource("4_idm6n")
 theme_override_font_sizes/font_size = 8
+theme_override_styles/normal = SubResource("StyleBoxFlat_idm6n")
 autowrap_mode = 2
 metadata/_edit_use_anchors_ = true
 
 [node name="CombatMenuUI" parent="CombatUI" unique_id=1569199293 instance=ExtResource("5_4fr1u")]
 layout_mode = 1
-anchor_left = 0.72499985
-anchor_top = 0.8041667
-anchor_right = 0.73055553
-anchor_bottom = 0.8041667
-metadata/_edit_use_anchors_ = true
-
-[node name="VBoxContainer" parent="CombatUI/CombatMenuUI/Panel" parent_id_path=PackedInt32Array(1569199293, 1033215712) index="0" unique_id=568909573]
-anchor_left = -0.66
-anchor_top = 0.25199997
-anchor_right = 0.9775
-anchor_bottom = 1.372
-offset_top = -2.9802322e-08
-offset_bottom = 0.0
+anchors_preset = -1
+anchor_left = 0.7027775
+anchor_top = 0.8958333
+anchor_right = 0.7083333
+anchor_bottom = 0.8958333
+offset_right = 0.7777405
 
 [node name="SkillsSubmenu" parent="CombatUI" unique_id=329066861 instance=ExtResource("6_rqt6v")]
 visible = false
 layout_mode = 1
 offset_left = 177.0
-offset_top = 178.0
+offset_top = 185.0
 offset_right = 177.0
-offset_bottom = 178.0
+offset_bottom = 185.0
 
 [node name="BagSubmenu" parent="CombatUI" unique_id=411683049 instance=ExtResource("7_pmr50")]
 visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.4888889
-anchor_top = 0.73333335
+anchor_top = 0.7708333
 anchor_right = 0.4888889
-anchor_bottom = 0.73333335
+anchor_bottom = 0.7708333
 grow_horizontal = 1
 grow_vertical = 1
 
@@ -167,5 +297,3 @@ layout_mode = 1
 anchors_preset = -1
 anchor_left = -0.002777779
 anchor_right = 0.9972223
-
-[editable path="CombatUI/CombatMenuUI"]

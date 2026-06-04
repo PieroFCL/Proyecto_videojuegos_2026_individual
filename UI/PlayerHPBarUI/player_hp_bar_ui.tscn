@@ -1,0 +1,74 @@
+[gd_scene format=3 uid="uid://dqc7qauf671sa"]
+
+[ext_resource type="Script" uid="uid://dbgotuvrgfnl7" path="res://UI/PlayerHPBarUI/player_hp_bar.gd" id="1_ccryx"]
+[ext_resource type="Texture2D" uid="uid://brdyxdr4200eo" path="res://UI/PlayerHPBarUI/Styles/barra_vida.png" id="2_tvilm"]
+[ext_resource type="Texture2D" uid="uid://c2um62epr1j25" path="res://UI/PlayerHPBarUI/Styles/UI_TravelBook_Spritesheet01_BotonI.png" id="3_pigsa"]
+[ext_resource type="FontFile" uid="uid://v7bjrdltf7gm" path="res://UI/PlayerMenu/Fonts/W95F.otf" id="4_wqmd8"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tvilm"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6u2wa"]
+bg_color = Color(0.15686275, 0.49019608, 0.2, 1)
+
+[node name="PlayerHPBarUI" type="CanvasLayer" unique_id=1172175879]
+script = ExtResource("1_ccryx")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1634925300]
+offset_left = 22.0
+offset_top = 214.0
+offset_right = 100.0
+offset_bottom = 225.0
+texture = ExtResource("2_tvilm")
+expand_mode = 1
+
+[node name="ProgressBar" type="ProgressBar" parent="." unique_id=937569879]
+offset_left = 26.0
+offset_top = 217.0
+offset_right = 96.0
+offset_bottom = 222.0
+theme_override_styles/background = SubResource("StyleBoxFlat_tvilm")
+theme_override_styles/fill = SubResource("StyleBoxFlat_6u2wa")
+value = 100.0
+show_percentage = false
+
+[node name="ButtonInventory" type="Control" parent="." unique_id=76253495]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_left = 24.0
+offset_top = 200.0
+offset_right = 69.0
+offset_bottom = 210.0
+
+[node name="TextureRect" type="TextureRect" parent="ButtonInventory" unique_id=227720552]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.022222223
+anchor_right = 0.24444444
+anchor_bottom = 1.0
+texture = ExtResource("3_pigsa")
+metadata/_edit_use_anchors_ = true
+
+[node name="InfoColor" type="ColorRect" parent="ButtonInventory" unique_id=1405168922]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.26666668
+anchor_top = 0.1
+anchor_right = 1.0000001
+anchor_bottom = 0.9
+color = Color(0, 0, 0, 0.36862746)
+metadata/_edit_use_anchors_ = true
+
+[node name="InfoLabel" type="Label" parent="ButtonInventory" unique_id=1992236670]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.2888889
+anchor_top = 0.1
+anchor_right = 1.0000001
+anchor_bottom = 1.0
+theme_override_fonts/font = ExtResource("4_wqmd8")
+theme_override_font_sizes/font_size = 8
+text = "Inventario"
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true

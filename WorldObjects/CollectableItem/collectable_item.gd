@@ -7,8 +7,22 @@ class_name CollectableItem
 # Efecto visual opcional (escena de partículas)
 @export var pickup_effect: PackedScene = null
 
+# Identificador único para persistencia (ej. "llave_cripta", "documento_aldren_1")
+@export var unique_id: String = ""
+
+func _exit_tree() -> void:
+	print("CollectableItem _exit_tree(): ", name, " ha sido eliminado del árbol.")
+
 # Inicializa el objeto: lo añade al grupo, verifica colisiones, asigna textura y conecta señales
 func _ready() -> void:
+	print("CollectableItem _ready(): ", name, " unique_id=", unique_id)
+	# --- PERSISTENCIA: si ya fue recogido anteriormente, desaparecer ---
+	if not unique_id.is_empty() and WorldStateManager.is_item_collected(unique_id):
+		print("  Objeto ya recogido según WorldStateManager. Eliminando.")
+		queue_free()
+		return
+	# ----------------------------------------------------------------
+	
 	add_to_group("collectable")
 	print("CollectableItem listo: ", name)
 	
@@ -33,27 +47,51 @@ func _ready() -> void:
 	# Asignar z_index normalizado solo para consumibles (pociones, elixires)
 	if item_resource and item_resource.category == "consumable" and LevelManager.current_level_max_y > 0:
 		z_index = int(global_position.y) + 500
-	
+
 # Se ejecuta cuando otro cuerpo (ej. el jugador) toca el objeto
 func _on_body_entered(body: Node2D) -> void:
 	print("Colisión detectada con: ", body.name)
 
+var _is_collected: bool = false
+
+# Llamado por el jugador al recoger el objeto, añade al inventario y lo elimina del mapa
 # Llamado por el jugador al recoger el objeto, añade al inventario y lo elimina del mapa
 func collect() -> void:
+	if _is_collected:
+		print("AVISO: collect() ya fue llamado antes. Ignorando.")
+		return
+	_is_collected = true
+	
+	print("=== COLLECT INICIO ===")
+	print("  Nombre del objeto: ", name)
+	print("  unique_id: '", unique_id, "'")
+	
 	if item_resource == null:
 		push_error("CollectableItem: item_resource es null en ", name)
 		return
 	
-	print("Recolectado: ", item_resource.id)
+	print("  Recolectado: ", item_resource.id)
 	InventoryManager.add_item(item_resource.id, 1)
 	Events.item_collected.emit(item_resource.id)
+	
+	# --- PERSISTENCIA: registrar recogida ---
+	if not unique_id.is_empty():
+		print("  Registrando unique_id en WorldStateManager: ", unique_id)
+		WorldStateManager.register_collected_item(unique_id)
+	else:
+		print("  unique_id vacío, no se registra persistencia.")
+	# --------------------------------------
 	
 	if pickup_effect:
 		var effect = pickup_effect.instantiate()
 		get_tree().root.add_child(effect)
 		effect.global_position = global_position
+		print("  Efecto de recogida instanciado.")
 	
+	print("  Llamando a queue_free()...")
 	queue_free()
+	print("  queue_free() ejecutado. (El objeto debería eliminarse al final del frame)")
+	print("=== COLLECT FIN ===")
 
 # Aplicar la escala desde la textura actual
 func apply_scale_from_texture() -> void:

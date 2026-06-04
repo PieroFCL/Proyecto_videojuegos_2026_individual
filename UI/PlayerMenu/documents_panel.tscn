@@ -1,0 +1,220 @@
+[gd_scene format=3 uid="uid://bu4ktk63k1521"]
+
+[ext_resource type="Script" uid="uid://bfyfkx7y2ybgd" path="res://UI/PlayerMenu/Scripts/documents_panel.gd" id="1_261oe"]
+[ext_resource type="FontFile" uid="uid://v7bjrdltf7gm" path="res://UI/PlayerMenu/Fonts/W95F.otf" id="2_0v4bb"]
+[ext_resource type="Texture2D" uid="uid://bqve6tbuwcbwl" path="res://UI/PlayerMenu/Styles/UI_TravelBook_Spritesheet01_BotonR.png" id="2_hxalg"]
+[ext_resource type="Texture2D" uid="uid://du6tehwrtcyna" path="res://UI/PlayerMenu/Styles/Style_DocumentsList.png" id="3_io00t"]
+[ext_resource type="Texture2D" uid="uid://djthhi38w5e0t" path="res://UI/PlayerMenu/Styles/Style_paper.png" id="3_j5gpm"]
+[ext_resource type="Texture2D" uid="uid://dght4wki4yhht" path="res://UI/PlayerMenu/Styles/UI_TravelBook_Slot01x.png" id="4_vrjik"]
+[ext_resource type="FontFile" uid="uid://dbqxwb67t0pdg" path="res://UI/PlayerMenu/Fonts/Millennium-Regular_0.ttf" id="5_hxalg"]
+[ext_resource type="Texture2D" uid="uid://cnwd8nqdqkjy7" path="res://UI/PlayerMenu/Styles/UI_TravelBook_Spritesheet01_BotonA.png" id="5_t4tqu"]
+[ext_resource type="Texture2D" uid="uid://cqemp2uiet5gw" path="res://UI/PlayerMenu/Styles/UI_TravelBook_Spritesheet01_BotonD.png" id="6_hxalg"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_261oe"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0v4bb"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_io00t"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[node name="DocumentsPanel" type="Panel" unique_id=678896486]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_261oe")
+script = ExtResource("1_261oe")
+
+[node name="InventaryIcoR" type="ColorRect" parent="." unique_id=1366662349]
+layout_mode = 0
+offset_left = 30.0
+offset_top = 7.0
+offset_right = 68.0
+offset_bottom = 16.0
+color = Color(0, 0, 0, 0.60784316)
+
+[node name="TextureRect" type="TextureRect" parent="InventaryIcoR" unique_id=201179630]
+layout_mode = 0
+offset_left = -14.0
+offset_top = -1.0
+offset_right = -2.0
+offset_bottom = 11.0
+texture = ExtResource("2_hxalg")
+
+[node name="InfoLabel" type="Label" parent="InventaryIcoR" unique_id=584685661]
+layout_mode = 0
+offset_right = 38.0
+offset_bottom = 9.0
+theme_override_fonts/font = ExtResource("2_0v4bb")
+theme_override_font_sizes/font_size = 9
+text = "Inventario"
+horizontal_alignment = 1
+
+[node name="HSplitContainer" type="HSplitContainer" parent="." unique_id=1971477671]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.03888889
+anchor_top = 0.083333336
+anchor_right = 0.9611111
+anchor_bottom = 0.95416665
+grow_horizontal = 2
+grow_vertical = 2
+dragging_enabled = false
+metadata/_edit_use_anchors_ = true
+
+[node name="ViewerContainer" type="Panel" parent="HSplitContainer" unique_id=1699557214]
+custom_minimum_size = Vector2(170, 200)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_0v4bb")
+
+[node name="ViewerTexture" type="TextureRect" parent="HSplitContainer/ViewerContainer" unique_id=1448011855]
+layout_mode = 0
+offset_right = 170.0
+offset_bottom = 210.0
+texture = ExtResource("3_j5gpm")
+
+[node name="DocViewer" type="RichTextLabel" parent="HSplitContainer/ViewerContainer" unique_id=374395003]
+custom_minimum_size = Vector2(150, 180)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.058823522
+anchor_top = 0.043062203
+anchor_right = 0.9411765
+anchor_bottom = 0.9282297
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_colors/default_color = Color(0.22312886, 0.09924065, 0, 1)
+theme_override_fonts/normal_font = ExtResource("5_hxalg")
+autowrap_mode = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="ScrollIndicator" type="TextureRect" parent="HSplitContainer/ViewerContainer" unique_id=1619872124]
+visible = false
+layout_mode = 0
+offset_left = 42.0
+offset_top = 202.0
+offset_right = 127.0
+offset_bottom = 217.0
+
+[node name="ColorRect" type="ColorRect" parent="HSplitContainer/ViewerContainer/ScrollIndicator" unique_id=949143374]
+layout_mode = 0
+offset_left = 27.0
+offset_top = 1.0
+offset_right = 84.0
+offset_bottom = 11.0
+color = Color(0, 0, 0, 0.7372549)
+
+[node name="TextureRect" type="TextureRect" parent="HSplitContainer/ViewerContainer/ScrollIndicator" unique_id=102001492]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 1.0
+offset_right = 11.0
+offset_bottom = 12.0
+texture = ExtResource("5_t4tqu")
+expand_mode = 1
+
+[node name="TextureRect2" type="TextureRect" parent="HSplitContainer/ViewerContainer/ScrollIndicator" unique_id=1956705850]
+layout_mode = 0
+offset_left = 14.0
+offset_top = 1.0
+offset_right = 24.0
+offset_bottom = 12.0
+texture = ExtResource("6_hxalg")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="HSplitContainer/ViewerContainer/ScrollIndicator" unique_id=235202930]
+layout_mode = 0
+offset_left = 28.0
+offset_top = 2.0
+offset_right = 83.0
+offset_bottom = 11.0
+theme_override_fonts/font = ExtResource("2_0v4bb")
+theme_override_font_sizes/font_size = 9
+text = "Desplazar texto"
+
+[node name="ListContainer" type="Panel" parent="HSplitContainer" unique_id=249448465]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_io00t")
+
+[node name="TextureContainer" type="TextureRect" parent="HSplitContainer/ListContainer" unique_id=1433915757]
+layout_mode = 0
+anchor_left = 0.04
+anchor_top = -0.05263158
+anchor_right = 1.04
+anchor_bottom = 1.0095694
+texture = ExtResource("3_io00t")
+metadata/_edit_use_anchors_ = true
+
+[node name="TextureContainerList" type="TextureRect" parent="HSplitContainer/ListContainer/TextureContainer" unique_id=1925486714]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 18.0
+offset_right = 147.0
+offset_bottom = 218.0
+texture = ExtResource("4_vrjik")
+
+[node name="TitleLabel" type="Label" parent="HSplitContainer/ListContainer/TextureContainer" unique_id=1854409941]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 3.0
+offset_right = 147.0
+offset_bottom = 17.0
+theme_override_colors/font_color = Color(0.34117648, 0.16470589, 0, 1)
+theme_override_colors/font_shadow_color = Color(0.27058825, 0.22745098, 0.21176471, 0.6627451)
+theme_override_fonts/font = ExtResource("2_0v4bb")
+theme_override_font_sizes/font_size = 13
+text = "DOCUMENTOS"
+horizontal_alignment = 1
+
+[node name="EmptyLabelContainer" type="Panel" parent="HSplitContainer/ListContainer" unique_id=1440391149]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.08
+anchor_top = 0.043062203
+anchor_right = 1.0066667
+anchor_bottom = 0.98086125
+metadata/_edit_use_anchors_ = true
+
+[node name="EmptyLabel" type="Label" parent="HSplitContainer/ListContainer/EmptyLabelContainer" unique_id=199349076]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -68.5
+offset_top = -5.261261
+offset_right = 68.5
+offset_bottom = 7.738739
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.3137255)
+theme_override_fonts/font = ExtResource("2_0v4bb")
+theme_override_font_sizes/font_size = 13
+text = "No hay documentos"
+horizontal_alignment = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="HSplitContainer/ListContainer" unique_id=959765799]
+custom_minimum_size = Vector2(135, 195)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.093333334
+anchor_top = 0.062200956
+anchor_right = 0.99333334
+anchor_bottom = 0.9952153
+grow_horizontal = 2
+grow_vertical = 2
+follow_focus = true
+horizontal_scroll_mode = 0
+metadata/_edit_use_anchors_ = true
+
+[node name="DocumentsList" type="VBoxContainer" parent="HSplitContainer/ListContainer/ScrollContainer" unique_id=677201378]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 2
+theme_override_constants/separation = -1

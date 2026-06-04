@@ -3,9 +3,9 @@
 [ext_resource type="Script" uid="uid://cbwjlh057dmnh" path="res://Player/Scripts/player.gd" id="1_rkbax"]
 [ext_resource type="Texture2D" uid="uid://dw4350fdyt2bp" path="res://Player/Sprites/Player_Skin_Desarmado_mitad2_240px_sheets.png" id="2_dkpta"]
 [ext_resource type="Texture2D" uid="uid://bn6efb80rmsf" path="res://Player/Sprites/idle_player_desarmado.png" id="2_rkbax"]
-[ext_resource type="FontFile" uid="uid://j5h4emiqd2n4" path="res://UI/PlayerMenu/Fonts/Minecraft.ttf" id="2_x3vf3"]
 [ext_resource type="Animation" uid="uid://cjc8lhii7s44k" path="res://Player/Animations/pickup_player_desarmado/pickup_player_desarmado.res" id="3_00tjw"]
 [ext_resource type="Texture2D" uid="uid://dk5pj8arbpuy8" path="res://UI/PlayerMenu/Styles/UI_TravelBook_Spritesheet01_BotonE.png" id="3_5htga"]
+[ext_resource type="FontFile" uid="uid://v7bjrdltf7gm" path="res://UI/PlayerMenu/Fonts/W95F.otf" id="3_dkpta"]
 [ext_resource type="Texture2D" uid="uid://csv526w7mdqqr" path="res://Player/Sprites/walk_player_desarmado.png" id="3_g1dw6"]
 [ext_resource type="Script" uid="uid://cx5byff762xrb" path="res://Player/Scripts/player_state_machine.gd" id="4_g6k8r"]
 [ext_resource type="Script" uid="uid://hldchtmcd8v1" path="res://Player/Scripts/state_idle.gd" id="5_boad6"]
@@ -744,16 +744,15 @@ shape = SubResource("CircleShape2D_vtle1")
 debug_color = Color(0.69011056, 0.49846363, 0, 0.41960785)
 
 [node name="InteractionIndicator" type="Label" parent="." unique_id=921007075]
-visible = false
 z_index = 4010
-offset_left = 6.0
-offset_top = -53.0
-offset_right = 66.0
-offset_bottom = -39.0
+offset_left = 4.0
+offset_top = -55.0
+offset_right = 64.0
+offset_bottom = -40.0
 scale = Vector2(0.5, 0.5)
 theme_override_constants/line_spacing = -1
-theme_override_fonts/font = ExtResource("2_x3vf3")
-theme_override_font_sizes/font_size = 13
+theme_override_fonts/font = ExtResource("3_dkpta")
+theme_override_font_sizes/font_size = 15
 text = "Recoger"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -763,11 +762,14 @@ metadata/_edit_use_anchors_ = true
 [node name="TextureRect" type="TextureRect" parent="InteractionIndicator" unique_id=622311708]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = -0.36666667
-anchor_top = -0.42857143
-anchor_right = -0.033333335
-anchor_bottom = 1.005291
+anchor_left = -0.33333334
+anchor_top = -0.28571433
+anchor_right = -0.13333334
+anchor_bottom = 0.42857143
+offset_right = 9.0
+offset_bottom = 10.0
 texture = ExtResource("3_5htga")
+expand_mode = 1
 metadata/_edit_use_anchors_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=964333059]

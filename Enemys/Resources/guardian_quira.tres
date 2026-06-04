@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="EnemyResource" format=3 uid="uid://5of8w0g4d663"]
+
+[ext_resource type="Texture2D" uid="uid://c0feub0n0viyd" path="res://Enemys/Sprites/Guardian_Quira/combat_guardian.png" id="1_am4hu"]
+[ext_resource type="Script" uid="uid://dspoy86m7cqr" path="res://Enemys/Scripts/enemy_resource.gd" id="1_bm6dm"]
+[ext_resource type="Script" uid="uid://djuqb6o63kdvl" path="res://Inventory/Scripts/skill_resource.gd" id="2_6j7j0"]
+[ext_resource type="Texture2D" uid="uid://er4nynr1msqn" path="res://Enemys/Sprites/Guardian_Quira/idle_guardian.png" id="4_4yecw"]
+[ext_resource type="Resource" uid="uid://buvuuchiwl5it" path="res://Inventory/Items/Skills/corte_sombrio.tres" id="4_6g5tk"]
+
+[resource]
+script = ExtResource("1_bm6dm")
+animation_prefix = "guardian_quira"
+id = "guardian_quira"
+display_name = "El Guardian"
+max_hp = 110
+attack = 34
+defense = 5
+speed = 10
+weakness = "magical"
+is_boss = true
+sprite_texture = ExtResource("4_4yecw")
+combat_texture = ExtResource("1_am4hu")
+combat_hframes = 4
+combat_scale = Vector2(0.55, 0.55)
+skills = Array[ExtResource("2_6j7j0")]([ExtResource("4_6g5tk")])
+metadata/_custom_type_script = "uid://dspoy86m7cqr"

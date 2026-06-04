@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="DocumentItem" format=3 uid="uid://b6lvcr7ldb656"]
+
+[ext_resource type="Texture2D" uid="uid://cviap58bg1n8m" path="res://Inventory/Items/Sprites/Documents/pag_aldren.png" id="1_421hk"]
+[ext_resource type="Script" uid="uid://nvxoy7pbn016" path="res://Inventory/Scripts/document_item.gd" id="2_qjhrj"]
+
+[resource]
+script = ExtResource("2_qjhrj")
+collection_id = "aldren"
+page_number = 40
+title = "Plaga alada"
+text_content = "Atrapado. El derrumbe me ha dejado aislado en esta sección inferior de las criptas. No puedo volver atrás, y hacia adelante solo hay oscuridad y ruidos que no reconozco. Al menos he encontrado un hueco donde guarecerme, aunque el aire huele a humedad y a algo podrido.
+
+Anoche vi a las criaturas. Les he llamado Diablillos Voladores, porque no encuentro mejor nombre. Son de piel verde pálida como la de los hongos, ojos rojos brillantes. Vuelan en grupo emitiendo chirridos y se lanzan sobre cualquier cosa que les llame la atención.
+
+Hace dos días me atacaron. No buscaban herirme, al menos no directamente. Se abalanzaron sobre mi hatillo, revolviendo todo, y comenzaron a llevarse lo que podían. Perdí la brújula, un trozo de tela y varias páginas de este diario. Logré espantarlos a manotazos, pero sé que volverán. Son cleptómanos insaciables. Les da igual un trozo de pan que un pergamino con escritura. Ahora escribo en hojas sueltas, temiendo que también se pierdan. 
+
+No tengo idea de que son. Simplemente aparecieron tras el derrumbe ¿Acaso vienen del otro mundo? ¿Son la primera avanzadilla de algo peor? Solo sé que tras el terremoto, el aire se siente pesado y he comenzado a presentar sintomas...
+
+— Aldren Valen, naturalista de la Orden."
+id = "documents/aldren_pagina_40"
+icon = ExtResource("1_421hk")
+category = "document"
+metadata/_custom_type_script = "uid://nvxoy7pbn016"

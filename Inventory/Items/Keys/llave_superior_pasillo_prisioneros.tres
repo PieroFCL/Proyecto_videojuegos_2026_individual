@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="KeyItem" format=3 uid="uid://cr1i5xnghryvm"]
+
+[ext_resource type="Texture2D" uid="uid://okqsqfv70vil" path="res://Inventory/Items/Sprites/Keys/llave_Prisioneros.png" id="1_2daj8"]
+[ext_resource type="Script" uid="uid://ce1wcsvqn87fb" path="res://Inventory/Scripts/key_item.gd" id="2_mw4q5"]
+
+[resource]
+script = ExtResource("2_mw4q5")
+id = "keys/llave_superior_pasillo_prisioneros"
+flavor_text = "Llave azulada y oxidado. Abre las puerta superior de acceso al pasillo de los prisioneros."
+display_name = "Llave Superior del Pasillo de Prisioneros "
+icon = ExtResource("1_2daj8")
+category = "key"
+metadata/_custom_type_script = "uid://ce1wcsvqn87fb"

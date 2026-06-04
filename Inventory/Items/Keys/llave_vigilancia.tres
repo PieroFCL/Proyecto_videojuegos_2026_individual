@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="KeyItem" format=3 uid="uid://bvqoe37tbyj0d"]
+
+[ext_resource type="Texture2D" uid="uid://bsayjak8ee4l6" path="res://Inventory/Items/Sprites/Keys/llave_Vigilancia.png" id="1_lgqqy"]
+[ext_resource type="Script" uid="uid://ce1wcsvqn87fb" path="res://Inventory/Scripts/key_item.gd" id="2_wjt0j"]
+
+[resource]
+script = ExtResource("2_wjt0j")
+id = "keys/llave_vigilancia"
+flavor_text = "Llave de hierro rojiza, forjada en los talleres inferiores de Alto Bastión. Permite acceder al puesto de Vigilancia Principal de la mazmorra."
+display_name = "Llave de Vigilancia"
+icon = ExtResource("1_lgqqy")
+category = "key"
+metadata/_custom_type_script = "uid://ce1wcsvqn87fb"

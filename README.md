@@ -8,9 +8,10 @@ El jugador despierta sin memoria en las profundidades del Alto Bastión, una for
 
 ## Capturas de pantalla
 
-![Vista de exploración](doc/screenshots/img1.png)
-
-![Vista de combate](doc/screenshots/img2.png)
+<p align="center">
+  <img src="Doc/Screenshots/img1.png" width="45%" />
+  <img src="Doc/Screenshots/img2.png" width="45%" />
+</p>
 
 ## Características principales
 
@@ -20,17 +21,19 @@ El jugador despierta sin memoria en las profundidades del Alto Bastión, una for
 - **Sistema de buffos y debuffos permanentes**: las habilidades pueden incrementar o reducir atributos (ataque, defensa, velocidad) de forma permanente durante todo el combate. Estos efectos son acumulables hasta un límite de dos aplicaciones por estadística.
 - **Objetos consumibles de mejora temporal**: pociones y elixires que restauran puntos de salud o aumentan temporalmente una estadística durante un solo turno.
 - **Menús navegables completamente por teclado**: el inventario, el equipo y los submenús de combate se controlan mediante las teclas WASD, E y Q, sin necesidad del ratón.
+- **Sistema de audio dinámico**: música de ambiente en mundo, música diferente para combate normal y contra jefes, música para el menú principal, y efecto de sonido al presionar teclas (excepto movimiento).
 - **Transiciones entre niveles con efecto de fundido**: los cambios de zona se acompañan de una animación de pantalla negra y se conserva la posición y orientación del jugador.
+- **Sistema de guardado y carga automática**: el juego guarda el estado completo (posición, estadísticas, inventario, documentos, mundo) al activar checkpoints. Al morir, se carga automáticamente el último checkpoint. También permite guardado manual en múltiples slots desde el menú principal.
 
 ## Controles
 
 | Acción | Teclas |
 |--------|--------|
-| Movimiento del personaje | WASD o flechas direccionales |
+| Movimiento del personaje | WASD |
 | Correr (sprint) | Shift izquierdo |
 | Interactuar o recoger | E |
 | Abrir o cerrar el menú de personaje | I |
-| Navegar por menús | WASD o flechas |
+| Navegar por menús | WASD |
 | Aceptar / Abrir | E |
 | Cancelar / Salir | Q |
 
@@ -52,11 +55,11 @@ La organización de directorios respeta una separación clara de responsabilidad
 - **Enemys**: almacena los recursos de estadísticas de los enemigos, sus scripts y los sprites específicos para el mundo y el combate.
 - **Inventory**: gestiona todo el sistema de objetos: clases base (ItemResource, ConsumableItem, WeaponItem, ArmorItem, SealItem y SkillResource), recursos de ejemplo y subcarpetas por tipo (armas, armaduras, sellos, consumibles, habilidades).
 - **Player**: contiene el nodo del jugador, su máquina de estados, animaciones y scripts de movimiento, interacción y cambio de sprites por equipamiento.
-- **Scripts_Global**: agrupa los autoloads (singletons) como CameraManager, LevelManager, InventoryManager, EquipmentManager, PlayerStats, CombatManager y otros.
+- **Scripts_Global**: agrupa los autoloads (singletons) como CameraManager, LevelManager, InventoryManager, EquipmentManager, PlayerStats, CombatManager, AudioManager, AutoSaveManager, InputLogger y otros.
 - **Shared_Assets**: reúne efectos visuales reutilizables (transición de fundido) y nodos de transición entre niveles (EntrancePoint, TransitionPoint).
-- **UI**: alberga el menú del personaje (player_menu) y sus recursos gráficos.
-- **WorldObjects**: define los objetos recolectables (CollectableItem) que aparecen en el mapa.
-- **Zones**: contiene los niveles (catacombs_01, catacombs_02) con sus respectivos tilemaps, puntos de entrada, transiciones y enemigos.
+- **UI**: alberga el menú principal (MainMenu), el menú del personaje (PlayerMenu) y sus recursos gráficos.
+- **WorldObjects**: define los objetos recolectables (CollectableItem), puertas (Door) y puntos de guardado (Checkpoint).
+- **Zones**: contiene los niveles (catacombs_01, catacombs_02, catacombs_03, dungeon_01) con sus respectivos tilemaps, puntos de entrada, transiciones, enemigos, objetos y puzzles.
 
 ## Estado actual del desarrollo
 
@@ -66,23 +69,34 @@ Hasta la fecha se han implementado los siguientes sistemas:
 - Gestión de mapas interconectados, transiciones entre ellos y límites de cámara.
 - Recolección de objetos y almacenamiento en inventario.
 - Sistema de estadísticas del jugador, equipamiento (arma, armadura, sello) y cálculo dinámico de atributos.
-- Menú del personaje navegable por teclado, con opciones de usar, equipar, soltar y describir objetos.
+- Menú del personaje navegable por teclado, con opciones de usar, equipar, soltar, describir objetos y cambiar a panel de documentos.
 - Cambio visual del personaje según la ropa y el arma equipadas en el mundo (capas superpuestas de sprites).
-- Enemigos estáticos con detección de colisión y capacidad de iniciar combate.
-- Combate por turnos aún en desarrollo, con menú principal (Habilidades, Bolsa, Estado), submenús de habilidades (cuadrícula de hasta cuatro habilidades), bolsa de consumibles (cuatro ranuras fijas) y estado (dos paneles informativos).
-- Habilidades derivadas del equipamiento (armas y sellos), incluyendo buffos y debuffos acumulables.
-- Consumibles de curación o mejora temporal de estadísticas (duración de un turno).
+- Enemigos con patrullaje, persecución y detección por área.
+- Combate por turnos completo:
+  - Menú principal (Habilidades, Bolsa, Estado) con navegación por teclado.
+  - Submenú de habilidades (cuadrícula de hasta cuatro habilidades derivadas del equipamiento).
+  - Submenú de bolsa (cuatro ranuras fijas para consumibles).
+  - Submenú de estado (muestra vida, estadísticas y efectos activos del jugador y del enemigo).
+  - Habilidades propias de enemigos (selección mediante IA ponderada).
+  - Sistema de buffos/debuffos permanentes y temporales.
+- Sistema de documentos narrativos: los documentos se guardan en un gestor independiente y se visualizan en una interfaz dedicada dentro del menú del personaje.
+- Sistema de persistencia del mundo (WorldStateManager): registra objetos recolectados, enemigos derrotados, puertas abiertas y eventos únicos.
+- Sistema de guardado y carga automática con checkpoints y múltiples slots (automático + tres manuales).
+- Menú principal (nueva partida, cargar partida, salir) con navegación por teclado y selección de slot.
+- Sistema de audio: música para menú, ambiente, combate normal, combate contra jefes, y efecto sonoro para teclas.
+- Cambio visual del jugador en combate según armadura y arma equipadas (sprites superpuestos).
+- Puzzle de puerta con llave y persistencia de apertura.
+- Sistema de fin de demostración con fade y retorno al menú principal (útil para prototipos).
 
-## Próximas funcionalidades
+## Funcionalidades a futuro (No se incorporará en el prototipo)
 
 Se prevé la incorporación de los siguientes sistemas en versiones futuras:
 
-- **Habilidades propias de enemigos**: cada criatura contará entre dos y cuatro habilidades (daño, mejora o debilitamiento) que ejecutará de forma autónoma durante su turno.
-- **Sistema de documentos narrativos**: se añadirá una sección de lectura en el menú del personaje, donde se almacenarán y podrán consultarse todos los documentos, diarios y bitácoras encontrados.
-- **Guardado y carga de partida**: se implementará persistencia completa del estado del mundo, inventario, equipamiento, progreso de NPCs y posición del jugador.
-- **Menú principal**: pantalla inicial con opciones de nueva partida, cargar partida y salir del juego.
-- **Puzzles ambientales**: mecanismos interactivos (palancas, plataformas móviles, acertijos de presión) que permiten desbloquear puertas, activar ascensores o revelar rutas secretas.
+- **Sistema de diálogos con NPCs**: interacción no jugable que entregue misiones, lore o desbloquee rutas.
+- **Drops de enemigos en el mundo**: al derrotar a un enemigo, puede aparecer un objeto recolectable en su lugar.
+- **Menú de pausa con opciones de guardado manual** y ajustes de configuración.
 - **Eventos y cinemáticas en el mapa** (Opcional): disparadores que al activarse pausan el control del jugador, mueven la cámara, muestran diálogos o inician combates automáticos.
+- **Puzzles ambientales adicionales**: palancas, plataformas, acertijos de presión y otros mecanismos interactivos.
 
 ## Créditos
 
@@ -96,4 +110,4 @@ Se prevé la incorporación de los siguientes sistemas en versiones futuras:
 
 ---
 
-© 2025 PieroFCL. Proyecto de desarrollo personal. 
+© 2025 PieroFCL. Proyecto de desarrollo personal.

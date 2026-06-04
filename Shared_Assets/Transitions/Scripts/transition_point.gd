@@ -1,13 +1,18 @@
 extends Area2D
 class_name TransitionPoint
 
-# Ruta de la escena destino (ej. "res://Catacombs/catacombs_02.tscn")
+# Ruta de la escena destino
 @export var target_level: String = ""
-
-# Nombre del EntrancePoint dentro del nivel destino (ej. "entrance_from_catacombs01")
+# Nombre del EntrancePoint dentro del nivel destino
 @export var target_entrance: String = "entrance_inicial"
 
-# Evita múltiples activaciones durante la transición
+# Cooldown global (en segundos) entre transiciones
+@export var global_cooldown: float = 1.5
+
+# Variable estática compartida por todos los TransitionPoint
+static var last_transition_time: float = 0.0
+
+# Variable local para evitar múltiples activaciones del mismo nodo
 var can_transition: bool = true
 
 func _ready() -> void:
@@ -15,17 +20,27 @@ func _ready() -> void:
 	collision_mask = 4  # Detecta al jugador (capa 3 -> valor 4)
 	print("TransitionPoint: ", name, " -> ", target_level, " : ", target_entrance)
 
-# Detecta colisión con el jugador y activa el teletransporte
 func _on_body_entered(body: Node2D) -> void:
 	if not can_transition:
 		return
-	if body.is_in_group("player") or body.name == "player":
-		can_transition = false
-		_teleport()
-		await get_tree().create_timer(0.5).timeout
-		can_transition = true
+	if not (body.is_in_group("player") or body.name == "player"):
+		return
+	
+	# Comprobar cooldown global
+	var current_time = Time.get_ticks_msec() / 1000.0
+	if current_time - last_transition_time < global_cooldown:
+		print("Transición bloqueada por cooldown global")
+		return
+	
+	# Activar transición
+	can_transition = false
+	last_transition_time = current_time
+	_teleport()
+	
+	# Reactivar el mismo nodo después de un breve tiempo (para que no se quede bloqueado)
+	await get_tree().create_timer(0.5).timeout
+	can_transition = true
 
-# Valida datos y llama al LevelManager para cambiar de nivel
 func _teleport() -> void:
 	if target_level.is_empty():
 		push_error("TransitionPoint: target_level no especificado.")

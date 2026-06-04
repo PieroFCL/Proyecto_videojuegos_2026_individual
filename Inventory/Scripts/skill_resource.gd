@@ -30,7 +30,7 @@ func get_formatted_text() -> String:
 	var line1 = name
 	var line2 = ""
 	if damage > 0:
-		line2 = "Daño: %d" % damage
+		line2 = "Daño Base: %d" % damage
 	elif effect_value != 0:
 		if effect_value > 0:
 			line2 = "%s +%d" % [effect_stat.capitalize(), effect_value]

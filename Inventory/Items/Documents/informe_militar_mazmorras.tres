@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="DocumentItem" format=3 uid="uid://dviccbuuhhomj"]
+
+[ext_resource type="Texture2D" uid="uid://ubwfh8fy24u3" path="res://Inventory/Items/Sprites/Documents/nota.png" id="1_frg33"]
+[ext_resource type="Script" uid="uid://nvxoy7pbn016" path="res://Inventory/Scripts/document_item.gd" id="1_nl68e"]
+
+[resource]
+script = ExtResource("1_nl68e")
+collection_id = "otros"
+page_number = 6
+title = "Informe militar"
+text_content = "El ala oeste de las mazmorras ha colapsado por completo tras el estallido. Los túneles que conectaban con los niveles superiores de salida del castillo quedaron sepultados bajo toneladas de piedra. No hay forma de abrir paso con los pocos efectivos que quedan.
+
+Los supervivientes somos una docena, la mayoría heridos o contaminados por esporas. El Comandante Quira desapareció durante el derrumbe. Se le da por muerto. La disciplina se mantiene por inercia, pero el pánico comienza a filtrarse entre las grietas. Nadie habla del ritual, aunque todos saben que algo ocurrió allí abajo.
+
+Se ha identificado un pasaje secundario en el extremo este de las catacumbas, ascendente hacia Los Caminos del Rey a través del antiguo Cuartel de Vigilancia. El tramo es angosto, aunque geológicamente estable a simple vista. Ordenaré la retirada de los supervivientes al anochecer. Si el camino se mantiene despejado, quizá algunos logren ver la luz de la superficie antes de que la corrupción nos alcance."
+id = "documents/informe_militar_mazmorras"
+icon = ExtResource("1_frg33")
+category = "document"
+metadata/_custom_type_script = "uid://nvxoy7pbn016"

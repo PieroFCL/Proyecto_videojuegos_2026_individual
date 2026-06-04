@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="DocumentItem" format=3 uid="uid://bravn1hgb74rk"]
+
+[ext_resource type="Texture2D" uid="uid://cviap58bg1n8m" path="res://Inventory/Items/Sprites/Documents/pag_aldren.png" id="1_htm2p"]
+[ext_resource type="Script" uid="uid://nvxoy7pbn016" path="res://Inventory/Scripts/document_item.gd" id="1_hued0"]
+
+[resource]
+script = ExtResource("1_hued0")
+collection_id = "aldren"
+page_number = 33
+title = "Prohibición de los Devotos"
+text_content = "Los Devotos de la Fe Verdadera han prohibido que continúe con mis investigaciones. Califican mis estudios de “herejía” y aseguran que la Estrigia es un castigo divino de Aysi, algo que no debe ser analizado sino purgado.
+
+Cada vez se convierten en un estorbo más obstinado. Me preocupa su ignorancia, su fervor ciego y esa peligrosa costumbre de llamar “voluntad de los dioses” a todo lo que no comprenden. Si la corona les otorga más poder, temo que el conocimiento termine siendo el primer sacrificio.
+
+— Aldren Valen, naturalista de la Orden."
+id = "documents/aldren_pagina_33"
+icon = ExtResource("1_htm2p")
+category = "document"
+metadata/_custom_type_script = "uid://nvxoy7pbn016"

@@ -7,6 +7,12 @@ class_name ArmorItem
 @export var walk_texture: Texture2D    # Sprite para estado Walk (13x4)
 @export var pickup_texture: Texture2D  # Sprite para estado Pickup (Vframes=1)
 
+# Propiedades para Combate
+@export var combat_texture: Texture2D
+@export var combat_hframes: int = 1
+@export var combat_vframes: int = 1
+@export var combat_scale: Vector2 = Vector2.ONE
+
 # Descripción para la UI del inventario
 func get_description() -> String:
 	if not flavor_text.is_empty():

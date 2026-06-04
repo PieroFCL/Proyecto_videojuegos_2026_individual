@@ -2,24 +2,28 @@ extends Node
 # Sistema central de estadísticas del jugador.
 
 # Valores base editables desde el inspector
-@export var base_max_hp: int = 100
-@export var base_attack: int = 30
-@export var base_defense: int = 10
-@export var base_speed: int = 10
+@export var base_max_hp: int = 90
+@export var base_attack: int = 12
+@export var base_defense: int = 4
+@export var base_speed: int = 8
 
 # Valores actuales calculados dinámicamente mediante getters
 var current_hp: int:
 	get:
 		return _current_hp
+		
 var current_max_hp: int:
 	get:
 		return _calculate_max_hp()
+		
 var current_attack: int:
 	get:
 		return _calculate_attack()
+		
 var current_defense: int:
 	get:
 		return _calculate_defense()
+		
 var current_speed: int:
 	get:
 		return _calculate_speed()
@@ -133,6 +137,7 @@ func take_damage(amount: int) -> void:
 # Devuelve las habilidades disponibles en combate (arma + sello, más patada dirigida si falta ofensiva)
 func get_combat_skills() -> Array[SkillResource]:
 	var skills: Array[SkillResource] = []
+	print("get_combat_skills: arma = ", equipped_weapon_id, " sello = ", equipped_seal_id)
 	
 	# Habilidades del arma equipada
 	if not equipped_weapon_id.is_empty():
@@ -141,6 +146,11 @@ func get_combat_skills() -> Array[SkillResource]:
 			var weapon_skills = weapon.get_skills()
 			if weapon_skills is Array:
 				skills.append_array(weapon_skills)
+				print("  Arma aporta ", weapon_skills.size(), " habilidades")
+			else:
+				print("  Arma: get_skills no devolvió un array")
+		else:
+			print("  Arma no encontrada o sin método get_skills")
 	
 	# Habilidades del sello equipado
 	if not equipped_seal_id.is_empty():
@@ -149,6 +159,11 @@ func get_combat_skills() -> Array[SkillResource]:
 			var seal_skills = seal.get_skills()
 			if seal_skills is Array:
 				skills.append_array(seal_skills)
+				print("  Sello aporta ", seal_skills.size(), " habilidades")
+			else:
+				print("  Sello: get_skills no devolvió un array")
+		else:
+			print("  Sello no encontrado o sin método get_skills")
 	
 	# Si no hay habilidades ofensivas (damage > 0) y el total es menor a 4, añadir Patada Dirigida
 	var has_offensive = false
@@ -160,8 +175,11 @@ func get_combat_skills() -> Array[SkillResource]:
 		var patada = load("res://Inventory/Items/Skills/patada_dirigida.tres")
 		if patada:
 			skills.append(patada)
+			print("  Añadida Patada Dirigida (por falta de ofensiva)")
+		else:
+			print("  ERROR: No se pudo cargar patada_dirigida.tres")
 	
-	# Limitar a 4 habilidades
+	print("get_combat_skills: total habilidades = ", skills.size())
 	return skills.slice(0, 4)
 
 # Cura al jugador sin exceder la vida máxima
@@ -189,7 +207,7 @@ func unequip_seal() -> void:
 	stats_changed.emit()
 
 # Añade un buff permanente acumulable (para habilidades de equipo)
-func add_permanent_buff(stat: String, value: int, max_stacks: int = 2) -> void:
+func add_permanent_buff(stat: String, value: int, max_stacks: int = 2) -> bool:
 	if not _permanent_buffs.has(stat):
 		_permanent_buffs[stat] = { "value": 0, "stacks": 0, "max_stacks": max_stacks }
 	var buff = _permanent_buffs[stat]
@@ -198,8 +216,10 @@ func add_permanent_buff(stat: String, value: int, max_stacks: int = 2) -> void:
 		buff.stacks += 1
 		stats_changed.emit()
 		print(" Buff permanente de ", stat, " +", value, " (", buff.stacks, "/", buff.max_stacks, ")")
+		return true
 	else:
 		print(" Ya se alcanzó el máximo de stacks para ", stat)
+		return false
 
 # Calcula el valor de un atributo con buffs permanentes y temporales
 func _get_stat_with_buffs(base: int, stat: String) -> int:
@@ -246,3 +266,48 @@ func get_stats_dictionary() -> Dictionary:
 		"defense": current_defense,
 		"speed": current_speed
 	}
+
+# Devuelve el ataque base sin buffs de combate (equipamiento sí incluido)
+func get_base_attack() -> int:
+	var value = base_attack
+	if not equipped_weapon_id.is_empty():
+		var weapon = InventoryManager.get_item_resource(equipped_weapon_id)
+		if weapon and weapon.has_method("get_attack_bonus"):
+			value += weapon.get_attack_bonus()
+	return value
+
+# Devuelve la defensa base sin buffs de combate
+func get_base_defense() -> int:
+	var value = base_defense
+	if not equipped_armor_id.is_empty():
+		var armor = InventoryManager.get_item_resource(equipped_armor_id)
+		if armor and armor.has_method("get_defense_bonus"):
+			value += armor.get_defense_bonus()
+	return value
+
+# Devuelve la velocidad base sin buffs de combate
+func get_base_speed() -> int:
+	return base_speed
+
+# Devuelve una copia de los buffs permanentes (para la UI)
+func get_permanent_buffs() -> Dictionary:
+	return _permanent_buffs.duplicate()
+
+func set_current_hp(new_hp: int) -> void:
+	_current_hp = clamp(new_hp, 0, current_max_hp)
+	health_changed.emit(_current_hp, current_max_hp)
+	print("DEBUG: set_current_hp -> nueva vida = ", _current_hp)
+
+func reset_to_default() -> void:
+	base_max_hp = 90
+	base_attack = 12
+	base_defense = 4
+	base_speed = 8
+	_current_hp = base_max_hp
+	equipped_weapon_id = ""
+	equipped_armor_id = ""
+	equipped_seal_id = ""
+	_permanent_buffs.clear()
+	_modifiers.clear()
+	stats_changed.emit()
+	health_changed.emit(_current_hp, current_max_hp)

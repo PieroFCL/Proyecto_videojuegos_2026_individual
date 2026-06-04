@@ -1,20 +1,25 @@
 [gd_scene format=3 uid="uid://bdfcbgen3e7vj"]
 
-[ext_resource type="Script" uid="uid://c1k32meskff0r" path="res://UI/PlayerMenu/player_menu.gd" id="1_kiu5l"]
+[ext_resource type="Script" uid="uid://c1k32meskff0r" path="res://UI/PlayerMenu/Scripts/player_menu.gd" id="1_kiu5l"]
 [ext_resource type="Texture2D" uid="uid://tm3qb7rue2ka" path="res://UI/PlayerMenu/Styles/Style_prime.png" id="2_ojmdt"]
-[ext_resource type="FontFile" uid="uid://j5h4emiqd2n4" path="res://UI/PlayerMenu/Fonts/Minecraft.ttf" id="3_46cxl"]
 [ext_resource type="Texture2D" uid="uid://byws81aqrd1lo" path="res://UI/PlayerMenu/Styles/UI_TravelBook_Slot01a.png" id="3_ca6qd"]
 [ext_resource type="Texture2D" uid="uid://cgq0muunj55yf" path="res://UI/PlayerMenu/Styles/UI_TravelBook_Spritesheet01_BotonQ.png" id="3_kp1f0"]
 [ext_resource type="Texture2D" uid="uid://dk5pj8arbpuy8" path="res://UI/PlayerMenu/Styles/UI_TravelBook_Spritesheet01_BotonE.png" id="4_c0oe0"]
 [ext_resource type="Texture2D" uid="uid://dght4wki4yhht" path="res://UI/PlayerMenu/Styles/UI_TravelBook_Slot01x.png" id="5_qh72u"]
+[ext_resource type="Script" uid="uid://d1ac6gltxxlja" path="res://UI/PlayerMenu/Scripts/equipment_panel.gd" id="6_oahw1"]
 [ext_resource type="Texture2D" uid="uid://vqg42fs5atxg" path="res://UI/PlayerMenu/Styles/ico velocidad.png" id="7_7natl"]
 [ext_resource type="Texture2D" uid="uid://dil66jlo51djd" path="res://UI/PlayerMenu/Styles/Style_Sheet_description.png" id="8_c0oe0"]
+[ext_resource type="Script" uid="uid://cjpvamfshgesr" path="res://UI/PlayerMenu/Scripts/stats_panel.gd" id="8_euvs4"]
 [ext_resource type="Texture2D" uid="uid://bqr3pwjj06qut" path="res://UI/PlayerMenu/Styles/ico defensa.png" id="8_v3mdn"]
 [ext_resource type="Texture2D" uid="uid://0p1ghfnmeaqo" path="res://UI/PlayerMenu/Styles/Separator.png" id="9_8omhr"]
 [ext_resource type="Texture2D" uid="uid://dy717foncirsq" path="res://UI/PlayerMenu/Styles/ico ataque.png" id="9_hmjak"]
 [ext_resource type="FontFile" uid="uid://v7bjrdltf7gm" path="res://UI/PlayerMenu/Fonts/W95F.otf" id="10_mwnew"]
 [ext_resource type="Texture2D" uid="uid://d1j8cpgvlq8" path="res://UI/PlayerMenu/Styles/ico vitalidad.png" id="10_qnw0r"]
+[ext_resource type="Script" uid="uid://c1xckmg8ki6eh" path="res://UI/PlayerMenu/Scripts/description_panel.gd" id="12_qnw0r"]
 [ext_resource type="Texture2D" uid="uid://hraopkgypa40" path="res://UI/PlayerMenu/Styles/Fondo_title_Description.png" id="12_v3mdn"]
+[ext_resource type="Script" uid="uid://cb2gm548ni61x" path="res://UI/PlayerMenu/Scripts/inventory_grid.gd" id="14_euvs4"]
+[ext_resource type="PackedScene" uid="uid://bu4ktk63k1521" path="res://UI/PlayerMenu/documents_panel.tscn" id="15_v3mdn"]
+[ext_resource type="Texture2D" uid="uid://bqve6tbuwcbwl" path="res://UI/PlayerMenu/Styles/UI_TravelBook_Spritesheet01_BotonR.png" id="16_hmjak"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ojmdt"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
@@ -41,12 +46,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0, 0, 0, 0.16862746)
-
-[node name="StylesMenu" type="TextureRect" parent="." unique_id=911087615]
-offset_right = 360.0
-offset_bottom = 240.0
-texture = ExtResource("2_ojmdt")
+color = Color(0, 0, 0, 0.57254905)
 
 [node name="MenuContainer" type="Panel" parent="." unique_id=1100979238]
 anchors_preset = 8
@@ -62,59 +62,66 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_ojmdt")
 
+[node name="StylesMenu" type="TextureRect" parent="MenuContainer" unique_id=911087615]
+layout_mode = 0
+offset_left = -10.0
+offset_top = -30.0
+offset_right = 350.0
+offset_bottom = 210.0
+texture = ExtResource("2_ojmdt")
+
 [node name="TextIndicaciones" type="Control" parent="MenuContainer" unique_id=1432084488]
 z_index = 1
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -1.0
-offset_top = 178.0
-offset_right = -128.0
-offset_bottom = 11.0
+anchor_left = 0.25
+anchor_top = 0.95555556
+anchor_right = 0.62647057
+anchor_bottom = 1.0166665
+offset_bottom = 1.5258789e-05
 grow_horizontal = 2
 grow_vertical = 2
+metadata/_edit_use_anchors_ = true
 
 [node name="ColorRect2" type="ColorRect" parent="MenuContainer/TextIndicaciones" unique_id=2022324573]
 z_index = -1
 layout_mode = 1
-offset_left = 169.0
+offset_left = 83.0
 offset_top = -1.0
-offset_right = 211.0
+offset_right = 125.0
 offset_bottom = 9.0
 color = Color(0, 0, 0, 0.45882353)
 
 [node name="ColorRect" type="ColorRect" parent="MenuContainer/TextIndicaciones" unique_id=1448602788]
 z_index = -1
 layout_mode = 0
-offset_left = 102.0
-offset_right = 139.0
+offset_left = 16.0
+offset_right = 53.0
 offset_bottom = 10.0
 color = Color(0, 0, 0, 0.45882353)
 
 [node name="Ico_Q" type="TextureRect" parent="MenuContainer/TextIndicaciones" unique_id=484769930]
 layout_mode = 0
-offset_left = 154.0
+offset_left = 68.0
 offset_top = -2.0
-offset_right = 166.0
+offset_right = 80.0
 offset_bottom = 11.0
 texture = ExtResource("3_kp1f0")
 
 [node name="Ico_E" type="TextureRect" parent="MenuContainer/TextIndicaciones" unique_id=2072919017]
 layout_mode = 0
-offset_left = 89.0
+offset_left = 3.0
 offset_top = -2.0
-offset_right = 101.0
+offset_right = 15.0
 offset_bottom = 11.0
 texture = ExtResource("4_c0oe0")
 
 [node name="TextCancelar" type="Label" parent="MenuContainer/TextIndicaciones" unique_id=931029955]
 layout_mode = 0
-offset_left = 170.0
-offset_right = 211.0
+offset_left = 84.0
+offset_right = 125.0
 offset_bottom = 10.0
 theme_override_constants/outline_size = 1
-theme_override_fonts/font = ExtResource("3_46cxl")
+theme_override_fonts/font = ExtResource("10_mwnew")
 theme_override_font_sizes/font_size = 9
 text = "Cancelar"
 horizontal_alignment = 1
@@ -122,12 +129,12 @@ vertical_alignment = 1
 
 [node name="TextAceptar" type="Label" parent="MenuContainer/TextIndicaciones" unique_id=806661670]
 layout_mode = 0
-offset_left = 103.0
+offset_left = 19.0
 offset_top = 1.0
-offset_right = 135.0
-offset_bottom = 9.0
+offset_right = 51.0
+offset_bottom = 10.0
 theme_override_constants/outline_size = 1
-theme_override_fonts/font = ExtResource("3_46cxl")
+theme_override_fonts/font = ExtResource("10_mwnew")
 theme_override_font_sizes/font_size = 9
 text = "Aceptar"
 horizontal_alignment = 1
@@ -141,6 +148,7 @@ anchor_right = 0.23529412
 anchor_bottom = 1.1111112
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_oytbl")
+script = ExtResource("6_oahw1")
 metadata/_edit_use_anchors_ = true
 
 [node name="TitleEquip" type="Label" parent="MenuContainer/EquipmentPanel" unique_id=580062729]
@@ -149,11 +157,15 @@ offset_left = 1.0
 offset_top = 4.0
 offset_right = 81.0
 offset_bottom = 16.0
-theme_override_colors/font_color = Color(0.34118596, 0.16608426, 1.4439226e-07, 1)
-theme_override_colors/font_shadow_color = Color(0.5019608, 0.5019608, 0.5019608, 1)
-theme_override_fonts/font = ExtResource("3_46cxl")
+theme_override_colors/font_color = Color(0.34117648, 0.16470589, 0, 1)
+theme_override_colors/font_shadow_color = Color(0.27058825, 0.22745098, 0.21176471, 0.6627451)
+theme_override_colors/font_outline_color = Color(0.34117648, 0.16470589, 0, 1)
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/outline_size = 0
+theme_override_constants/shadow_outline_size = 1
+theme_override_fonts/font = ExtResource("10_mwnew")
 theme_override_font_sizes/font_size = 13
-text = "Equipo"
+text = "EQUIPO"
 horizontal_alignment = 1
 
 [node name="WeaponSlot" type="Panel" parent="MenuContainer/EquipmentPanel" unique_id=478792075]
@@ -195,11 +207,13 @@ anchor_bottom = 0.089537725
 offset_bottom = -4.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.8235294)
-theme_override_constants/line_spacing = 0
-theme_override_constants/shadow_outline_size = 0
-theme_override_fonts/font = ExtResource("3_46cxl")
-theme_override_font_sizes/font_size = 8
-text = "Espada de Hierro Reforzada"
+theme_override_constants/line_spacing = -2
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/outline_size = 0
+theme_override_constants/shadow_outline_size = 1
+theme_override_fonts/font = ExtResource("10_mwnew")
+theme_override_font_sizes/font_size = 10
+text = "Arma"
 horizontal_alignment = 1
 autowrap_mode = 2
 metadata/_edit_use_anchors_ = true
@@ -236,14 +250,15 @@ expand_mode = 1
 [node name="ArmorLabel" type="Label" parent="MenuContainer/EquipmentPanel/ArmorSlot" unique_id=512678721]
 layout_mode = 0
 offset_left = -12.0
-offset_top = -12.0
+offset_top = -13.0
 offset_right = 58.0
+offset_bottom = -1.0
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.8235294)
-theme_override_constants/line_spacing = 0
-theme_override_constants/shadow_outline_size = 0
-theme_override_fonts/font = ExtResource("3_46cxl")
-theme_override_font_sizes/font_size = 8
-text = "Tunica de Cuero Reforzada"
+theme_override_constants/line_spacing = -2
+theme_override_constants/shadow_outline_size = 1
+theme_override_fonts/font = ExtResource("10_mwnew")
+theme_override_font_sizes/font_size = 10
+text = "Armadura"
 horizontal_alignment = 1
 autowrap_mode = 2
 
@@ -276,15 +291,15 @@ expand_mode = 1
 layout_mode = 1
 anchors_preset = -1
 anchor_left = -0.26666668
-anchor_top = -0.31046227
+anchor_top = -0.2437956
 anchor_right = 1.2888889
-anchor_bottom = 0.08896095
+anchor_bottom = -0.021573385
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.8235294)
-theme_override_constants/line_spacing = -3
-theme_override_constants/shadow_outline_size = 0
-theme_override_fonts/font = ExtResource("3_46cxl")
-theme_override_font_sizes/font_size = 8
-text = "Objeto Mágico"
+theme_override_constants/line_spacing = -2
+theme_override_constants/shadow_outline_size = 1
+theme_override_fonts/font = ExtResource("10_mwnew")
+theme_override_font_sizes/font_size = 10
+text = "Sello"
 horizontal_alignment = 1
 autowrap_mode = 2
 metadata/_edit_use_anchors_ = true
@@ -299,6 +314,7 @@ anchor_bottom = 0.9166667
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_46cxl")
+script = ExtResource("8_euvs4")
 metadata/_edit_use_anchors_ = true
 
 [node name="TitleStats" type="Label" parent="MenuContainer/StatsPanel" unique_id=339345168]
@@ -307,12 +323,12 @@ offset_left = 4.9999924
 offset_top = 8.0
 offset_right = 114.99999
 offset_bottom = 24.0
-theme_override_colors/font_color = Color(1.2856232, 1.2856232, 1.2856232, 1)
+theme_override_colors/font_color = Color(1.286, 1.286, 1.286, 1)
 theme_override_colors/font_shadow_color = Color(0.5019608, 0.5019608, 0.5019608, 0.4745098)
-theme_override_constants/outline_size = 1
-theme_override_fonts/font = ExtResource("3_46cxl")
-theme_override_font_sizes/font_size = 13
-text = "Estadisticas"
+theme_override_constants/shadow_outline_size = 1
+theme_override_fonts/font = ExtResource("10_mwnew")
+theme_override_font_sizes/font_size = 12
+text = "ESTADISTICAS"
 horizontal_alignment = 1
 
 [node name="Labels" type="Control" parent="MenuContainer/StatsPanel" unique_id=1954517129]
@@ -323,10 +339,10 @@ layout_mode = 0
 offset_left = 20.999992
 offset_top = 42.0
 offset_right = 55.999992
-offset_bottom = 50.0
+offset_bottom = 51.0
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("3_46cxl")
-theme_override_font_sizes/font_size = 8
+theme_override_fonts/font = ExtResource("10_mwnew")
+theme_override_font_sizes/font_size = 9
 text = "Vitalidad"
 
 [node name="Ataque" type="Label" parent="MenuContainer/StatsPanel/Labels" unique_id=381656062]
@@ -336,19 +352,19 @@ offset_top = 55.0
 offset_right = 60.999992
 offset_bottom = 63.0
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("3_46cxl")
-theme_override_font_sizes/font_size = 8
+theme_override_fonts/font = ExtResource("10_mwnew")
+theme_override_font_sizes/font_size = 9
 text = "Ataque"
 
 [node name="Defensa" type="Label" parent="MenuContainer/StatsPanel/Labels" unique_id=995215112]
 layout_mode = 0
-offset_left = 20.999992
+offset_left = 21.999992
 offset_top = 69.0
-offset_right = 60.999992
-offset_bottom = 77.0
+offset_right = 61.999992
+offset_bottom = 78.0
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("3_46cxl")
-theme_override_font_sizes/font_size = 8
+theme_override_fonts/font = ExtResource("10_mwnew")
+theme_override_font_sizes/font_size = 9
 text = "Defensa"
 
 [node name="Velocidad" type="Label" parent="MenuContainer/StatsPanel/Labels" unique_id=1345132100]
@@ -358,8 +374,8 @@ offset_top = 83.0
 offset_right = 64.99999
 offset_bottom = 91.0
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("3_46cxl")
-theme_override_font_sizes/font_size = 8
+theme_override_fonts/font = ExtResource("10_mwnew")
+theme_override_font_sizes/font_size = 9
 text = "Velocidad"
 
 [node name="ico Velocidad" type="TextureRect" parent="MenuContainer/StatsPanel/Labels" unique_id=1878353633]
@@ -405,21 +421,21 @@ offset_top = 40.0
 offset_right = 102.99999
 offset_bottom = 52.0
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("3_46cxl")
-theme_override_font_sizes/font_size = 8
+theme_override_fonts/font = ExtResource("10_mwnew")
+theme_override_font_sizes/font_size = 9
 text = "100/100"
 horizontal_alignment = 3
 vertical_alignment = 1
 
 [node name="AttackValue" type="Label" parent="MenuContainer/StatsPanel" unique_id=2023221027]
 layout_mode = 0
-offset_left = 97.99999
+offset_left = 94.99999
 offset_top = 52.0
-offset_right = 107.99999
+offset_right = 104.99999
 offset_bottom = 66.0
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("3_46cxl")
-theme_override_font_sizes/font_size = 8
+theme_override_fonts/font = ExtResource("10_mwnew")
+theme_override_font_sizes/font_size = 9
 text = "00"
 horizontal_alignment = 3
 vertical_alignment = 1
@@ -431,8 +447,8 @@ offset_top = 66.0
 offset_right = 107.99999
 offset_bottom = 80.0
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("3_46cxl")
-theme_override_font_sizes/font_size = 8
+theme_override_fonts/font = ExtResource("10_mwnew")
+theme_override_font_sizes/font_size = 9
 text = "00"
 horizontal_alignment = 3
 vertical_alignment = 1
@@ -444,8 +460,8 @@ offset_top = 80.0
 offset_right = 107.99999
 offset_bottom = 94.0
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("3_46cxl")
-theme_override_font_sizes/font_size = 8
+theme_override_fonts/font = ExtResource("10_mwnew")
+theme_override_font_sizes/font_size = 9
 text = "00"
 horizontal_alignment = 3
 vertical_alignment = 1
@@ -465,15 +481,19 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_qh72u")
 metadata/_edit_use_anchors_ = true
 
 [node name="TitleInventory" type="Label" parent="MenuContainer/InventoryPanel" unique_id=651132384]
-layout_mode = 0
-anchor_top = 0.013636363
-anchor_right = 1.0
-anchor_bottom = 0.08636363
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.009090909
+anchor_right = 0.98333335
+anchor_bottom = 0.08181818
 theme_override_colors/font_color = Color(0.34117648, 0.16470589, 0, 1)
-theme_override_colors/font_shadow_color = Color(0.5019608, 0.5019608, 0.5019608, 1)
-theme_override_fonts/font = ExtResource("3_46cxl")
+theme_override_colors/font_shadow_color = Color(0.27058825, 0.22745098, 0.21176471, 0.6627451)
+theme_override_colors/font_outline_color = Color(0.34117648, 0.16470589, 0, 1)
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/shadow_outline_size = 1
+theme_override_fonts/font = ExtResource("10_mwnew")
 theme_override_font_sizes/font_size = 13
-text = "Inventario"
+text = "INVENTARIO"
 horizontal_alignment = 1
 metadata/_edit_use_anchors_ = true
 
@@ -494,12 +514,15 @@ anchor_right = 0.94333297
 anchor_bottom = 0.9636363
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/h_separation = 2
+mouse_filter = 2
+theme_override_constants/h_separation = 1
 theme_override_constants/v_separation = 2
 columns = 3
+script = ExtResource("14_euvs4")
 metadata/_edit_use_anchors_ = true
 
 [node name="EmptyInventoryPanel" type="Panel" parent="MenuContainer/InventoryPanel" unique_id=540863500]
+visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.041667275
@@ -522,8 +545,9 @@ offset_bottom = 2.0000076
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.3137255)
-theme_override_fonts/font = ExtResource("3_46cxl")
-theme_override_font_sizes/font_size = 12
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("10_mwnew")
+theme_override_font_sizes/font_size = 13
 text = "Vacio"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -532,6 +556,7 @@ vertical_alignment = 1
 oversampling_override = 1.0
 
 [node name="DescriptionPanel" type="Panel" parent="." unique_id=878397073]
+visible = false
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -544,6 +569,7 @@ offset_bottom = 78.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_8omhr")
+script = ExtResource("12_qnw0r")
 
 [node name="ContainerDescripcion" type="TextureRect" parent="DescriptionPanel" unique_id=1223283199]
 layout_mode = 1
@@ -573,13 +599,13 @@ metadata/_edit_use_anchors_ = true
 [node name="Title_TextDescription" type="Label" parent="DescriptionPanel/ContainerDescripcion/Title_Description" unique_id=776903412]
 layout_mode = 1
 anchors_preset = -1
-anchor_top = 0.1469697
+anchor_top = 0.080303036
 anchor_right = 1.0
 anchor_bottom = 1.0803031
 theme_override_colors/font_color = Color(0.34117648, 0.16470589, 0, 1)
-theme_override_colors/font_shadow_color = Color(0.5019608, 0.5019608, 0.5019608, 1)
-theme_override_fonts/font = ExtResource("3_46cxl")
-theme_override_font_sizes/font_size = 13
+theme_override_colors/font_shadow_color = Color(0.27058825, 0.22745098, 0.21176471, 0.6627451)
+theme_override_fonts/font = ExtResource("10_mwnew")
+theme_override_font_sizes/font_size = 15
 text = "Descripciones"
 horizontal_alignment = 1
 metadata/_edit_use_anchors_ = true
@@ -610,6 +636,25 @@ texture = ExtResource("9_8omhr")
 expand_mode = 1
 metadata/_edit_use_anchors_ = true
 
+[node name="ColorRect" type="ColorRect" parent="DescriptionPanel/ContainerDescripcion" unique_id=1438267034]
+z_index = 1
+layout_mode = 0
+offset_left = 76.0
+offset_top = 157.0
+offset_right = 122.0
+offset_bottom = 167.0
+color = Color(0, 0, 0, 0.93333334)
+
+[node name="Label" type="Label" parent="DescriptionPanel/ContainerDescripcion/ColorRect" unique_id=1455674122]
+layout_mode = 0
+offset_left = -1.0
+offset_top = 1.0
+offset_right = 45.0
+offset_bottom = 10.0
+theme_override_fonts/font = ExtResource("10_mwnew")
+theme_override_font_sizes/font_size = 8
+text = "Cerrar Descrip."
+
 [node name="TitleItemLabel" type="RichTextLabel" parent="DescriptionPanel" unique_id=1621168119]
 layout_mode = 1
 anchors_preset = -1
@@ -618,9 +663,11 @@ anchor_top = 0.08227848
 anchor_right = 0.95528454
 anchor_bottom = 0.23417722
 theme_override_colors/default_color = Color(0.3254902, 0, 0, 1)
-theme_override_colors/font_shadow_color = Color(0.5019608, 0.5019608, 0.5019608, 0.654902)
-theme_override_fonts/normal_font = ExtResource("3_46cxl")
-theme_override_font_sizes/normal_font_size = 10
+theme_override_colors/font_outline_color = Color(0.3254902, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0.27058825, 0.22745098, 0.21176471, 0.7137255)
+theme_override_constants/line_separation = -2
+theme_override_fonts/normal_font = ExtResource("10_mwnew")
+theme_override_font_sizes/normal_font_size = 12
 theme_override_font_sizes/bold_font_size = 12
 theme_override_font_sizes/bold_italics_font_size = 12
 theme_override_font_sizes/italics_font_size = 12
@@ -651,12 +698,52 @@ metadata/_edit_use_anchors_ = true
 [node name="StatsItemLabel" type="RichTextLabel" parent="DescriptionPanel" unique_id=2083425561]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.06910569
+anchor_left = 0.05284553
 anchor_top = 0.778481
-anchor_right = 0.9308943
+anchor_right = 0.91463417
 anchor_bottom = 0.9113924
 theme_override_colors/default_color = Color(0.44705883, 0.17254902, 0.1254902, 1)
-theme_override_fonts/normal_font = ExtResource("3_46cxl")
-theme_override_font_sizes/normal_font_size = 7
+theme_override_colors/font_outline_color = Color(0.44705883, 0.17254902, 0.1254902, 1)
+theme_override_constants/outline_size = 1
+theme_override_fonts/normal_font = ExtResource("10_mwnew")
+theme_override_font_sizes/normal_font_size = 9
 horizontal_alignment = 1
 metadata/_edit_use_anchors_ = true
+
+[node name="DocumentTexture_IcoR" type="TextureRect" parent="." unique_id=793599748]
+offset_left = 124.0
+offset_top = 219.0
+offset_right = 191.0
+offset_bottom = 231.0
+
+[node name="ColorRect" type="ColorRect" parent="DocumentTexture_IcoR" unique_id=1395449482]
+z_index = -1
+layout_mode = 0
+offset_left = 16.0
+offset_right = 62.0
+offset_bottom = 10.0
+color = Color(0, 0, 0, 0.45882353)
+
+[node name="Ico_R" type="TextureRect" parent="DocumentTexture_IcoR" unique_id=1860591905]
+layout_mode = 0
+offset_left = 3.0
+offset_top = -2.0
+offset_right = 15.0
+offset_bottom = 11.0
+texture = ExtResource("16_hmjak")
+
+[node name="TextDocument" type="Label" parent="DocumentTexture_IcoR" unique_id=339152603]
+layout_mode = 0
+offset_left = 17.0
+offset_top = 1.0
+offset_right = 62.0
+offset_bottom = 10.0
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource("10_mwnew")
+theme_override_font_sizes/font_size = 9
+text = "Documentos"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="DocumentsPanel" parent="." unique_id=678896486 instance=ExtResource("15_v3mdn")]
+visible = false

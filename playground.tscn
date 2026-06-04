@@ -1,16 +1,32 @@
 [gd_scene format=3 uid="uid://dr1urouya5pe8"]
 
+[ext_resource type="Script" uid="uid://bdfe1s6r0rkcd" path="res://playground.gd" id="1_o00ia"]
 [ext_resource type="PackedScene" uid="uid://ckpsj0kqddqcm" path="res://Player/player.tscn" id="1_rupst"]
-[ext_resource type="PackedScene" uid="uid://drpsf6feul0yb" path="res://Zones/Catacombs/catacombs_01.tscn" id="2_wt17y"]
 [ext_resource type="PackedScene" uid="uid://bdfcbgen3e7vj" path="res://UI/PlayerMenu/player_menu.tscn" id="3_m8u5f"]
+[ext_resource type="PackedScene" uid="uid://dqc7qauf671sa" path="res://UI/PlayerHPBarUI/player_hp_bar_ui.tscn" id="4_is3ju"]
 
 [node name="Playground" type="Node2D" unique_id=850884725]
+script = ExtResource("1_o00ia")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1337313348]
+z_index = -10
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -373.0
+offset_top = -219.0
+offset_right = 360.0
+offset_bottom = 240.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
 
 [node name="player" parent="." unique_id=1535638044 groups=["player"] instance=ExtResource("1_rupst")]
 
 [node name="CurrentLevelContainer" type="Node2D" parent="." unique_id=1156069102]
 
-[node name="Catacombs_01" parent="CurrentLevelContainer" unique_id=921565638 instance=ExtResource("2_wt17y")]
-
 [node name="PlayerMenu" parent="." unique_id=1161744381 instance=ExtResource("3_m8u5f")]
+visible = false
+
+[node name="PlayerHPBarUI" parent="." unique_id=1172175879 instance=ExtResource("4_is3ju")]
 visible = false

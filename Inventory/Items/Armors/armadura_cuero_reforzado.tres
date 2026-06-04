@@ -1,5 +1,6 @@
 [gd_resource type="Resource" script_class="ArmorItem" format=3 uid="uid://cwt8qkd5q7uwk"]
 
+[ext_resource type="Texture2D" uid="uid://cnws3b2tgatvu" path="res://Player/Sprites/Armors/Player_combat_Armadura_ cuero_reforzado.png" id="1_o7s7q"]
 [ext_resource type="Texture2D" uid="uid://cfdqc53f6t4wa" path="res://Inventory/Items/Sprites/Armors/armadura_cuero_reforzado.png" id="1_rtpoe"]
 [ext_resource type="Texture2D" uid="uid://dny6mfj874rmg" path="res://Player/Sprites/Armors/idle_armadura_cuero_reforzado.png" id="2_ttv7w"]
 [ext_resource type="Texture2D" uid="uid://d4bnackvwmepk" path="res://Player/Sprites/Armors/pickup_armadura_cuero_reforzado.png" id="3_5k65y"]
@@ -8,10 +9,12 @@
 
 [resource]
 script = ExtResource("4_0cusf")
-defense_bonus = 15
+defense_bonus = 6
 idle_texture = ExtResource("2_ttv7w")
 walk_texture = ExtResource("5_ilag4")
 pickup_texture = ExtResource("3_5k65y")
+combat_texture = ExtResource("1_o7s7q")
+combat_hframes = 3
 id = "armors/armadura_cuero_reforzado"
 flavor_text = "Capa interna de la armadura de un caballero, curtida con grasa y sal para resistir el roce del metal."
 display_name = "Armadura de Cuero Reforzado"

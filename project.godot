@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="La Ultima Fosa"
-run/main_scene="res://playground.tscn"
+run/main_scene="uid://c3drqdfd07eyo"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
 
@@ -24,6 +24,11 @@ Events="*uid://b74tunoi5fcs1"
 PlayerStats="*uid://dw0nvdm0n5ymg"
 EquipmentManager="*uid://brdjg5kj4fbr3"
 CombatManager="*uid://bfxx1x36pec14"
+DocumentManager="*uid://dtmxwoiv6doc3"
+WorldStateManager="*uid://1dw2epgpwbo3"
+AutosaveManager="*uid://cd0lq1xrxx8kj"
+InputLogger="*uid://bfjbltmhquuvr"
+AudioManager="*uid://cxu4476lq6s3w"
 
 [display]
 
@@ -41,68 +46,379 @@ import/blender/enabled=false
 
 ui_accept={
 "deadzone": 0.5,
-"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":4194309,"physical_keycode":0,"key_label":0,"unicode":0,"location":0,"echo":false,"script":null)
-, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":4194310,"physical_keycode":0,"key_label":0,"unicode":0,"location":0,"echo":false,"script":null)
-, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":32,"physical_keycode":0,"key_label":0,"unicode":32,"location":0,"echo":false,"script":null)
-, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":69,"key_label":0,"unicode":101,"location":0,"echo":false,"script":null)
-]
+"events": []
+}
+ui_select={
+"deadzone": 0.5,
+"events": []
 }
 ui_cancel={
 "deadzone": 0.5,
-"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":4194305,"physical_keycode":0,"key_label":0,"unicode":0,"location":0,"echo":false,"script":null)
-, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":81,"key_label":0,"unicode":113,"location":0,"echo":false,"script":null)
-]
+"events": []
+}
+ui_close_dialog={
+"deadzone": 0.5,
+"events": []
+}
+ui_close_dialog.macos={
+"deadzone": 0.5,
+"events": []
+}
+ui_focus_next={
+"deadzone": 0.5,
+"events": []
+}
+ui_focus_prev={
+"deadzone": 0.5,
+"events": []
 }
 ui_left={
 "deadzone": 0.5,
-"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":4194319,"physical_keycode":0,"key_label":0,"unicode":0,"location":0,"echo":false,"script":null)
-, Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"button_index":13,"pressure":0.0,"pressed":false,"script":null)
-, Object(InputEventJoypadMotion,"resource_local_to_scene":false,"resource_name":"","device":-1,"axis":0,"axis_value":-1.0,"script":null)
-, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":65,"key_label":0,"unicode":97,"location":0,"echo":false,"script":null)
-]
+"events": []
 }
 ui_right={
 "deadzone": 0.5,
-"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":4194321,"physical_keycode":0,"key_label":0,"unicode":0,"location":0,"echo":false,"script":null)
-, Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"button_index":14,"pressure":0.0,"pressed":false,"script":null)
-, Object(InputEventJoypadMotion,"resource_local_to_scene":false,"resource_name":"","device":-1,"axis":0,"axis_value":1.0,"script":null)
-, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":68,"key_label":0,"unicode":100,"location":0,"echo":false,"script":null)
-]
+"events": []
 }
 ui_up={
 "deadzone": 0.5,
-"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":4194320,"physical_keycode":0,"key_label":0,"unicode":0,"location":0,"echo":false,"script":null)
-, Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"button_index":11,"pressure":0.0,"pressed":false,"script":null)
-, Object(InputEventJoypadMotion,"resource_local_to_scene":false,"resource_name":"","device":-1,"axis":1,"axis_value":-1.0,"script":null)
-, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":87,"key_label":0,"unicode":119,"location":0,"echo":false,"script":null)
-]
+"events": []
 }
 ui_down={
 "deadzone": 0.5,
-"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":4194322,"physical_keycode":0,"key_label":0,"unicode":0,"location":0,"echo":false,"script":null)
-, Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"button_index":12,"pressure":0.0,"pressed":false,"script":null)
-, Object(InputEventJoypadMotion,"resource_local_to_scene":false,"resource_name":"","device":-1,"axis":1,"axis_value":1.0,"script":null)
-, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":83,"key_label":0,"unicode":115,"location":0,"echo":false,"script":null)
-]
+"events": []
 }
-up={
+ui_page_up={
+"deadzone": 0.5,
+"events": []
+}
+ui_page_down={
+"deadzone": 0.5,
+"events": []
+}
+ui_home={
+"deadzone": 0.5,
+"events": []
+}
+ui_end={
+"deadzone": 0.5,
+"events": []
+}
+ui_cut={
+"deadzone": 0.5,
+"events": []
+}
+ui_copy={
+"deadzone": 0.5,
+"events": []
+}
+ui_focus_mode={
+"deadzone": 0.5,
+"events": []
+}
+ui_paste={
+"deadzone": 0.5,
+"events": []
+}
+ui_undo={
+"deadzone": 0.5,
+"events": []
+}
+ui_redo={
+"deadzone": 0.5,
+"events": []
+}
+ui_text_completion_query={
+"deadzone": 0.5,
+"events": []
+}
+ui_text_completion_accept={
+"deadzone": 0.5,
+"events": []
+}
+ui_text_completion_replace={
+"deadzone": 0.5,
+"events": []
+}
+ui_text_newline={
+"deadzone": 0.5,
+"events": []
+}
+ui_text_newline_blank={
+"deadzone": 0.5,
+"events": []
+}
+ui_text_newline_above={
+"deadzone": 0.5,
+"events": []
+}
+ui_text_indent={
+"deadzone": 0.5,
+"events": []
+}
+ui_text_dedent={
+"deadzone": 0.5,
+"events": []
+}
+ui_text_backspace={
+"deadzone": 0.5,
+"events": []
+}
+ui_text_backspace_word={
+"deadzone": 0.5,
+"events": []
+}
+ui_text_backspace_word.macos={
+"deadzone": 0.5,
+"events": []
+}
+ui_text_backspace_all_to_left.macos={
+"deadzone": 0.5,
+"events": []
+}
+ui_text_delete={
+"deadzone": 0.5,
+"events": []
+}
+ui_text_delete_word={
+"deadzone": 0.5,
+"events": []
+}
+ui_text_delete_word.macos={
+"deadzone": 0.5,
+"events": []
+}
+ui_text_delete_all_to_right.macos={
+"deadzone": 0.5,
+"events": []
+}
+ui_text_caret_left={
+"deadzone": 0.5,
+"events": []
+}
+ui_text_caret_word_left={
+"deadzone": 0.5,
+"events": []
+}
+ui_text_caret_word_left.macos={
+"deadzone": 0.5,
+"events": []
+}
+ui_text_caret_right={
+"deadzone": 0.5,
+"events": []
+}
+ui_text_caret_word_right={
+"deadzone": 0.5,
+"events": []
+}
+ui_text_caret_word_right.macos={
+"deadzone": 0.5,
+"events": []
+}
+ui_text_caret_up={
+"deadzone": 0.5,
+"events": []
+}
+ui_text_caret_down={
+"deadzone": 0.5,
+"events": []
+}
+ui_text_caret_line_start={
+"deadzone": 0.5,
+"events": []
+}
+ui_text_caret_line_start.macos={
+"deadzone": 0.5,
+"events": []
+}
+ui_text_caret_line_end={
+"deadzone": 0.5,
+"events": []
+}
+ui_text_caret_line_end.macos={
+"deadzone": 0.5,
+"events": []
+}
+ui_text_caret_page_up={
+"deadzone": 0.5,
+"events": []
+}
+ui_text_caret_page_down={
+"deadzone": 0.5,
+"events": []
+}
+ui_text_caret_document_start={
+"deadzone": 0.5,
+"events": []
+}
+ui_text_caret_document_start.macos={
+"deadzone": 0.5,
+"events": []
+}
+ui_text_caret_document_end={
+"deadzone": 0.5,
+"events": []
+}
+ui_text_caret_document_end.macos={
+"deadzone": 0.5,
+"events": []
+}
+ui_text_caret_add_below={
+"deadzone": 0.5,
+"events": []
+}
+ui_text_caret_add_below.macos={
+"deadzone": 0.5,
+"events": []
+}
+ui_text_caret_add_above={
+"deadzone": 0.5,
+"events": []
+}
+ui_text_caret_add_above.macos={
+"deadzone": 0.5,
+"events": []
+}
+ui_text_scroll_up={
+"deadzone": 0.5,
+"events": []
+}
+ui_text_scroll_up.macos={
+"deadzone": 0.5,
+"events": []
+}
+ui_text_scroll_down={
+"deadzone": 0.5,
+"events": []
+}
+ui_text_scroll_down.macos={
+"deadzone": 0.5,
+"events": []
+}
+ui_text_select_all={
+"deadzone": 0.5,
+"events": []
+}
+ui_text_select_word_under_caret={
+"deadzone": 0.5,
+"events": []
+}
+ui_text_select_word_under_caret.macos={
+"deadzone": 0.5,
+"events": []
+}
+ui_text_add_selection_for_next_occurrence={
+"deadzone": 0.5,
+"events": []
+}
+ui_text_skip_selection_for_next_occurrence={
+"deadzone": 0.5,
+"events": []
+}
+ui_text_clear_carets_and_selection={
+"deadzone": 0.5,
+"events": []
+}
+ui_text_toggle_insert_mode={
+"deadzone": 0.5,
+"events": []
+}
+ui_menu={
+"deadzone": 0.5,
+"events": []
+}
+ui_text_submit={
+"deadzone": 0.5,
+"events": []
+}
+ui_unicode_start={
+"deadzone": 0.5,
+"events": []
+}
+ui_graph_duplicate={
+"deadzone": 0.5,
+"events": []
+}
+ui_graph_delete={
+"deadzone": 0.5,
+"events": []
+}
+ui_graph_follow_left={
+"deadzone": 0.5,
+"events": []
+}
+ui_graph_follow_left.macos={
+"deadzone": 0.5,
+"events": []
+}
+ui_graph_follow_right={
+"deadzone": 0.5,
+"events": []
+}
+ui_graph_follow_right.macos={
+"deadzone": 0.5,
+"events": []
+}
+ui_filedialog_delete={
+"deadzone": 0.5,
+"events": []
+}
+ui_filedialog_up_one_level={
+"deadzone": 0.5,
+"events": []
+}
+ui_filedialog_refresh={
+"deadzone": 0.5,
+"events": []
+}
+ui_filedialog_show_hidden={
+"deadzone": 0.5,
+"events": []
+}
+ui_filedialog_find={
+"deadzone": 0.5,
+"events": []
+}
+ui_filedialog_focus_path={
+"deadzone": 0.5,
+"events": []
+}
+ui_filedialog_focus_path.macos={
+"deadzone": 0.5,
+"events": []
+}
+ui_swap_input_direction={
+"deadzone": 0.5,
+"events": []
+}
+ui_colorpicker_delete_preset={
+"deadzone": 0.5,
+"events": []
+}
+move_up={
 "deadzone": 0.2,
 "events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":87,"key_label":0,"unicode":119,"location":0,"echo":false,"script":null)
 ]
 }
-down={
+move_down={
 "deadzone": 0.2,
 "events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":83,"key_label":0,"unicode":115,"location":0,"echo":false,"script":null)
 ]
 }
-left={
+move_left={
 "deadzone": 0.2,
 "events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":65,"key_label":0,"unicode":97,"location":0,"echo":false,"script":null)
 ]
 }
-right={
+move_right={
 "deadzone": 0.2,
 "events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":68,"key_label":0,"unicode":100,"location":0,"echo":false,"script":null)
+]
+}
+sprint={
+"deadzone": 0.2,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":4194325,"key_label":0,"unicode":0,"location":0,"echo":false,"script":null)
 ]
 }
 interact={
@@ -110,29 +426,14 @@ interact={
 "events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":69,"key_label":0,"unicode":101,"location":0,"echo":false,"script":null)
 ]
 }
-debug_inventory={
+inventory={
 "deadzone": 0.2,
 "events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":73,"key_label":0,"unicode":105,"location":0,"echo":false,"script":null)
 ]
 }
-debug_stats={
+toggle_inventory={
 "deadzone": 0.2,
-"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":75,"key_label":0,"unicode":107,"location":0,"echo":false,"script":null)
-]
-}
-toggle_menu={
-"deadzone": 0.2,
-"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":73,"key_label":0,"unicode":105,"location":0,"echo":false,"script":null)
-]
-}
-menu_accept={
-"deadzone": 0.2,
-"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":69,"key_label":0,"unicode":101,"location":0,"echo":false,"script":null)
-]
-}
-menu_cancel={
-"deadzone": 0.2,
-"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":81,"key_label":0,"unicode":113,"location":0,"echo":false,"script":null)
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":82,"key_label":0,"unicode":114,"location":0,"echo":false,"script":null)
 ]
 }
 menu_left={
@@ -155,14 +456,20 @@ menu_down={
 "events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":83,"key_label":0,"unicode":115,"location":0,"echo":false,"script":null)
 ]
 }
-sprint={
+menu_accept={
 "deadzone": 0.2,
-"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":4194325,"key_label":0,"unicode":0,"location":0,"echo":false,"script":null)
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":69,"key_label":0,"unicode":101,"location":0,"echo":false,"script":null)
 ]
 }
-attack={
+menu_cancel={
 "deadzone": 0.2,
-"events": []
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":81,"key_label":0,"unicode":113,"location":0,"echo":false,"script":null)
+]
+}
+ui_debug={
+"deadzone": 0.2,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":4194334,"key_label":0,"unicode":0,"location":0,"echo":false,"script":null)
+]
 }
 
 [layer_names]

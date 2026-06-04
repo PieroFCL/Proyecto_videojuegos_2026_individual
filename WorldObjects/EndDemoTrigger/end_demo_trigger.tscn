@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://7tq1xseuq5k3"]
+
+[ext_resource type="Script" uid="uid://rqi8cixntdft" path="res://end_demo_trigger.gd" id="1_c3t7f"]
+[ext_resource type="FontFile" uid="uid://v7bjrdltf7gm" path="res://UI/PlayerMenu/Fonts/W95F.otf" id="2_agxyh"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c3t7f"]
+size = Vector2(34, 20)
+
+[node name="EndDemoTrigger" type="Area2D" unique_id=904027813]
+z_index = 4030
+collision_mask = 5
+script = ExtResource("1_c3t7f")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1580548330]
+shape = SubResource("RectangleShape2D_c3t7f")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=803285672]
+
+[node name="OverlayBackground" type="ColorRect" parent="CanvasLayer" unique_id=365437041]
+modulate = Color(1, 1, 1, 0)
+z_index = 4010
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="OverlayText" type="Label" parent="CanvasLayer" unique_id=1563929253]
+modulate = Color(1, 1, 1, 0)
+z_index = 4010
+offset_right = 360.0
+offset_bottom = 239.0
+theme_override_fonts/font = ExtResource("2_agxyh")
+text = "Fin de Versión Funcional"
+horizontal_alignment = 1
+vertical_alignment = 1

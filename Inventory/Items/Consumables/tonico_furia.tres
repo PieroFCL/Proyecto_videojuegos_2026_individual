@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="ConsumableItem" format=3 uid="uid://5cs4kge2iu2a"]
+
+[ext_resource type="Texture2D" uid="uid://blppx7n4yc7fu" path="res://Inventory/Items/Sprites/Consumables/tonico_furia.png" id="1_m15kk"]
+[ext_resource type="Script" uid="uid://chjtq178eihql" path="res://Inventory/Scripts/consumable_item.gd" id="1_ov5nd"]
+
+[resource]
+script = ExtResource("1_ov5nd")
+effect_stat = "attack"
+effect_value = 15
+id = "consumables/tonico_furia"
+flavor_text = "Brebaje rojizo que libera la ira interior. Aumenta el ataque del consumidor durante un breve tiempo, pero puede nublar el juicio."
+display_name = "Tonico de Furia"
+icon = ExtResource("1_m15kk")
+category = "consumable"
+metadata/_custom_type_script = "uid://chjtq178eihql"

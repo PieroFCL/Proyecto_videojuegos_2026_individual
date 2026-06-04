@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="SkillResource" format=3 uid="uid://d4ncqshk1jjwh"]
+
+[ext_resource type="Script" uid="uid://djuqb6o63kdvl" path="res://Inventory/Scripts/skill_resource.gd" id="1_suv50"]
+
+[resource]
+script = ExtResource("1_suv50")
+id = "skills/postura_cerrada"
+name = "Postura Cerrada"
+type = "buff"
+effect_stat = "defense"
+effect_value = 8
+metadata/_custom_type_script = "uid://djuqb6o63kdvl"

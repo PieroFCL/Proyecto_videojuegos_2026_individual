@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="KeyItem" format=3 uid="uid://bs6qroe7atmjm"]
+
+[ext_resource type="Texture2D" uid="uid://b2f00v4ub4pks" path="res://Inventory/Items/Sprites/Keys/llave_Catacombs_N1.png" id="1_12scv"]
+[ext_resource type="Script" uid="uid://ce1wcsvqn87fb" path="res://Inventory/Scripts/key_item.gd" id="1_w5xsd"]
+
+[resource]
+script = ExtResource("1_w5xsd")
+id = "keys/llave_catacumbas_inferior"
+flavor_text = "Llave de hierro oxidada, utilizada para asegurar puerta del nivel Inferior de las Catacumbas de Alto Bastión."
+display_name = "Llave de las Catacumbas N1"
+icon = ExtResource("1_12scv")
+category = "key"
+metadata/_custom_type_script = "uid://ce1wcsvqn87fb"

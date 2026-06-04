@@ -1,0 +1,200 @@
+[gd_scene format=3 uid="uid://t3me5dee40av"]
+
+[ext_resource type="FontFile" uid="uid://v7bjrdltf7gm" path="res://UI/PlayerMenu/Fonts/W95F.otf" id="1_p2v0s"]
+[ext_resource type="Script" uid="uid://jgqpkvgb0sim" path="res://UI/PlayerMenu/Scripts/ItemActionMenu.gd" id="1_tub22"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mcskl"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tub22"]
+bg_color = Color(0.28627452, 0.2, 0.2, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.28627452, 0.2, 0.2, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nbymt"]
+bg_color = Color(0.3882353, 0.29411766, 0.2784314, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.3882353, 0.29411766, 0.2784314, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vkt6w"]
+bg_color = Color(0.3882353, 0.29411766, 0.2784314, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.3882353, 0.29411766, 0.2784314, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nom4q"]
+bg_color = Color(0.28627452, 0.2, 0.2, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.28627452, 0.2, 0.2, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_44jog"]
+bg_color = Color(0.3882353, 0.29411766, 0.2784314, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.3882353, 0.29411766, 0.2784314, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g3cs6"]
+bg_color = Color(0.3882353, 0.29411766, 0.2784314, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.3882353, 0.29411766, 0.2784314, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5faik"]
+bg_color = Color(0.28627452, 0.2, 0.2, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.28627452, 0.2, 0.2, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jvy4l"]
+bg_color = Color(0.3882353, 0.29411766, 0.2784314, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.3882353, 0.29411766, 0.2784314, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lsqkk"]
+bg_color = Color(0.3882353, 0.29411766, 0.2784314, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.3882353, 0.29411766, 0.2784314, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wr3f6"]
+bg_color = Color(0.28627452, 0.2, 0.2, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.28627452, 0.2, 0.2, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xnxnl"]
+bg_color = Color(0.3882353, 0.29411766, 0.2784314, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.3882353, 0.29411766, 0.2784314, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_braex"]
+bg_color = Color(0.3882353, 0.29411766, 0.2784314, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.3882353, 0.29411766, 0.2784314, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cre7x"]
+bg_color = Color(0.28627452, 0.2, 0.2, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.28627452, 0.2, 0.2, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8jty1"]
+bg_color = Color(0.3882353, 0.29411766, 0.2784314, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.3882353, 0.29411766, 0.2784314, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pi7dh"]
+bg_color = Color(0.3882353, 0.29411766, 0.2784314, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.3882353, 0.29411766, 0.2784314, 1)
+
+[node name="ItemActionMenu" type="Panel" unique_id=1661882874]
+custom_minimum_size = Vector2(60, 50)
+offset_right = 60.0
+offset_bottom = 56.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_mcskl")
+script = ExtResource("1_tub22")
+
+[node name="ButtonContainer" type="VBoxContainer" parent="." unique_id=2050812416]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/separation = 0
+
+[node name="DescripcionButton" type="Button" parent="ButtonContainer" unique_id=755829929]
+layout_mode = 2
+mouse_filter = 2
+theme_override_colors/font_focus_color = Color(0.9490196, 0.9490196, 0.3254902, 1)
+theme_override_fonts/font = ExtResource("1_p2v0s")
+theme_override_font_sizes/font_size = 8
+theme_override_styles/normal = SubResource("StyleBoxFlat_tub22")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_nbymt")
+theme_override_styles/focus = SubResource("StyleBoxFlat_vkt6w")
+text = "Descripción"
+
+[node name="UsarButton" type="Button" parent="ButtonContainer" unique_id=1102422997]
+layout_mode = 2
+mouse_filter = 2
+theme_override_colors/font_focus_color = Color(0.9490196, 0.9490196, 0.3254902, 1)
+theme_override_fonts/font = ExtResource("1_p2v0s")
+theme_override_font_sizes/font_size = 8
+theme_override_styles/normal = SubResource("StyleBoxFlat_nom4q")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_44jog")
+theme_override_styles/focus = SubResource("StyleBoxFlat_g3cs6")
+text = "Usar"
+
+[node name="EquiparButton" type="Button" parent="ButtonContainer" unique_id=1249380268]
+layout_mode = 2
+mouse_filter = 2
+theme_override_colors/font_focus_color = Color(0.9490196, 0.9490196, 0.3254902, 1)
+theme_override_fonts/font = ExtResource("1_p2v0s")
+theme_override_font_sizes/font_size = 8
+theme_override_styles/normal = SubResource("StyleBoxFlat_5faik")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_jvy4l")
+theme_override_styles/focus = SubResource("StyleBoxFlat_lsqkk")
+text = "Equipar"
+
+[node name="DesequiparButton" type="Button" parent="ButtonContainer" unique_id=102370158]
+layout_mode = 2
+mouse_filter = 2
+theme_override_colors/font_focus_color = Color(0.9490196, 0.9490196, 0.3254902, 1)
+theme_override_fonts/font = ExtResource("1_p2v0s")
+theme_override_font_sizes/font_size = 8
+theme_override_styles/normal = SubResource("StyleBoxFlat_wr3f6")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_xnxnl")
+theme_override_styles/focus = SubResource("StyleBoxFlat_braex")
+text = "Desequipar"
+
+[node name="SoltarButton" type="Button" parent="ButtonContainer" unique_id=1967445349]
+layout_mode = 2
+mouse_filter = 2
+theme_override_colors/font_focus_color = Color(0.9490196, 0.9490196, 0.3254902, 1)
+theme_override_fonts/font = ExtResource("1_p2v0s")
+theme_override_font_sizes/font_size = 8
+theme_override_styles/normal = SubResource("StyleBoxFlat_cre7x")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_8jty1")
+theme_override_styles/focus = SubResource("StyleBoxFlat_pi7dh")
+text = "Soltar"

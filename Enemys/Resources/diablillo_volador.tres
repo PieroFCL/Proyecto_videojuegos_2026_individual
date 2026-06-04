@@ -3,15 +3,20 @@
 [ext_resource type="Texture2D" uid="uid://dedfqgma2uvsj" path="res://Enemys/Sprites/Diablillo_volador/combat_diablillo_volador.png" id="1_hbqi6"]
 [ext_resource type="Script" uid="uid://dspoy86m7cqr" path="res://Enemys/Scripts/enemy_resource.gd" id="1_hgvii"]
 [ext_resource type="Texture2D" uid="uid://bilqj3ly6iidw" path="res://Enemys/Sprites/Diablillo_volador/idle_walk_diablillo3.png" id="2_rf4ex"]
+[ext_resource type="Script" uid="uid://djuqb6o63kdvl" path="res://Inventory/Scripts/skill_resource.gd" id="3_1gvk0"]
+[ext_resource type="Resource" uid="uid://1rec5hix8231" path="res://Inventory/Items/Skills/tajo_aereo.tres" id="4_2wsae"]
+[ext_resource type="Resource" uid="uid://d31ktuoual84j" path="res://Inventory/Items/Skills/barrera_putrefacta.tres" id="6_m8v3h"]
 
 [resource]
 script = ExtResource("1_hgvii")
 id = "diablillo_volador"
 display_name = "Diablillo Volador"
-max_hp = 100
-attack = 45
-defense = 20
+max_hp = 30
+attack = 18
+defense = 4
+speed = 10
+sprite_texture = ExtResource("2_rf4ex")
 combat_texture = ExtResource("1_hbqi6")
 combat_scale = Vector2(0.5, 0.5)
-sprite_texture = ExtResource("2_rf4ex")
+skills = Array[ExtResource("3_1gvk0")]([ExtResource("4_2wsae"), ExtResource("6_m8v3h")])
 metadata/_custom_type_script = "uid://dspoy86m7cqr"

@@ -5,7 +5,7 @@
 
 [resource]
 script = ExtResource("2_rvie0")
-hp_restore = 40
+hp_restore = 35
 id = "consumables/elixir_vigor"
 flavor_text = "Líquido turbio y amargo elaborado por los últimos herbolarios de Corona del Valle."
 display_name = "Elixir de Vigor"

@@ -47,19 +47,18 @@ func _ready() -> void:
 	interaction_area.area_entered.connect(_on_interaction_area_entered)
 	interaction_area.area_exited.connect(_on_interaction_area_exited)
 	interaction_indicator.visible = false
-	print("Indicador [E] oculto")
 	
 	# Conectar señales de equipamiento y estado
 	EquipmentManager.equipment_changed.connect(_on_equipment_changed)
 	state_machine.state_changed.connect(_on_state_changed)
-
+	
 # Procesa entrada de movimiento y sincroniza sprites de equipamiento
 func _process(_delta: float) -> void:
 	if not can_act or get_tree().paused:
 		return
 	direction = Vector2(
-		Input.get_axis("left", "right"),
-		Input.get_axis("up", "down")
+		Input.get_axis("move_left", "move_right"),
+		Input.get_axis("move_up", "move_down")
 	)
 
 	if direction.length() > 1.0:
@@ -84,7 +83,6 @@ func _process(_delta: float) -> void:
 func set_can_act(value: bool) -> void:
 	can_act = value
 	if not can_act:
-		# Opcional: detener cualquier movimiento actual
 		velocity = Vector2.ZERO
 	print("Jugador can_act = ", can_act)
 
@@ -108,6 +106,8 @@ func get_cardinal(dir: Vector2) -> Vector2:
 # Aplica movimiento y colisiones, verifica no estar en combate
 func _physics_process(_delta: float) -> void:
 	if not can_act or get_tree().paused:
+		velocity = Vector2.ZERO
+		move_and_slide()
 		return
 	move_and_slide()
 
@@ -190,11 +190,8 @@ func _update_armor_visual(state_name: String) -> void:
 	if current_armor_id.is_empty() or not armor_textures.has(state_name):
 		armor_sprite.texture = null
 	else:
-		var tex = armor_textures[state_name]
-		var _old_frame = armor_sprite.frame_coords
-		armor_sprite.texture = tex
-		if armor_sprite.texture:
-			armor_sprite.texture = armor_sprite.texture
+		# MODIFICADO: eliminada línea redundante
+		armor_sprite.texture = armor_textures[state_name]
 
 # Ajusta los vframes de las capas de equipamiento según el estado del jugador
 func _on_state_changed(state_name: String) -> void:
@@ -231,22 +228,100 @@ func _on_interaction_area_exited(area: Area2D) -> void:
 
 # Maneja entrada de teclado (interacción y depuración)
 func _input(event: InputEvent) -> void:
+	if event is InputEventMouseMotion:
+		return
+	print("PLAYER _input: event=", event.as_text(), " can_act=", can_act, " paused=", get_tree().paused)
 	if not can_act or get_tree().paused:
 		return
-	
+		
 	if event.is_action_pressed("interact"):
+		print("PLAYER: interact detectado, current_collectable=", current_collectable)
 		print("Tecla E presionada, objeto: ", current_collectable)
 		if current_collectable:
 			print("Iniciar recogida")
-			var pickup_state = $StateMachine/Pickup as StatePickup
+			var pickup_state = $StateMachine.get_node_or_null("Pickup") as StatePickup
 			if pickup_state:
 				pickup_state.collectable = current_collectable
 				state_machine.change_state(pickup_state)
 			else:
 				print("ERROR: Estado Pickup no encontrado")
-	
-	# Depuración opcional (puedes eliminarlas o mantenerlas)
-	if event.is_action_pressed("debug_inventory"):
-		print("Inventario: ", InventoryManager.get_all_items())
-	if event.is_action_pressed("debug_stats"):
-		print(PlayerStats.get_stats_dictionary())
+		# Marcar evento como manejado
+		var viewport = get_viewport()
+		if viewport:
+			viewport.set_input_as_handled()
+
+# --- TEXTURAS DE COMBATE PARA EQUIPAMIENTO ---
+func get_combat_body_texture() -> Texture2D:
+	return combat_texture   # la textura base del personaje desarmado
+
+func get_combat_armor_texture() -> Texture2D:
+	if current_armor_id.is_empty():
+		print("[Player] get_combat_armor_texture: No hay armadura equipada")
+		return null
+	var armor = InventoryManager.get_item_resource(current_armor_id)
+	if armor and "combat_texture" in armor:
+		print("[Player] Armadura equipada: ", current_armor_id, " combat_texture = ", armor.combat_texture)
+		return armor.combat_texture
+	else:
+		print("[Player] ERROR: No se pudo obtener la textura de combate de la armadura: ", current_armor_id)
+		return null
+
+func get_combat_armor_hframes() -> int:
+	if current_armor_id.is_empty():
+		return 3
+	var armor = InventoryManager.get_item_resource(current_armor_id)
+	if armor and "combat_hframes" in armor:
+		return armor.combat_hframes
+	return 3
+
+func get_combat_armor_vframes() -> int:
+	if current_armor_id.is_empty():
+		return 1
+	var armor = InventoryManager.get_item_resource(current_armor_id)
+	if armor and "combat_vframes" in armor:
+		return armor.combat_vframes
+	return 1
+
+func get_combat_armor_scale() -> Vector2:
+	if current_armor_id.is_empty():
+		return Vector2(0.47, 0.47)
+	var armor = InventoryManager.get_item_resource(current_armor_id)
+	if armor and "combat_scale" in armor:
+		return armor.combat_scale
+	return Vector2(0.47, 0.47)
+
+func get_combat_weapon_texture() -> Texture2D:
+	if current_weapon_id.is_empty():
+		print("[Player] get_combat_weapon_texture: No hay arma equipada")
+		return null
+	var weapon = InventoryManager.get_item_resource(current_weapon_id)
+	if weapon and "combat_texture" in weapon:
+		print("[Player] Arma equipada: ", current_weapon_id, " combat_texture = ", weapon.combat_texture)
+		return weapon.combat_texture
+	else:
+		print("[Player] ERROR: No se pudo obtener la textura de combate del arma: ", current_weapon_id)
+		return null
+
+func get_combat_weapon_hframes() -> int:
+	if current_weapon_id.is_empty():
+		return 3
+	var weapon = InventoryManager.get_item_resource(current_weapon_id)
+	if weapon and weapon.has_method("get_combat_hframes"):
+		return weapon.combat_hframes
+	return 3
+
+func get_combat_weapon_vframes() -> int:
+	if current_weapon_id.is_empty():
+		return 1
+	var weapon = InventoryManager.get_item_resource(current_weapon_id)
+	if weapon and weapon.has_method("get_combat_vframes"):
+		return weapon.combat_vframes
+	return 1
+
+func get_combat_weapon_scale() -> Vector2:
+	if current_weapon_id.is_empty():
+		return Vector2(0.47, 0.47)
+	var weapon = InventoryManager.get_item_resource(current_weapon_id)
+	if weapon and weapon.has_method("get_combat_scale"):
+		return weapon.combat_scale
+	return Vector2(0.47, 0.47)

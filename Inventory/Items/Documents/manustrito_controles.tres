@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="DocumentItem" format=3 uid="uid://bm26po3li6500"]
+
+[ext_resource type="Script" uid="uid://nvxoy7pbn016" path="res://Inventory/Scripts/document_item.gd" id="2_1rvtt"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_v4e8t"]
+load_path = "res://.godot/imported/manustrito_inicial.png-37917c88550eef62b6ccc37cab93be52.ctex"
+
+[resource]
+script = ExtResource("2_1rvtt")
+collection_id = "otros"
+title = "Manuscrito - Controles"
+text_content = "... no sé quién lea esto. Pero si aún puede mover los dedos, escuche.
+
+Desplácese con cautela [ A S W D ], pero si le persiguen, Corra [ Shift ] y aléjese.
+No dude en tomar [ E ] lo que encuentre: las provisiones no crecen en los escombros.
+Organice bien sus Equipo [ I ]. Revise bien. A veces una poción rota le puede salvar de la muerte.
+
+El resto... lo descubrirá usted mismo. Yo ya no puedo seguir escribiendo. 
+
+— Testarudo"
+id = "documents/manustrito_controles"
+icon = SubResource("CompressedTexture2D_v4e8t")
+category = "document"
+metadata/_custom_type_script = "uid://nvxoy7pbn016"

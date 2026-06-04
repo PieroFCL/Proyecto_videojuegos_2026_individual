@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="DocumentItem" format=3 uid="uid://c6x2o5rn4yauc"]
+
+[ext_resource type="Texture2D" uid="uid://cviap58bg1n8m" path="res://Inventory/Items/Sprites/Documents/pag_aldren.png" id="1_lwfr2"]
+[ext_resource type="Script" uid="uid://nvxoy7pbn016" path="res://Inventory/Scripts/document_item.gd" id="2_18ld4"]
+
+[resource]
+script = ExtResource("2_18ld4")
+collection_id = "aldren"
+page_number = 8
+title = "Primeros Informes"
+text_content = "He recorrido los asentamientos de los valles occidentales durante tres semanas, y lo que he visto no encaja con nada de lo que sé.
+
+Los primeros informes llegaron con los carros de sal: granjeros con manchas en la piel, de un tono verdoso-negruzco, como moho que brotara desde dentro. Al principio pensé en una infección por hongos, de esas que atacan a los que trabajan el lino en lugares húmedos. Pero los síntomas no corresponden. No pican, no duelen, ni supuran. Solo se extienden. Lentamente. Y la gente se vuelve rara. Distraída. Algunos hablan de ruidos que no existen, otros se quedan mirando al vacío.
+
+Lo peor, lo que me quita el sueño, es la dirección.
+
+La plaga se mueve contra el viento. Contra el viento, ¿entienden? He cartografiado los brotes. Comenzaron en las granjas más alejadas, cerca del bosque de Hayel. Luego, una tras otra, aparecieron más al este. No sigue los cursos de agua, no se desplaza con las caravanas ni con los animales. Parece dirigirse hacia la capital. Como si supiera adónde ir.
+
+He registrado las manchas, he tomado muestras, he hablado con sanadores y curanderos. Nadie ha visto nada igual.
+
+Los Devotos ya andan predicando que es un castigo de Aysi. La reina dice que son exageraciones. Pero yo solo sé que hoy, al examinar a un niño de seis años con manchas en el brazo, he visto en sus ojos un brillo que no era humano.
+
+— Aldren Valen, naturalista de la Orden."
+id = "documents/aldren_pagina_8"
+icon = ExtResource("1_lwfr2")
+category = "document"
+metadata/_custom_type_script = "uid://nvxoy7pbn016"

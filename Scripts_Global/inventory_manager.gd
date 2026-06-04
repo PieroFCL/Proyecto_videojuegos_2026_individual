@@ -6,16 +6,28 @@ var _items: Dictionary = {}
 # Señal emitida cada vez que cambia el inventario
 signal inventory_changed(item_id: String, new_quantity: int)
 
-# Añade una cantidad de un objeto
-func add_item(item_id: String, amount: int = 1) -> void:
+# Añade una cantidad de un objeto. Retorna true si se pudo, false si no.
+func add_item(item_id: String, amount: int = 1) -> bool:
 	if amount <= 0:
-		return
+		return false
+	
+	var item_res = get_item_resource(item_id)
+	if not item_res:
+		print("Error: No se pudo cargar el recurso para ", item_id)
+		return false
+	
+	# Redirigir documentos al DocumentManager
+	if item_res is DocumentItem:
+		return DocumentManager.add_document(item_res)
+	
+	# Lógica original para objetos normales (armas, consumibles, etc.)
 	if _items.has(item_id):
 		_items[item_id] += amount
 	else:
 		_items[item_id] = amount
 	inventory_changed.emit(item_id, _items[item_id])
 	print("Inventario +", amount, " ", item_id, " → ", _items[item_id])
+	return true
 
 # Elimina una cantidad. Devuelve true si se pudo.
 func remove_item(item_id: String, amount: int = 1) -> bool:
@@ -51,3 +63,11 @@ func get_item_resource(item_id: String) -> ItemResource:
 		var res = load(path)
 		return res
 	return null
+
+func restore_from_dict(data: Dictionary) -> void:
+	_items = data.duplicate()
+	inventory_changed.emit("", 0)  # señal genérica de cambio
+
+func clear() -> void:
+	_items.clear()
+	inventory_changed.emit("", 0)

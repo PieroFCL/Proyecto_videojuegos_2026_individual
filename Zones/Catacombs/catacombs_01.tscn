@@ -6,6 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://b730w33jjec18" path="res://Zones/Catacombs/Assets_png/decorative.png" id="2_jdiwk"]
 [ext_resource type="PackedScene" uid="uid://bl23uveojqu6g" path="res://Shared_Assets/Transitions/transition_point.tscn" id="5_8u3fh"]
 [ext_resource type="PackedScene" uid="uid://b1lkfruy874bl" path="res://Shared_Assets/Transitions/entrance_point.tscn" id="6_qcpr5"]
+[ext_resource type="PackedScene" uid="uid://bfh6pr5xjfdgx" path="res://WorldObjects/CollectableItem/collectable_item.tscn" id="7_npdyr"]
+[ext_resource type="Resource" uid="uid://bm26po3li6500" path="res://Inventory/Items/Documents/manustrito_controles.tres" id="8_y1krj"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_p3jfj"]
 texture = ExtResource("1_2hhia")
@@ -5601,7 +5603,7 @@ tile_set = SubResource("TileSet_1gc5a")
 position = Vector2(224, 152)
 
 [node name="entrance_from_catacombs02" parent="Entrances" unique_id=1396781631 instance=ExtResource("6_qcpr5")]
-position = Vector2(351, -81)
+position = Vector2(351, -68)
 
 [node name="Transitions" type="Node2D" parent="." unique_id=1185753829]
 
@@ -5609,3 +5611,10 @@ position = Vector2(351, -81)
 position = Vector2(351, -109)
 target_level = "res://Zones/Catacombs/catacombs_02.tscn"
 target_entrance = "entrance_from_catacombs01"
+
+[node name="Collectible Items" type="Node2D" parent="." unique_id=1346928251]
+
+[node name="ManustritoInicial" parent="Collectible Items" unique_id=240863860 instance=ExtResource("7_npdyr")]
+position = Vector2(266, 159)
+item_resource = ExtResource("8_y1krj")
+unique_id = "manustrito_controles"

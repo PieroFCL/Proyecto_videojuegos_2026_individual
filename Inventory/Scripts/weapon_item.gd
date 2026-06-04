@@ -16,6 +16,12 @@ class_name WeaponItem
 # Textura para animación Pickup (debe tener Vframes = 1)
 @export var pickup_texture: Texture2D
 
+# Propiedades para Combate
+@export var combat_texture: Texture2D
+@export var combat_hframes: int = 3
+@export var combat_vframes: int = 1
+@export var combat_scale: Vector2 = Vector2.ONE
+
 # Descripción del arma para la UI del inventario
 func get_description() -> String:
 	if not flavor_text.is_empty():

@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="DocumentItem" format=3 uid="uid://bdjlbb2ycra5f"]
+
+[ext_resource type="Texture2D" uid="uid://cviap58bg1n8m" path="res://Inventory/Items/Sprites/Documents/pag_aldren.png" id="1_ebl1s"]
+[ext_resource type="Script" uid="uid://nvxoy7pbn016" path="res://Inventory/Scripts/document_item.gd" id="1_q8a7s"]
+
+[resource]
+script = ExtResource("1_q8a7s")
+collection_id = "aldren"
+page_number = 12
+title = "Caso de violencia"
+text_content = "He asistido al primer caso documentado de violencia asociada a la Estrigia dentro de la capital. El afectado era un granjero de los campos del este. Su piel presentaba un tono pálido verdoso y sus ojos habían perdido toda lucidez. Atacó a su propia familia sin mediar palabra, logrando morder violentamente a su esposa antes de que otros campesinos lograran someterlo.
+
+Mi hipótesis cobra fuerza: el hongo no solo corrompe el cuerpo. También altera la mente. Si la Estrigia puede inducir comportamientos agresivos tan extremos, estamos ante algo mucho más peligroso que una plaga común.
+
+— Aldren Valen, naturalista de la Orden."
+id = "documents/aldren_pagina_12"
+icon = ExtResource("1_ebl1s")
+category = "document"
+metadata/_custom_type_script = "uid://nvxoy7pbn016"
