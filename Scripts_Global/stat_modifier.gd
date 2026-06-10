@@ -1,5 +1,4 @@
 class_name StatModifier
-# Representa un modificador temporal de una estadística (buff/debuff).
 
 # Estadística afectada: "attack", "defense", "speed"
 var stat: String = ""

@@ -15163,7 +15163,7 @@ target_entrance = "entrance_from_catacombs02"
 
 [node name="TransitionToDungeon" parent="Transitions" unique_id=570442575 instance=ExtResource("9_aiga3")]
 position = Vector2(961, -143)
-target_level = "res://Zones/Dungeons/dungeons_01.tscn"
+target_level = "res://Zones/Dungeons/dungeons_01.scn"
 target_entrance = "entrance_from_catacombs_02"
 
 [node name="Collectible Items" type="Node2D" parent="." unique_id=511481625]

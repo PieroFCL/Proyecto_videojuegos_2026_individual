@@ -1,39 +1,39 @@
 extends Area2D
+# Objeto recolectable que se añade al inventario.
+
 class_name CollectableItem
 
-# Recurso que define este objeto (arrastrar desde el inspector)
+# Recurso con definición del objeto (icono, nombre, efectos).
 @export var item_resource: ItemResource = null
-
-# Efecto visual opcional (escena de partículas)
+# Efecto visual opcional (partículas) al recoger.
 @export var pickup_effect: PackedScene = null
-
-# Identificador único para persistencia (ej. "llave_cripta", "documento_aldren_1")
+# Identificador único para persistencia (evita recolección múltiple).
 @export var unique_id: String = ""
 
+# Depuración: se ejecuta al salir del árbol.
 func _exit_tree() -> void:
 	print("CollectableItem _exit_tree(): ", name, " ha sido eliminado del árbol.")
 
-# Inicializa el objeto: lo añade al grupo, verifica colisiones, asigna textura y conecta señales
+# Configura el objeto, verifica persistencia y asigna gráficos.
 func _ready() -> void:
 	print("CollectableItem _ready(): ", name, " unique_id=", unique_id)
-	# --- PERSISTENCIA: si ya fue recogido anteriormente, desaparecer ---
+	# Si ya fue recogido antes, se elimina.
 	if not unique_id.is_empty() and WorldStateManager.is_item_collected(unique_id):
 		print("  Objeto ya recogido según WorldStateManager. Eliminando.")
 		queue_free()
 		return
-	# ----------------------------------------------------------------
 	
 	add_to_group("collectable")
 	print("CollectableItem listo: ", name)
 	
-	# Verificar colisiones
+	# Verifica existencia de colisión.
 	var collision_shape = $CollisionShape2D
 	if collision_shape and collision_shape.shape:
 		print("Colisión válida")
 	else:
 		print("ERROR: CollisionShape2D sin forma")
 	
-	# Asignar textura y escalar
+	# Asigna textura desde el recurso.
 	if item_resource and item_resource.icon:
 		$Sprite2D.texture = item_resource.icon
 		apply_scale_from_texture()
@@ -41,22 +41,23 @@ func _ready() -> void:
 		print("Advertencia: item_resource sin icono, usando placeholder")
 		$Sprite2D.texture = preload("res://icon.svg")
 	
-	# Detectar cuando otro cuerpo entra en contacto
+	# Conecta señal de colisión con el jugador.
 	body_entered.connect(_on_body_entered)
 	
-	# Asignar z_index normalizado solo para consumibles (pociones, elixires)
+	# Ajusta profundidad (solo consumibles) según posición Y.
 	if item_resource and item_resource.category == "consumable" and LevelManager.current_level_max_y > 0:
 		z_index = int(global_position.y) + 500
 
-# Se ejecuta cuando otro cuerpo (ej. el jugador) toca el objeto
+# Detecta cuando el jugador colisiona con el objeto.
 func _on_body_entered(body: Node2D) -> void:
 	print("Colisión detectada con: ", body.name)
 
+# Evita que collect() se ejecute más de una vez.
 var _is_collected: bool = false
 
-# Llamado por el jugador al recoger el objeto, añade al inventario y lo elimina del mapa
-# Llamado por el jugador al recoger el objeto, añade al inventario y lo elimina del mapa
+# Añade el objeto al inventario y lo elimina del mundo.
 func collect() -> void:
+	# Previene recolección múltiple.
 	if _is_collected:
 		print("AVISO: collect() ya fue llamado antes. Ignorando.")
 		return
@@ -74,14 +75,14 @@ func collect() -> void:
 	InventoryManager.add_item(item_resource.id, 1)
 	Events.item_collected.emit(item_resource.id)
 	
-	# --- PERSISTENCIA: registrar recogida ---
+	# Registra recogida en WorldStateManager para persistencia.
 	if not unique_id.is_empty():
 		print("  Registrando unique_id en WorldStateManager: ", unique_id)
 		WorldStateManager.register_collected_item(unique_id)
 	else:
 		print("  unique_id vacío, no se registra persistencia.")
-	# --------------------------------------
 	
+	# Instancia efecto visual si existe.
 	if pickup_effect:
 		var effect = pickup_effect.instantiate()
 		get_tree().root.add_child(effect)
@@ -90,27 +91,26 @@ func collect() -> void:
 	
 	print("  Llamando a queue_free()...")
 	queue_free()
-	print("  queue_free() ejecutado. (El objeto debería eliminarse al final del frame)")
+	print("  queue_free() ejecutado. (Objeto eliminado al final del frame)")
 	print("=== COLLECT FIN ===")
 
-# Aplicar la escala desde la textura actual
+# Escala el sprite según la categoría del objeto.
 func apply_scale_from_texture() -> void:
 	if item_resource and item_resource.icon:
 		var tex = $Sprite2D.texture
 		if tex:
 			var tex_size = tex.get_size()
-			# Tamaño base (píxeles) para la dimensión mayor
 			var desired_size = 16
 			
-			# Ajustar tamaño según la categoría del objeto
+			# Ajusta tamaño según tipo de objeto.
 			match item_resource.category:
 				"consumable":
-					desired_size = 20   # Pociones
+					desired_size = 20
 				"weapon":
-					desired_size = 30   # Armas
+					desired_size = 30
 				"armor":
-					desired_size = 30   # Armaduras
+					desired_size = 30
 				_:
-					desired_size = 16   # Por defecto
+					desired_size = 16
 			var scale_factor = desired_size / max(tex_size.x, tex_size.y)
 			$Sprite2D.scale = Vector2(scale_factor, scale_factor)

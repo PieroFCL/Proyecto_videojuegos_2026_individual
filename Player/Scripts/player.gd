@@ -1,44 +1,58 @@
 class_name Player extends CharacterBody2D
 
-var cardinal_direction: Vector2 = Vector2.DOWN  # Última dirección cardinal registrada
-var direction: Vector2 = Vector2.ZERO           # Entrada de movimiento actual
+# Última dirección cardinal registrada (down, up, left, right).
+var cardinal_direction: Vector2 = Vector2.DOWN
+# Vector de movimiento actual normalizado.
+var direction: Vector2 = Vector2.ZERO
 
+# Reproductor de animaciones del jugador.
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
+# Máquina de estados del jugador.
 @onready var state_machine: PlayerStateMachine = $StateMachine
 
-# Nodos de capas para equipamiento
+# Sprite base del cuerpo del jugador.
 @onready var body_sprite: Sprite2D = $Sprites/BodySprite
+# Sprite de la armadura superpuesta sobre el cuerpo.
 @onready var armor_sprite: Sprite2D = $Sprites/ArmorSprite
+# Sprite del arma superpuesta sobre el cuerpo.
 @onready var weapon_sprite: Sprite2D = $Sprites/WeaponSprite
 
-# Nodos de interacción
+# Área de detección de objetos recolectables.
 @onready var interaction_area: Area2D = $InteractionArea
+# Indicador visual "[E]" cerca de objetos.
 @onready var interaction_indicator: Label = $InteractionIndicator
+# Objeto recolectable actualmente cerca.
 var current_collectable: CollectableItem = null
 
-# Textura y frames para el combate (hoja de sprites)
+# Textura del jugador en combate.
 @export var combat_texture: Texture2D = null
+# Columnas de la hoja de sprites de combate.
 @export var combat_hframes: int = 1
+# Filas de la hoja de sprites de combate.
 @export var combat_vframes: int = 1
+# Escala del sprite de combate.
 @export var combat_scale: Vector2 = Vector2(1.0, 1.0)
 
-# Almacenar equipamiento actual y texturas precargadas
-var current_weapon_id: String = ""        # ID del arma equipada
-var current_armor_id: String = ""         # ID de la armadura equipada
-var weapon_textures: Dictionary = {}      # Texturas del arma por estado (Idle, Walk, Pickup)
-var armor_textures: Dictionary = {}       # Texturas de la armadura por estado
+# ID del arma equipada actualmente.
+var current_weapon_id: String = ""
+# ID de la armadura equipada actualmente.
+var current_armor_id: String = ""
+# Diccionario de texturas del arma por estado.
+var weapon_textures: Dictionary = {}
+# Diccionario de texturas de la armadura por estado.
+var armor_textures: Dictionary = {}
 
+# Indica si el jugador puede actuar (moverse, interactuar).
 var can_act: bool = true
-
+# Activa depuración de máscaras de colisión.
 const DEBUG_MASK_ALL = false
 
-# Inicializa el jugador y conecta señales
+# Inicializa máquina de estados y conecta señales.
 func _ready() -> void:
 	state_machine.initialize(self)
 	update_animation("idle")
 	print("Capa jugador: ", collision_layer, " máscara: ", collision_mask)
 	
-	# Depuración de área de interacción
 	print("Área interact - capa: ", interaction_area.collision_layer, " máscara: ", interaction_area.collision_mask)
 	if DEBUG_MASK_ALL:
 		print("Debug: máscara total")
@@ -48,11 +62,10 @@ func _ready() -> void:
 	interaction_area.area_exited.connect(_on_interaction_area_exited)
 	interaction_indicator.visible = false
 	
-	# Conectar señales de equipamiento y estado
 	EquipmentManager.equipment_changed.connect(_on_equipment_changed)
 	state_machine.state_changed.connect(_on_state_changed)
 	
-# Procesa entrada de movimiento y sincroniza sprites de equipamiento
+# Lee entrada de movimiento y sincroniza sprites.
 func _process(_delta: float) -> void:
 	if not can_act or get_tree().paused:
 		return
@@ -67,7 +80,7 @@ func _process(_delta: float) -> void:
 	if direction != Vector2.ZERO:
 		cardinal_direction = get_cardinal(direction)
 
-	# Sincronizar frame_coords de equipamiento (excepto en Pickup)
+	# Actualiza frames de armadura y arma si no está recogiendo.
 	var current_state = ""
 	if state_machine.current_state:
 		current_state = state_machine.current_state.name
@@ -77,33 +90,37 @@ func _process(_delta: float) -> void:
 		if current_weapon_id != "" and weapon_sprite.texture:
 			weapon_sprite.frame_coords = body_sprite.frame_coords
 	
-	# Calcular z_index
+	# Orden de dibujo según posición Y.
 	z_index = int(global_position.y) + 500
 
+# Habilita o deshabilita la acción del jugador.
 func set_can_act(value: bool) -> void:
 	can_act = value
 	if not can_act:
 		velocity = Vector2.ZERO
 	print("Jugador can_act = ", can_act)
 
-# Método para obtener la textura de combate (podría cambiar con equipamiento)
+# Devuelve textura de combate del cuerpo base.
 func get_combat_texture() -> Texture2D:
 	return combat_texture
 
+# Devuelve columnas de hoja de combate del cuerpo.
 func get_combat_hframes() -> int:
 	return combat_hframes
 
+# Devuelve filas de hoja de combate del cuerpo.
 func get_combat_vframes() -> int:
 	return combat_vframes
 
+# Devuelve escala de combate del cuerpo.
 func get_combat_scale() -> Vector2:
 	return combat_scale
 
-# Reduce la dirección a un eje cardinal dominante
+# Convierte dirección de movimiento a cardinal, horizontal o vertical.
 func get_cardinal(dir: Vector2) -> Vector2:
 	return Vector2(sign(dir.x), 0) if abs(dir.x) > abs(dir.y) else Vector2(0, sign(dir.y))
 
-# Aplica movimiento y colisiones, verifica no estar en combate
+# Aplica movimiento mediante move_and_slide.
 func _physics_process(_delta: float) -> void:
 	if not can_act or get_tree().paused:
 		velocity = Vector2.ZERO
@@ -111,7 +128,7 @@ func _physics_process(_delta: float) -> void:
 		return
 	move_and_slide()
 
-# Devuelve la dirección actual de la animación (right/left/down/up)
+# Determina dirección de animación según movimiento o dirección cardinal.
 func get_anim_direction() -> String:
 	if direction != Vector2.ZERO:
 		if abs(direction.x) > 0.1:
@@ -122,7 +139,7 @@ func get_anim_direction() -> String:
 		return "right" if cardinal_direction.x > 0 else "left"
 	return "down" if cardinal_direction.y > 0 else "up"
 
-# Cambia la animación según el estado base y la dirección, actualiza texturas
+# Actualiza animación según estado base y dirección.
 func update_animation(base_state: String) -> void:
 	var dir := get_anim_direction()
 	var anim_name := base_state + "_" + dir + "_player_desarmado"
@@ -134,7 +151,7 @@ func update_animation(base_state: String) -> void:
 	if animation_player.current_animation != anim_name:
 		animation_player.play(anim_name)
 
-# Ajusta la dirección cardinal del personaje cuando cambia la orientación (ej. al teletransportarse)
+# Fija dirección cardinal tras teletransporte o cambio de escena.
 func set_facing_direction(new_direction: Vector2) -> void:
 	new_direction = new_direction.normalized()
 	if abs(new_direction.x) > 0.1:
@@ -148,10 +165,8 @@ func set_facing_direction(new_direction: Vector2) -> void:
 		var current_state_name = state_machine.current_state.name
 		if current_state_name == "Idle":
 			update_animation("idle")
-
-# ---- Sistema de sprites por equipamiento ----
-
-# Actualiza las texturas del arma/armadura cuando se equipa o desequipa un objeto
+			
+# Cambia texturas del arma o armadura al equipar.
 func _on_equipment_changed(slot: String, item_id: String) -> void:
 	if slot == "weapon":
 		current_weapon_id = item_id
@@ -178,22 +193,21 @@ func _on_equipment_changed(slot: String, item_id: String) -> void:
 			print("ERROR: Texturas armadura no cargadas")
 		_update_armor_visual(state_machine.current_state.name)
 
-# Asigna la textura del arma según el estado actual
+# Muestra textura del arma según estado actual.
 func _update_weapon_visual(state_name: String) -> void:
 	if current_weapon_id.is_empty() or not weapon_textures.has(state_name):
 		weapon_sprite.texture = null
 	else:
 		weapon_sprite.texture = weapon_textures[state_name]
 
-# Asigna la textura de la armadura según el estado actual (con depuración)
+# Muestra textura de la armadura según estado actual.
 func _update_armor_visual(state_name: String) -> void:
 	if current_armor_id.is_empty() or not armor_textures.has(state_name):
 		armor_sprite.texture = null
 	else:
-		# MODIFICADO: eliminada línea redundante
 		armor_sprite.texture = armor_textures[state_name]
 
-# Ajusta los vframes de las capas de equipamiento según el estado del jugador
+# Ajusta filas de sprites según estado, pickup o movimiento.
 func _on_state_changed(state_name: String) -> void:
 	match state_name:
 		"Pickup":
@@ -208,9 +222,9 @@ func _on_state_changed(state_name: String) -> void:
 	_update_weapon_visual(visual_state)
 	_update_armor_visual(visual_state)
 
-# ---- Métodos de recolección (interacción) ----
+# MÉTODOS de RECOLECCIÓN
 
-# Detecta entrada de área interactiva (objeto recolectable)
+# Detecta entrada de objeto recolectable.
 func _on_interaction_area_entered(area: Area2D) -> void:
 	print("Área entró: ", area.name)
 	if area is CollectableItem:
@@ -218,7 +232,7 @@ func _on_interaction_area_entered(area: Area2D) -> void:
 		interaction_indicator.visible = true
 		print("  Objeto cerca")
 
-# Detecta salida de área interactiva
+# Detecta salida de objeto recolectable.
 func _on_interaction_area_exited(area: Area2D) -> void:
 	print("Área salió: ", area.name)
 	if area == current_collectable:
@@ -226,7 +240,7 @@ func _on_interaction_area_exited(area: Area2D) -> void:
 		interaction_indicator.visible = false
 		print("  Objeto ya no cerca")
 
-# Maneja entrada de teclado (interacción y depuración)
+# Maneja interacción con tecla E y la consume.
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
 		return
@@ -245,15 +259,17 @@ func _input(event: InputEvent) -> void:
 				state_machine.change_state(pickup_state)
 			else:
 				print("ERROR: Estado Pickup no encontrado")
-		# Marcar evento como manejado
 		var viewport = get_viewport()
 		if viewport:
 			viewport.set_input_as_handled()
 
-# --- TEXTURAS DE COMBATE PARA EQUIPAMIENTO ---
-func get_combat_body_texture() -> Texture2D:
-	return combat_texture   # la textura base del personaje desarmado
+# TEXTURAS DE COMBATE PARA EQUIPAMIENTO
 
+# Devuelve textura base del cuerpo en combate.
+func get_combat_body_texture() -> Texture2D:
+	return combat_texture
+
+# Devuelve textura de armadura para combate.
 func get_combat_armor_texture() -> Texture2D:
 	if current_armor_id.is_empty():
 		print("[Player] get_combat_armor_texture: No hay armadura equipada")
@@ -266,6 +282,7 @@ func get_combat_armor_texture() -> Texture2D:
 		print("[Player] ERROR: No se pudo obtener la textura de combate de la armadura: ", current_armor_id)
 		return null
 
+# Devuelve columnas de hoja de sprite de armadura.
 func get_combat_armor_hframes() -> int:
 	if current_armor_id.is_empty():
 		return 3
@@ -274,6 +291,7 @@ func get_combat_armor_hframes() -> int:
 		return armor.combat_hframes
 	return 3
 
+# Devuelve filas de hoja de sprite de armadura.
 func get_combat_armor_vframes() -> int:
 	if current_armor_id.is_empty():
 		return 1
@@ -282,6 +300,7 @@ func get_combat_armor_vframes() -> int:
 		return armor.combat_vframes
 	return 1
 
+# Devuelve escala de armadura en combate.
 func get_combat_armor_scale() -> Vector2:
 	if current_armor_id.is_empty():
 		return Vector2(0.47, 0.47)
@@ -290,6 +309,7 @@ func get_combat_armor_scale() -> Vector2:
 		return armor.combat_scale
 	return Vector2(0.47, 0.47)
 
+# Devuelve textura de arma para combate.
 func get_combat_weapon_texture() -> Texture2D:
 	if current_weapon_id.is_empty():
 		print("[Player] get_combat_weapon_texture: No hay arma equipada")
@@ -302,6 +322,7 @@ func get_combat_weapon_texture() -> Texture2D:
 		print("[Player] ERROR: No se pudo obtener la textura de combate del arma: ", current_weapon_id)
 		return null
 
+# Devuelve columnas de hoja de sprite de arma.
 func get_combat_weapon_hframes() -> int:
 	if current_weapon_id.is_empty():
 		return 3
@@ -310,6 +331,7 @@ func get_combat_weapon_hframes() -> int:
 		return weapon.combat_hframes
 	return 3
 
+# Devuelve filas de hoja de sprite de arma.
 func get_combat_weapon_vframes() -> int:
 	if current_weapon_id.is_empty():
 		return 1
@@ -318,6 +340,7 @@ func get_combat_weapon_vframes() -> int:
 		return weapon.combat_vframes
 	return 1
 
+# Devuelve escala de arma en combate.
 func get_combat_weapon_scale() -> Vector2:
 	if current_weapon_id.is_empty():
 		return Vector2(0.47, 0.47)

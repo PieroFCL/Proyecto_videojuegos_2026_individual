@@ -1,19 +1,31 @@
 extends Control
+# Submenú de bolsa con consumibles.
 
 signal item_used(item_id: String)
+# Señal al usar un objeto.
 signal closed
+# Señal al cerrar el submenú.
 
 @onready var slot_vida: Button = $Panel/GridContainer/SlotVida
+# Botón para poción de vida.
 @onready var slot_ataque: Button = $Panel/GridContainer/SlotAtaque
+# Botón para tónico de ataque.
 @onready var slot_defensa: Button = $Panel/GridContainer/SlotDefensa
+# Botón para brebaje de defensa.
 @onready var slot_velocidad: Button = $Panel/GridContainer/SlotVelocidad
+# Botón para jarabe de velocidad.
 
 var combat_scene: Node = null
+# Referencia a la escena de combate.
 var current_index: int = -1
+# Índice del slot enfocado actualmente.
 var slots: Array[Button] = []
+# Lista de botones de consumibles.
 var _just_opened: bool = false
+# Evita el primer accept tras abrir.
 
 const CONSUMABLE_IDS = {
+# IDs de los objetos consumibles.
 	"vida": "consumables/elixir_vigor",
 	"ataque": "consumables/tonico_furia",
 	"defensa": "consumables/brebaje_escamas",
@@ -23,8 +35,9 @@ const CONSUMABLE_IDS = {
 func _ready():
 	print("BAG _ready: Inicializando submenú de bolsa")
 	process_mode = PROCESS_MODE_ALWAYS
-	# Permitir que el propio nodo raíz reciba foco
+	# Recibe eventos incluso con pausa.
 	focus_mode = Control.FOCUS_ALL
+	# Permite foco al propio nodo.
 	
 	slots = [slot_vida, slot_ataque, slot_defensa, slot_velocidad]
 	for i in range(slots.size()):
@@ -41,6 +54,7 @@ func _ready():
 	print("BAG _ready: process_unhandled_input activado, focus_mode establecido")
 
 func _get_item_id_for_slot(idx: int) -> String:
+# Devuelve ID del consumible según índice del slot.
 	match idx:
 		0: return CONSUMABLE_IDS["vida"]
 		1: return CONSUMABLE_IDS["ataque"]
@@ -49,28 +63,28 @@ func _get_item_id_for_slot(idx: int) -> String:
 	return ""
 
 func _on_focus_entered(idx: int):
+# Actualiza índice al enfocar un slot.
 	current_index = idx
 	print("BAG: focus_entered en slot ", idx)
 
 func initialize(combat_node: Node) -> void:
+# Configura submenú al abrir.
 	print("BAG initialize: Recibido combat_node=", combat_node)
 	combat_scene = combat_node
 	_refresh_items()
 
-	# Asegurar que el submenú recibe eventos no manejados
 	set_process_unhandled_input(true)
 	set_process_input(true)
+	# Activa ambas entradas.
 
-	# Liberar foco de cualquier otro nodo
 	var viewport = get_viewport()
 	if viewport:
 		viewport.gui_release_focus()
+	# Libera foco de otros nodos.
 
-	# Pequeña pausa para que la UI se estabilice
 	await get_tree().process_frame
+	# Estabiliza la interfaz.
 
-	# Si no se enfocó ningún botón (todos deshabilitados), el propio submenú toma el foco
-	# (esto ya se hace en _refresh_items, pero lo aseguramos)
 	var found = false
 	for btn in slots:
 		if not btn.disabled and btn.has_focus():
@@ -78,6 +92,7 @@ func initialize(combat_node: Node) -> void:
 			break
 	if not found:
 		grab_focus()
+	# Toma foco si ningún botón activo.
 
 	_just_opened = true
 	await get_tree().create_timer(0.3).timeout
@@ -88,6 +103,7 @@ func initialize(combat_node: Node) -> void:
 		print("BAG: nodo inválido después del timer, cancelando")
 		
 func _refresh_items() -> void:
+# Actualiza la lista de consumibles según inventario.
 	print("BAG _refresh_items: actualizando slots")
 	var all_items = InventoryManager.get_all_items()
 	print("BAG: Inventario completo: ", all_items)
@@ -118,13 +134,13 @@ func _refresh_items() -> void:
 		grab_focus()
 		print("BAG: grab_focus() ejecutado, focus_owner=", get_viewport().gui_get_focus_owner())
 	else:
-		# Si se enfocó un botón, esperar un frame para asegurar la propagación del foco
 		await get_tree().process_frame
-		# Volver a enfocar el mismo botón (por si se perdió)
 		if current_index >= 0 and current_index < slots.size() and not slots[current_index].disabled:
 			slots[current_index].grab_focus()
+			# Refuerza el foco del botón.
 
 func _update_slot(button: Button, item_id: String, quantity: int) -> void:
+# Actualiza un slot individual (texto y estado).
 	print("BAG: actualizando slot ", button.name, " item_id=", item_id, " cantidad=", quantity)
 	if quantity > 0:
 		var item_res = InventoryManager.get_item_resource(item_id)
@@ -158,14 +174,15 @@ func _update_slot(button: Button, item_id: String, quantity: int) -> void:
 		button.disabled = true
 
 func _on_item_pressed(item_id: String) -> void:
+# Emite señales al presionar un objeto.
 	print("BAG: item presionado, item_id=", item_id)
 	item_used.emit(item_id)
 	closed.emit()
 
-# -----------------------------------------------------------------------------
 # Navegación y captura de eventos
-# -----------------------------------------------------------------------------
+
 func _move_focus_vertical(delta: int) -> void:
+# Mueve foco entre filas (salto 2).
 	if current_index == -1:
 		return
 	var new_index = current_index + delta
@@ -175,6 +192,7 @@ func _move_focus_vertical(delta: int) -> void:
 		slots[new_index].grab_focus()
 
 func _move_focus_horizontal() -> void:
+# Alterna foco entre columnas (0-1 o 2-3).
 	if current_index == -1:
 		return
 	var new_index = current_index
@@ -186,9 +204,9 @@ func _move_focus_horizontal() -> void:
 		slots[new_index].grab_focus()
 
 func _unhandled_input(event: InputEvent) -> void:
+# Captura eventos no manejados (navegación y aceptación).
 	if event is InputEventMouseMotion:
 		return
-	# Mostrar todos los eventos que llegan al submenú (solo para depuración)
 	print("BAG_SUBMENU _unhandled_input: event=", event.as_text(), " visible=", visible)
 	if not visible:
 		print("  -> Submenú no visible, ignorando")
@@ -223,7 +241,7 @@ func _unhandled_input(event: InputEvent) -> void:
 		else:
 			print("     No hay botón enfocado o está deshabilitado")
 		_consume_event()
-	# --- DETECCIONES PARA CERRAR CON Q ---
+	# Detección de cierre con Q.
 	elif event.is_action_pressed("menu_cancel") or event.is_action_released("menu_cancel"):
 		print("BAG: menu_cancel (Q) - Emitiendo closed")
 		closed.emit()
@@ -234,6 +252,7 @@ func _unhandled_input(event: InputEvent) -> void:
 		_consume_event()
 
 func _input(event: InputEvent) -> void:
+# Captura eventos normales como respaldo.
 	if event is InputEventMouseMotion:
 		return
 	if not visible:
@@ -256,6 +275,7 @@ func _input(event: InputEvent) -> void:
 		_consume_event()
 
 func _get_focusable_button_count() -> int:
+# Cuenta botones habilitados.
 	var count = 0
 	for btn in slots:
 		if not btn.disabled:
@@ -263,6 +283,7 @@ func _get_focusable_button_count() -> int:
 	return count
 
 func _focus_first_button() -> void:
+# Enfoca el primer botón habilitado.
 	for i in range(slots.size()):
 		if not slots[i].disabled:
 			slots[i].grab_focus()
@@ -270,15 +291,18 @@ func _focus_first_button() -> void:
 			break
 
 func _move_focus(_delta: int) -> void:
+# No usado, solo compatibilidad.
 	pass
 
 func _set_mouse_filter_ignore(node: Node) -> void:
+# Desactiva ratón en controles recursivamente.
 	for child in node.get_children():
 		if child is Control:
 			child.mouse_filter = Control.MOUSE_FILTER_IGNORE
 		_set_mouse_filter_ignore(child)
 
 func _consume_event() -> void:
+# Marca evento como manejado.
 	var viewport = get_viewport()
 	if viewport:
 		viewport.set_input_as_handled()
@@ -287,9 +311,11 @@ func _consume_event() -> void:
 		print("BAG: no se pudo consumir evento, viewport nulo")
 
 func _exit_tree() -> void:
+# Limpieza al salir.
 	pass
 
 func reset_state() -> void:
+# Reinicia estado del submenú.
 	current_index = -1
 	_just_opened = false
 	set_process_unhandled_input(true)

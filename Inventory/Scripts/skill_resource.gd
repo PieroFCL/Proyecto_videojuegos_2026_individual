@@ -1,31 +1,31 @@
 extends Resource
 class_name SkillResource
 
-# Identificador único (snake_case)
+# Identificador único en snake_case.
 @export var id: String = ""
-# Nombre visible
+# Nombre visible en la interfaz.
 @export var name: String = ""
-# Descripción corta para UI
+# Descripción corta para mostrar en UI.
 @export var description: String = ""
-# Tipo: "physical", "magical", "buff", "debuff"
+# Tipo: physical, magical, buff o debuff.
 @export var type: String = "physical"
-# Daño base (0 si no es ofensiva)
+# Daño base (0 si no es ofensiva).
 @export var damage: int = 0
-# Estadística afectada (solo para buff/debuff): "attack", "defense", "speed"
+# Estadística afectada: attack, defense o speed.
 @export var effect_stat: String = ""
-# Valor del efecto (positivo para buff, negativo para debuff)
+# Valor del efecto (positivo para buff, negativo debuff).
 @export var effect_value: int = 0
-# Si es permanente (true) o temporal (false). Para habilidades de equipo será true.
+# Si es permanente (true) o temporal (false).
 @export var permanent: bool = true
-# Número máximo de acumulaciones (solo si permanent = true)
+# Número máximo de acumulaciones (si permanent = true).
 @export var max_stacks: int = 2
-# Textura del icono (opcional)
+# Textura del icono (opcional).
 @export var icon: Texture2D = null
 
-# Para habilidades temporales (si no es permanente), se puede usar effect_duration
-@export var effect_duration: int = 0  # Solo si permanent = false
+# Duración en turnos si no es permanente.
+@export var effect_duration: int = 0
 
-# Devuelve una descripción formateada para mostrar en el submenú de habilidades
+# Devuelve texto formateado para mostrar en submenú de habilidades.
 func get_formatted_text() -> String:
 	var line1 = name
 	var line2 = ""

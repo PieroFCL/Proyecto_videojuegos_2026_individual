@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://ckpsj0kqddqcm" path="res://Player/player.tscn" id="1_rupst"]
 [ext_resource type="PackedScene" uid="uid://bdfcbgen3e7vj" path="res://UI/PlayerMenu/player_menu.tscn" id="3_m8u5f"]
 [ext_resource type="PackedScene" uid="uid://dqc7qauf671sa" path="res://UI/PlayerHPBarUI/player_hp_bar_ui.tscn" id="4_is3ju"]
+[ext_resource type="Script" uid="uid://bi7rrf64m7ci6" path="res://debug_overlay.gd" id="5_o00ia"]
 
 [node name="Playground" type="Node2D" unique_id=850884725]
 script = ExtResource("1_o00ia")
@@ -30,3 +31,6 @@ visible = false
 
 [node name="PlayerHPBarUI" parent="." unique_id=1172175879 instance=ExtResource("4_is3ju")]
 visible = false
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=619871398]
+script = ExtResource("5_o00ia")

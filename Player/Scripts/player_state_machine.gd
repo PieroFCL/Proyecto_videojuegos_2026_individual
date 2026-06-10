@@ -1,21 +1,21 @@
 class_name PlayerStateMachine extends Node
 
-# Señal emitida al cambiar de estado
+# Señal emitida al cambiar de estado.
 signal state_changed(state_name: String)
 
-# Referencia al jugador al que pertenece esta máquina
+# Referencia al jugador controlado por esta máquina.
 var player: Player
 
-# Lista de todos los estados hijos (nodos que heredan de State)
+# Lista de todos los estados hijos (heredan de State).
 var states: Array[State] = []
 
-# Estado actualmente activo
+# Estado actualmente activo.
 var current_state: State = null
 
-# Estado anterior (útil para transiciones especiales)
+# Estado anterior (para transiciones especiales).
 var previous_state: State = null
 
-# Inicializa la máquina, asigna el jugador a cada estado y comienza con el primer estado
+# Configura la máquina y prepara todos los estados hijos.
 func initialize(_player: Player) -> void:
 	player = _player
 	states.clear()
@@ -30,7 +30,7 @@ func initialize(_player: Player) -> void:
 	if states.size() > 0:
 		change_state(states[0])
 
-# Procesa la lógica del estado actual en cada frame
+# Ejecuta la lógica por frame del estado actual.
 func _process(delta: float) -> void:
 	if current_state == null:
 		return
@@ -39,7 +39,7 @@ func _process(delta: float) -> void:
 	if next_state != null:
 		change_state(next_state)
 
-# Procesa la física del estado actual
+# Ejecuta la lógica física del estado actual.
 func _physics_process(delta: float) -> void:
 	if current_state == null:
 		return
@@ -48,7 +48,7 @@ func _physics_process(delta: float) -> void:
 	if next_state != null:
 		change_state(next_state)
 
-# Maneja el input no consumido por otros nodos
+# Maneja eventos de entrada no consumidos para el estado actual.
 func _unhandled_input(event: InputEvent) -> void:
 	if current_state == null:
 		return
@@ -57,7 +57,7 @@ func _unhandled_input(event: InputEvent) -> void:
 	if next_state != null:
 		change_state(next_state)
 
-# Realiza el cambio de estado, ejecutando salida del anterior y entrada del nuevo
+# Cambia al nuevo estado ejecutando salida y entrada correspondientes.
 func change_state(new_state: State) -> void:
 	var from_state = "null"
 	if current_state:
