@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://7tq1xseuq5k3"]
 
-[ext_resource type="Script" uid="uid://rqi8cixntdft" path="res://end_demo_trigger.gd" id="1_c3t7f"]
+[ext_resource type="Script" uid="uid://rqi8cixntdft" path="res://Scripts_Global/end_demo_trigger.gd" id="1_c3t7f"]
 [ext_resource type="FontFile" uid="uid://v7bjrdltf7gm" path="res://UI/PlayerMenu/Fonts/W95F.otf" id="2_agxyh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c3t7f"]

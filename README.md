@@ -20,15 +20,13 @@ El jugador despierta sin memoria en las profundidades del Alto Bastión, una for
 
 ## Características principales
 
-- **Combate por turnos basado en velocidad**: el orden de las acciones se determina comparando la velocidad del jugador y la del enemigo. El valor exacto de la velocidad enemiga nunca se muestra, lo que obliga al jugador a deducirlo observando la secuencia de turnos.
-- **Sistema de debilidades de enemigo**: cada criatura posee una debilidad física o mágica. El tipo de debilidad se revela únicamente después de que el jugador golpee al enemigo por primera vez. Atacar con el tipo correcto multiplica el daño.
-- **Equipamiento y personalización de habilidades**: el jugador puede portar simultáneamente un arma (aporta ataque y hasta dos habilidades), una armadura (aporta defensa) y un sello mágico (aporta hasta dos habilidades, sin bonificación de estadísticas). No existen habilidades fijas; todas provienen del equipamiento.
-- **Sistema de buffos y debuffos permanentes**: las habilidades pueden incrementar o reducir atributos (ataque, defensa, velocidad) de forma permanente durante todo el combate. Estos efectos son acumulables hasta un límite de dos aplicaciones por estadística.
-- **Objetos consumibles de mejora temporal**: pociones y elixires que restauran puntos de salud o aumentan temporalmente una estadística durante un solo turno.
-- **Menús navegables completamente por teclado**: el inventario, el equipo y los submenús de combate se controlan mediante las teclas WASD, E y Q, sin necesidad del ratón.
-- **Sistema de audio dinámico**: música de ambiente en mundo, música diferente para combate normal y contra jefes, música para el menú principal, y efecto de sonido al presionar teclas (excepto movimiento).
-- **Transiciones entre niveles con efecto de fundido**: los cambios de zona se acompañan de una animación de pantalla negra y se conserva la posición y orientación del jugador.
-- **Sistema de guardado y carga automática**: el juego guarda el estado completo (posición, estadísticas, inventario, documentos, mundo) al activar checkpoints. Al morir, se carga automáticamente el último checkpoint. También permite guardado manual en múltiples slots desde el menú principal.
+- **Combate por Turnos**: Los enfrentamientos se resuelven por turnos, donde el orden de acción depende de la velocidad de cada participante. El jugador debe gestionar un menú con opciones de habilidades, uso de objetos y consulta de estado. La inteligencia artificial enemiga elige sus ataques según una lógica ponderada.
+- **Sistema de debilidades de enemigo**: Cada criatura posee una debilidad física o mágica. Atacar con el tipo correcto multiplica el daño.
+- **Equipamiento y personalización de habilidades**: El jugador puede portar simultáneamente un arma, que aporta ataque y hasta dos habilidades, una armadura, que aporta defensa, y un sello mágico, que aporta hasta dos habilidades. No existen habilidades fijas; todas provienen del equipamiento.
+- **Menús navegables completamente por teclado**: El inventario, el equipo y los submenús de combate se controlan mediante las teclas WASD, E y Q, sin necesidad del ratón.
+- **Sistema de audio dinámico**: Música de ambiente en mundo, música diferente para combate normal y contra jefes, música para el menú principal, y efecto de sonido al presionar teclas.
+- **Transiciones entre niveles**: El mundo se divide en zonas interconectadas. Al cambiar de nivel, con una animación de difuminado, se preserva la posición y orientación del jugador. El estado del mundo (como los objetos recolectados, enemigos derrotados, puertas abiertas, documentos leídos), se guarda de forma persistente en el mapa.
+- **Sistema de guardado y carga automática**: El juego guarda el estado completo (posición, estadísticas, inventario, documentos, mundo) al activar checkpoints. Al morir, se carga automáticamente el último checkpoint.
 
 ## Controles
 
@@ -56,15 +54,15 @@ No se requieren dependencias externas adicionales. El juego se ejecuta de forma 
 
 La organización de directorios respeta una separación clara de responsabilidades y facilita la escalabilidad. Los principales directorios son:
 
-- **Combat**: contiene las escenas y scripts relacionados con la interfaz de combate, incluidos los submenús de habilidades, bolsa y estado.
-- **Enemys**: almacena los recursos de estadísticas de los enemigos, sus scripts y los sprites específicos para el mundo y el combate.
-- **Inventory**: gestiona todo el sistema de objetos: clases base (ItemResource, ConsumableItem, WeaponItem, ArmorItem, SealItem y SkillResource), recursos de ejemplo y subcarpetas por tipo (armas, armaduras, sellos, consumibles, habilidades).
-- **Player**: contiene el nodo del jugador, su máquina de estados, animaciones y scripts de movimiento, interacción y cambio de sprites por equipamiento.
-- **Scripts_Global**: agrupa los autoloads (singletons) como CameraManager, LevelManager, InventoryManager, EquipmentManager, PlayerStats, CombatManager, AudioManager, AutoSaveManager, InputLogger y otros.
-- **Shared_Assets**: reúne efectos visuales reutilizables (transición de fundido) y nodos de transición entre niveles (EntrancePoint, TransitionPoint).
-- **UI**: alberga el menú principal (MainMenu), el menú del personaje (PlayerMenu) y sus recursos gráficos.
-- **WorldObjects**: define los objetos recolectables (CollectableItem), puertas (Door) y puntos de guardado (Checkpoint).
-- **Zones**: contiene los niveles (catacombs_01, catacombs_02, catacombs_03, dungeon_01) con sus respectivos tilemaps, puntos de entrada, transiciones, enemigos, objetos y puzzles.
+- **Combat**: Contiene las escenas y scripts relacionados con la interfaz de combate, incluidos los submenús de habilidades, bolsa y estado.
+- **Enemys**: Almacena los recursos de estadísticas de los enemigos, sus scripts y los sprites específicos para el mundo y el combate.
+- **Inventory**: Gestiona todo el sistema de objetos: clases base (ItemResource, ConsumableItem, WeaponItem, ArmorItem, SealItem y SkillResource), recursos de ejemplo y subcarpetas por tipo (armas, armaduras, sellos, consumibles, habilidades).
+- **Player**: Contiene el nodo del jugador, su máquina de estados, animaciones y scripts de movimiento, interacción y cambio de sprites por equipamiento.
+- **Scripts_Global**: Agrupa los autoloads (singletons) como CameraManager, LevelManager, InventoryManager, EquipmentManager, PlayerStats, CombatManager, AudioManager, AutoSaveManager, InputLogger y otros.
+- **Shared_Assets**: Reúne efectos visuales reutilizables (transición de fundido) y nodos de transición entre niveles (EntrancePoint, TransitionPoint).
+- **UI**: Alberga el menú principal (MainMenu), el menú del personaje (PlayerMenu) y sus recursos gráficos.
+- **WorldObjects**: Define los objetos recolectables (CollectableItem), puertas (Door) y puntos de guardado (Checkpoint).
+- **Zones**: Contiene los niveles (catacombs_01, catacombs_02, catacombs_03, dungeon_01) con sus respectivos tilemaps, puntos de entrada, transiciones, enemigos, objetos y puzzles.
 
 ## Estado actual del desarrollo
 
@@ -84,11 +82,11 @@ Hasta la fecha se han implementado los siguientes sistemas:
   - Submenú de estado (muestra vida, estadísticas y efectos activos del jugador y del enemigo).
   - Habilidades propias de enemigos (selección mediante IA ponderada).
   - Sistema de buffos/debuffos permanentes y temporales.
-- Sistema de documentos narrativos: los documentos se guardan en un gestor independiente y se visualizan en una interfaz dedicada dentro del menú del personaje.
-- Sistema de persistencia del mundo (WorldStateManager): registra objetos recolectados, enemigos derrotados, puertas abiertas y eventos únicos.
+- Sistema de documentos narrativos, donde los documentos se guardan en un gestor independiente y se visualizan en una interfaz dedicada dentro del menú del personaje.
+- Sistema de persistencia del mundo, donde registra objetos recolectados, enemigos derrotados, puertas abiertas y eventos únicos.
 - Sistema de guardado y carga automática con checkpoints y múltiples slots (automático + tres manuales).
 - Menú principal (nueva partida, cargar partida, salir) con navegación por teclado y selección de slot.
-- Sistema de audio: música para menú, ambiente, combate normal, combate contra jefes, y efecto sonoro para teclas.
+- Sistema de audio con música para menú, ambiente, combate normal, combate contra jefes, y efecto sonoro para teclas.
 - Cambio visual del jugador en combate según armadura y arma equipadas (sprites superpuestos).
 - Puzzle de puerta con llave y persistencia de apertura.
 - Sistema de fin de demostración con fade y retorno al menú principal (útil para prototipos).
@@ -97,11 +95,11 @@ Hasta la fecha se han implementado los siguientes sistemas:
 
 Se prevé la incorporación de los siguientes sistemas en versiones futuras:
 
-- **Sistema de diálogos con NPCs**: interacción no jugable que entregue misiones, lore o desbloquee rutas.
-- **Drops de enemigos en el mundo**: al derrotar a un enemigo, puede aparecer un objeto recolectable en su lugar.
+- **Sistema de diálogos con NPCs**: Interacción no jugable que entregue misiones, lore o desbloquee rutas.
+- **Drops de enemigos en el mundo**: Al derrotar a un enemigo, puede aparecer un objeto recolectable en su lugar.
 - **Menú de pausa con opciones de guardado manual** y ajustes de configuración.
-- **Eventos y cinemáticas en el mapa** (Opcional): disparadores que al activarse pausan el control del jugador, mueven la cámara, muestran diálogos o inician combates automáticos.
-- **Puzzles ambientales adicionales**: palancas, plataformas, acertijos de presión y otros mecanismos interactivos.
+- **Eventos y cinemáticas en el mapa**: Disparadores que al activarse pausan el control del jugador, mueven la cámara, muestran diálogos o inician combates automáticos.
+- **Puzzles dinamicos**: Palancas, plataformas, acertijos de presión y otros mecanismos interactivos.
 
 ## Créditos
 
