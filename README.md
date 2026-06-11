@@ -9,13 +9,13 @@ El jugador despierta sin memoria en las profundidades del Alto Bastión, una for
 ## Capturas de Pantalla
 
 <div style="display: flex; gap: 10px;">
-  <img src="Doc/Screenshots/img01.png" style="height: 200px; width: auto;">
-  <img src="Doc/Screenshots/img02.png" style="height: 200px; width: auto;">
+  <img src="Doc/Screenshots/img01.png" style="height: 350px; width: auto;">
+  <img src="Doc/Screenshots/img02.png" style="height: 350px; width: auto;">
 </div>
 
 <div style="display: flex; gap: 10px;">
-  <img src="Doc/Screenshots/img03.png" style="height: 200px; width: auto;">
-  <img src="Doc/Screenshots/img04.png" style="height: 200px; width: auto;">
+  <img src="Doc/Screenshots/img03.png" style="height: 350px; width: auto;">
+  <img src="Doc/Screenshots/img04.png" style="height: 350px; width: auto;">
 </div>
 
 ## Características principales
