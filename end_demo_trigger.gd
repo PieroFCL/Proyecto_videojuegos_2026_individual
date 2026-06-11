@@ -2,7 +2,7 @@ extends Area2D
 # Dispara fin de demostración al entrar el jugador.
 
 # Texto mostrado en pantalla al finalizar.
-@export var demo_end_text: String = "Fin de Versión Funcional"
+@export var demo_end_text: String = "Fin de la Demo"
 # Duración del fundido a negro.
 @export var fade_duration: float = 1.0
 # Tiempo de espera antes de volver al menú.
