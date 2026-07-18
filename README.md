@@ -42,13 +42,38 @@ El jugador despierta sin memoria en las profundidades del Alto Bastión, una for
 
 ## Instalación y ejecución
 
-Para compilarlo y ejecutarlo se necesita Godot Engine en su versión 4.6 o superior. Los pasos recomendados son:
+### Requisitos previos
 
-1. Clonar el repositorio en una carpeta local.
-2. Abrir Godot Engine y, desde el administrador de proyectos, seleccionar la opción de importar una escena o proyecto, apuntando a la carpeta que contiene el archivo project.godot.
-3. Una vez cargado, ejecutar la escena principal playground.tscn o iniciar el proyecto directamente desde el editor.
+- Godot Engine 4.6 o superior instalado en el sistema. Se puede descargar desde la página oficial: https://godotengine.org
 
-No se requieren dependencias externas adicionales. El juego se ejecuta de forma nativa en Windows, Linux y macOS, aprovechando la compatibilidad multiplataforma de Godot.
+### Pasos para descargar y jugar
+
+1. Clonar o descargar el repositorio
+
+Si se usa Git, ejecutar el siguiente comando:
+
+```bash
+git clone https://github.com/tuusuario/la-ultima-fosa.git
+```
+
+Si no se usa Git:
+
+- Hacer clic en el botón **Code** del repositorio.
+- Seleccionar **Download ZIP**.
+- Extraer el contenido en una carpeta de su elección.
+
+2. Abrir el proyecto en Godot Engine
+
+- Abrir **Godot Engine**.
+- En el administrador de proyectos, hacer clic en **Importar**.
+- Navegar hasta la carpeta donde se descargó el proyecto.
+- Seleccionar el archivo `project.godot`.
+- Godot importará y cargará el proyecto automáticamente.
+
+3. Ejecutar el juego
+
+- Una vez abierto el proyecto, presionar **F5** o hacer clic en el botón **Ejecutar proyecto** ubicado en la esquina superior derecha.
+- El juego iniciará en el menú principal.
 
 ## Estructura del proyecto
 
