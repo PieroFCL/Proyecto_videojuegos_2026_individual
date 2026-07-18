@@ -48,7 +48,7 @@ El jugador despierta sin memoria en las profundidades del Alto Bastión, una for
 
 ### Pasos para descargar y jugar
 
-1. Clonar o descargar el repositorio
+**Clonar o descargar el repositorio:**
 
 Si se usa Git, ejecutar el siguiente comando:
 
@@ -58,11 +58,11 @@ git clone https://github.com/PieroFCL/Proyecto_videojuegos_2026_individual.git
 
 Si no se usa Git:
 
-  - Hacer clic en el botón **Code** del repositorio.
-  - Seleccionar **Download ZIP**.
-  - Extraer el contenido en una carpeta de su elección.
+- Hacer clic en el botón **Code** del repositorio.
+- Seleccionar **Download ZIP**.
+- Extraer el contenido en una carpeta de su elección.
 
-2. Abrir el proyecto en Godot Engine
+**Abrir el proyecto en Godot Engine:**
 
 - Abrir **Godot Engine**.
 - En el administrador de proyectos, hacer clic en **Importar**.
@@ -70,7 +70,7 @@ Si no se usa Git:
 - Seleccionar el archivo `project.godot`.
 - Godot importará y cargará el proyecto automáticamente.
 
-3. Ejecutar el juego
+**Ejecutar el juego:**
 
 - Una vez abierto el proyecto, presionar **F5** o hacer clic en el botón **Ejecutar proyecto** ubicado en la esquina superior derecha.
 - El juego iniciará en el menú principal.
