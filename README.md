@@ -53,14 +53,14 @@ El jugador despierta sin memoria en las profundidades del Alto Bastión, una for
 Si se usa Git, ejecutar el siguiente comando:
 
 ```bash
-git clone https://github.com/tuusuario/la-ultima-fosa.git
+git clone https://github.com/PieroFCL/Proyecto_videojuegos_2026_individual.git
 ```
 
 Si no se usa Git:
 
-- Hacer clic en el botón **Code** del repositorio.
-- Seleccionar **Download ZIP**.
-- Extraer el contenido en una carpeta de su elección.
+  - Hacer clic en el botón **Code** del repositorio.
+  - Seleccionar **Download ZIP**.
+  - Extraer el contenido en una carpeta de su elección.
 
 2. Abrir el proyecto en Godot Engine
 
